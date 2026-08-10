@@ -1,0 +1,36 @@
+{
+  "name": "fraxplorerperu",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build",
+    "download-images": "node scripts/download-all-assets.js",
+    "scrape-tours": "node scripts/scrape-tours.js",
+    "assign-tour-images": "python scripts/assign-tour-images.py",
+    "download-fb-photos": "node scripts/download-fb-photos.js",
+    "deploy:static": "npm run build && node scripts/prepare-hostinger.js"
+  },
+  "dependencies": {
+    "framer-motion": "^11.15.0",
+    "next": "^14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "swiper": "^11.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.35",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  }
+}

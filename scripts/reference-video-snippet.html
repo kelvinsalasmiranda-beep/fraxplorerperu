@@ -1,0 +1,140 @@
+video-lightbox video-float" hidden role="dialog" aria-modal="false" aria-label="Reproductor de video">
+    <div class="video-lightbox__backdrop" aria-hidden="true"></div>
+
+    <div class="video-lightbox__shell" id="videoFloatShell">
+      <div class="video-lightbox__dialog video-lightbox__dialog--youtube">
+        <div class="video-lightbox__glass-panel">
+          <div class="video-lightbox__titlebar" id="videoFloatDrag">
+            <span class="video-lightbox__drag-hint" aria-hidden="true" title="Arrastrar">⋮⋮</span>
+            <div class="video-lightbox__meta" id="videoLightboxMeta">
+              <span class="video-lightbox__pill" id="videoLightboxPlatform">Video</span>
+              <span class="video-lightbox__user" id="videoLightboxUser"></span>
+            </div>
+            <button type="button" class="video-lightbox__close-mini video-lightbox__close" aria-label="Cerrar">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+          <div class="video-lightbox__frame" id="videoLightboxFrame"></div>
+        </div>
+
+        <nav class="video-lightbox__nav" aria-label="Controles de video">
+          <a class="video-glass-btn video-lightbox__external" id="videoLightboxExternal" href="#" target="_blank" rel="noopener noreferrer" hidden>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.75" d="M14 3h7v7M10 14L21 3M21 14v7h-7M3 10V3h7"/></svg>
+            <span class="video-glass-btn__label" id="videoLightboxExternalLabel">Abrir</span>
+          </a>
+          <button type="button" class="video-glass-btn video-lightbox__fs" id="videoLightboxFs" aria-label="Pantalla completa">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.75" d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="detalle-v2__content-row">
+    <aside class="detalle-v2__contact-col">
+      <div class="detalle-agent-card card">
+        <div class="detalle-invest-card__agent">
+          <div class="agent__avatar">M</div>
+          <div>
+            <span class="agent__label">Agente / Agencia</span>
+            <strong>
+              
+                <a href="/marca/madre-tierra">Madre Tierra - Inmobiliaria</a>
+              
+            </strong>
+            <span>992 587 711</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card--agent detalle-v2__contact-card">
+        <form method="post" class="form form--contact" id="pedirInformacion">
+          <h3 class="form-contact__title">Pedir información</h3>
+          <input id="csrf_token" name="csrf_token" type="hidden" value="IjQ0NDViZjIzYjZmNWRkN2ZmYTcyNmNmNjZmMzcyZjI3OGQwZjI1Y2Ii.anT_sg.0nRNu5DTfwrbM_HhsZpii69lnPI">
+          
+  
+
+          <label>Nombre <input id="nombre" maxlength="120" name="nombre" placeholder="Tu nombre" required type="text" value=""></label>
+          <label>Email <input id="email" maxlength="200" name="email" placeholder="tu@email.com" required type="text" value=""></label>
+          <label>Teléfono <input id="telefono" maxlength="30" name="telefono" placeholder="Opcional" type="text" value=""></label>
+          <label>Mensaje <textarea id="mensaje" maxlength="2000" minlength="10" name="mensaje" placeholder="Hola, me interesa esta propiedad..." required rows="3">
+</textarea></label>
+          <input class="btn btn--primary btn--block" id="submit" name="submit" type="submit" value="Enviar mensaje">
+        </form>
+
+        
+          <a class="btn btn--ghost btn--block" href="/cuenta/login?next=/venta/terreno-chinchero-cusco-26">Inicia sesión para guardar</a>
+        
+      </div>
+    </aside>
+
+    <div class="detalle-v2__desc-col">
+      
+      <section class="card detalle-v2__desc">
+        <h2 class="detalle-v2__section-title"><span class="detalle-v2__section-bar" aria-hidden="true"></span>Descripción</h2>
+        <div class="descripcion descripcion--rich descripcion--clamp" id="descContent"><p>🏡🌄 ALTAMIRA – DONDE LA NATURALEZA Y TU FUTURO SE ENCUENTRAN 🌄🏡<br>En Altamira puedes construir la casa de campo que siempre soñaste o desarrollar un Airbnb con gran potencial turístico, en una de las zonas con mayor proyección de crecimiento en Chinchero.<br>✅ 30 lotes disponibles<br>📐 Lotes desde 200 m² hasta 300 m²<br>💰 Precios desde S/ 40,000<br>📝 Reserva tu lote con solo S/ 1,000<br>💳 Crédito hasta 12 meses con 50% de inicial<br>🚗 Acceso vehicular en todo el proyecto<br>💡 Agua y luz en proyección<br>🌅 Vista espectacular a la Laguna de Huaypo<br>No dejes pasar la oportunidad de invertir en un lugar donde la naturaleza, el turismo y la valorización de tu patrimonio se unen.<br>📲 Escríbenos hoy mismo y agenda tu visita guiada. Descubre por qué Altamira es el lugar ideal para vivir, descansar o invertir.</p></div>
+        <button type="button" class="btn btn--ghost btn--small detalle-ver-mas" id="descVerMas" hidden>Ver más</button>
+      </section>
+      
+
+      
+      <section class="detalle-videos detalle-videos--glass detalle-v2__videos">
+        <div class="detalle-videos__head">
+          <h2 class="detalle-v2__section-title"><span class="detalle-v2__section-bar" aria-hidden="true"></span>Videos</h2>
+          <p class="detalle-videos__hint">Toca una miniatura para abrir el panel con sonido.</p>
+        </div>
+        <div class="video-cards video-cards--glass video-cards--desc">
+          
+          
+          
+          
+          
+          
+          <button
+            type="button"
+            class="video-card video-card--glass video-card--facebook video-card--vertical"
+            data-embed="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1571574864564487&amp;show_text=false&amp;width=560"
+            data-original="https://www.facebook.com/reel/1571574864564487"
+            data-platform="facebook"
+            data-formato="vertical"
+            data-label="Video en Facebook"
+            aria-label="Reproducir video de facebook"
+          >
+            <div class="video-card__glass">
+              <div class="video-card__media">
+                
+                  <div class="video-card__placeholder" aria-hidden="true"></div>
+                
+                <span class="video-card__ring" aria-hidden="true"></span>
+                <span class="video-card__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="video-card__badge">Facebook</span>
+              </div>
+              <span class="video-card__cta">Reproducir</span>
+            </div>
+          </button>
+          
+        </div>
+      </section>
+      
+    </div>
+  </div>
+
+  <section class="detalle-v2__map-row">
+    <div class="detalle-v2__map-col">
+    <section class="card card--ubicacion-full detalle-v2__map-section">
+      <div class="detalle-ubicacion-head">
+        <h2 class="detalle-v2__section-title"><span class="detalle-v2__section-bar" aria-hidden="true"></span>Ubicación interactiva</h2>
+      </div>
+      
+        <div class="detalle-mapa-wrap masterplan-map">
+          <div class="mapa-viewport mapa-viewport--detalle" id="mapaViewport">
+            <div id="mapa-detalle" class="mapa-canvas mapa-canvas--detalle" aria-label="Ubicación en mapa"></div>
+            <div id="mapa-streetview" class="mapa-streetview" aria-label="Vista de calle Google Street View"></div>
+            <button type="button" class="mapa-sv-layout" id="btnStreetViewLayout" hidden
+                    aria-label="Cambiar disposicion mapa y Street View" title="Cambiar disposicion">
+              Lado a lado
+            </button>
+            <bu
