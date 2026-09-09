@@ -10,14 +10,14 @@ export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-3 z-50 sm:bottom-6 sm:right-6">
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="mb-4 w-80 overflow-hidden rounded-3xl glass shadow-2xl"
+            className="mb-4 w-[min(20rem,calc(100vw-1.5rem))] overflow-hidden rounded-3xl glass shadow-2xl"
           >
             <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 text-white">
               <p className="font-bold">{t.whatsapp.greeting}</p>
@@ -54,7 +54,7 @@ export default function WhatsAppButton() {
         whileTap={{ scale: 0.95 }}
         animate={{ y: [0, -4, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white shadow-xl shadow-green-500/40"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white shadow-xl shadow-green-500/40 sm:h-16 sm:w-16"
         aria-label={t.whatsapp.label}
       >
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20" />

@@ -13,10 +13,23 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  @apply bg-[#f8fafb] text-gray-800 antialiased overflow-x-hidden;
+  @apply bg-[#f8fafb] text-gray-800 antialiased w-full min-w-0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+#main-content {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -60,7 +73,7 @@ body {
 }
 
 .section-title {
-  @apply font-heading text-3xl md:text-5xl font-bold text-brand-dark text-center mb-4 tracking-tight;
+  @apply font-heading text-[1.65rem] leading-tight sm:text-3xl md:text-5xl font-bold text-brand-dark text-center mb-4 tracking-tight px-1;
 }
 
 .section-subtitle {

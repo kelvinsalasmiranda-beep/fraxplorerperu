@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cinzel_Decorative, Playfair_Display, Poppins } from 'next/font/google';
 import './globals.css';
 import AppProviders from '@/components/AppProviders';
@@ -28,6 +28,13 @@ const cinzel = Cinzel_Decorative({
   variable: '--font-cinzel',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://fraxplorerperu.com'),
   title: 'Fraxplorer Peru | Tours y Aventuras en el Perú',
@@ -52,7 +59,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${playfair.variable} ${cinzel.variable} font-sans`}>
+      <body className={`${poppins.variable} ${playfair.variable} ${cinzel.variable} font-sans w-full min-w-0`}>
         <AppProviders>
           <SkipLink />
           <Header />

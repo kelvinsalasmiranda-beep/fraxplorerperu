@@ -19,7 +19,7 @@ export default function Experiences() {
   const experiences = t.experiences;
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">
           <SectionBadge>{t.experiencesUi.badge}</SectionBadge>

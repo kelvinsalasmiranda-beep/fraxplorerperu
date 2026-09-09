@@ -25,7 +25,7 @@ export default function ToursCarousel() {
   ];
 
   return (
-    <section id="tours" className="py-24 md:py-32 relative overflow-hidden bg-brand-dark">
+    <section id="tours" className="relative overflow-hidden bg-brand-dark py-16 sm:py-24 md:py-32">
       <div className="absolute inset-0 gradient-mesh opacity-30" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent" />
 
@@ -48,10 +48,10 @@ export default function ToursCarousel() {
           pagination={{ clickable: true }}
           autoplay={{ delay: 4500, disableOnInteraction: false }}
           breakpoints={{ 768: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }}
-          className="pb-16 !overflow-visible"
+          className="overflow-hidden pb-16"
         >
           {t.homeTours.map((tour, i) => (
-            <SwiperSlide key={tour.href} className="!w-[300px] md:!w-[340px]">
+            <SwiperSlide key={tour.href} className="!w-[min(18.75rem,calc(100vw-2.5rem))] md:!w-[340px]">
               <motion.article
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}

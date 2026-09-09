@@ -39,7 +39,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="fixed top-[3px] left-0 right-0 z-50 px-3 md:px-6 pt-3">
+    <header className="fixed inset-x-0 top-0 z-50 px-2 pt-2 sm:px-3 sm:pt-3 md:px-6">
       {/* Top utility bar */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
@@ -86,13 +86,13 @@ export default function Header() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className={`mx-auto max-w-7xl rounded-2xl transition-all duration-500 ${
+        className={`mx-auto w-full max-w-7xl rounded-2xl transition-all duration-500 ${
           scrolled
             ? 'glass shadow-xl shadow-brand-dark/5'
             : 'bg-white shadow-lg shadow-brand-dark/10'
         }`}
       >
-        <div className="flex items-center justify-between px-4 py-2.5 lg:px-6">
+        <div className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6">
           <Link href="/" className="relative shrink-0 group">
             <Image
               src="/images/cropped-FRAXPLORER-scaled-1-113x68.png"
@@ -100,7 +100,7 @@ export default function Header() {
               width={113}
               height={68}
               priority
-              className="transition-transform duration-300 group-hover:scale-105"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105 sm:h-[68px]"
             />
           </Link>
 

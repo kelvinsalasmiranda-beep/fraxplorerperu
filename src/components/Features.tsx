@@ -9,7 +9,7 @@ import SectionBadge from '@/components/ui/SectionBadge';
 export default function Features() {
   const { t } = useLanguage();
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section className="relative overflow-hidden py-16 sm:py-24 md:py-32">
       <div className="absolute inset-0 gradient-mesh opacity-40" />
       <div className="relative mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">

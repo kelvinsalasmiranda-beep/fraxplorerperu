@@ -10,7 +10,7 @@ export default function Destinations() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 md:py-32 bg-brand-dark relative overflow-hidden">
+    <section className="relative overflow-hidden bg-brand-dark py-16 sm:py-24 md:py-32">
       <div className="absolute inset-0 gradient-mesh opacity-20" />
       <div className="relative mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">

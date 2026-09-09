@@ -17,7 +17,7 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden">
       {/* Parallax video */}
       <motion.div className="absolute inset-0" style={{ scale }}>
         <video
@@ -38,16 +38,16 @@ export default function Hero() {
       <div className="absolute inset-0 noise-bg" />
 
       {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-brand-accent/10 blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-brand-gold/10 blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/4 left-1/4 hidden h-64 w-64 rounded-full bg-brand-accent/10 blur-3xl animate-float sm:block" />
+      <div className="absolute bottom-1/4 right-1/4 hidden h-96 w-96 rounded-full bg-brand-gold/10 blur-3xl animate-float sm:block" style={{ animationDelay: '2s' }} />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto max-w-5xl px-4 pt-32 pb-20 text-center">
+      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto w-full max-w-5xl px-4 pt-28 pb-16 text-center sm:pt-32 sm:pb-20">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 rounded-full glass-dark px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/90 mb-8"
+          className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full glass-dark px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 sm:mb-8 sm:px-5 sm:py-2 sm:text-xs sm:tracking-[0.25em]"
         >
           <span className="h-2 w-2 rounded-full bg-brand-gold animate-pulse" />
           {t.hero.badge}
@@ -61,7 +61,7 @@ export default function Hero() {
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
                 transition={{ delay: 0.3 + i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-white leading-[0.9]"
+                className="font-heading text-[clamp(1.85rem,9.5vw,6rem)] sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-white leading-[0.95] break-words [overflow-wrap:anywhere]"
               >
                 {word}
               </motion.h1>
@@ -73,7 +73,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mt-2"
+          className="font-heading text-[clamp(1.5rem,8vw,3.75rem)] sm:text-5xl md:text-6xl font-black tracking-tight mt-2 break-words [overflow-wrap:anywhere]"
         >
           <span className="text-gradient">{t.hero.line3}</span>
         </motion.h1>
@@ -82,7 +82,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="mt-8 text-lg md:text-xl text-white/80 font-light max-w-xl mx-auto"
+          className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-white/80 font-light max-w-xl mx-auto px-1"
         >
           {t.hero.subtitleLong}
         </motion.p>
@@ -91,12 +91,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-8 sm:mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
         >
-          <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-gold animate-glow">
+          <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-gold animate-glow w-full justify-center sm:w-auto">
             {t.hero.cta}
           </MagneticButton>
-          <MagneticButton href="#tours" className="btn-outline !border-white/30 !text-white hover:!bg-white/10 hover:!text-white" strength={0.2}>
+          <MagneticButton href="#tours" className="btn-outline w-full justify-center !border-white/30 !text-white hover:!bg-white/10 hover:!text-white sm:w-auto" strength={0.2}>
             {t.hero.viewTours}
           </MagneticButton>
         </motion.div>
@@ -106,7 +106,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-8"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:mt-16 sm:gap-8"
         >
           <div className="glass-dark rounded-2xl p-3 animate-float">
             <Image
@@ -133,7 +133,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 sm:block"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

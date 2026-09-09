@@ -112,7 +112,7 @@ export default function CookieConsent() {
           role="dialog"
           aria-modal="false"
           aria-labelledby="cookie-consent-title"
-          className="fixed inset-x-4 bottom-24 z-[60] sm:inset-x-0 sm:bottom-6 sm:mx-auto sm:max-w-2xl"
+          className="fixed inset-x-3 bottom-[6.5rem] z-[60] sm:inset-x-0 sm:bottom-6 sm:mx-auto sm:max-w-2xl"
         >
           <div className="overflow-hidden rounded-3xl glass shadow-2xl shadow-brand-dark/25">
             <div className="h-1 bg-gradient-to-r from-brand-teal via-brand-accent to-brand-gold" />
