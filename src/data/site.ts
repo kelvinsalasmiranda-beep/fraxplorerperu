@@ -12,87 +12,7 @@ export const CONTACT = {
   tiktok: 'https://www.tiktok.com/@fraxplorer_peru',
 };
 
-export const NAV_ITEMS = [
-  {
-    label: 'INICIO',
-    href: '/',
-    children: [
-      { label: 'Políticas de Privacidad', href: '/politicas-privacidad/' },
-      { label: 'Términos y condiciones', href: '/terminos-condiciones/' },
-    ],
-  },
-  {
-    label: 'CUSCO EN UN DÍA',
-    href: '#',
-    children: [
-      { label: 'City tour medio dia', href: '/tours/city-tour-medio-dia/' },
-      { label: 'Laguna Humantay full day', href: '/tours/laguna-humantay-full-day/' },
-      { label: 'Montaña de colores full day', href: '/tours/montana-de-colores-full-day/' },
-      { label: 'Machu Picchu en carro desde cusco', href: '/tours/machu-picchu-en-carro-desde-cusco/' },
-      { label: 'MONTAÑA PALCOYO FULL DAY', href: '/tours/montana-palcoyo-full-day/' },
-      { label: 'Glaciar Qelccaya Full Day', href: '/tours/glaciar-qelccaya-full-day/' },
-      { label: 'Waqrapukara Full Day', href: '/tours/waqrapukara-full-day/' },
-      { label: 'Maras y Moray con Picnic andino Full day', href: '/tours/maras-y-moray-con-picnic-andino-full-day/' },
-      { label: 'Valle Sagrado Full Day', href: '/tours/valle-sagrado-full-day/' },
-    ],
-  },
-  {
-    label: 'PAQUETES CUSCO',
-    href: '#',
-    children: [
-      { label: 'Cusco / Montaña de colores 4D / 3N', href: '/tours/cusco-montana-de-colores-4d-3n/' },
-      { label: 'Cusco / Valle sagrado 6D / 5N', href: '/tours/cusco-valle-sagrado-6d-5n/' },
-      { label: 'Machupicchu / Laguna humantay 6D / 5N', href: '/tours/machupicchu-laguna-humantay-6d-5n/' },
-      { label: 'Maras moray / Valle sagrado 5D / 4N', href: '/tours/maras-moray-valle-sagrado-5d-4n/' },
-    ],
-  },
-  {
-    label: 'MACHUPICCHU',
-    href: '#',
-    children: [
-      { label: 'Tour Machu Picchu full day', href: '/tours/tour-machu-picchu-full-day/' },
-      { label: 'Valle sagrado / Machu Picchu', href: '/tours/valle-sagrado-machu-picchu/' },
-      { label: 'Huaynapicchu / MachuPicchu', href: '/tours/huaynapicchu-machupicchu/' },
-    ],
-  },
-  {
-    label: 'CAMINO INCA',
-    href: '#',
-    children: [
-      { label: 'Camino inca / MachuPicchu 2D / 1N', href: '/tours/camino-inca-machupicchu-2d-1n/' },
-      { label: 'Camino Inca 4D / 3N', href: '/tours/camino-inca-4d-3n/' },
-      { label: 'Salkantay trek / MachuPicchu 5D / 4N', href: '/tours/salkantay-trek-machupicchu-5d-4n/' },
-      { label: 'Inca Jungle trek / MachuPicchu 4D / 3N', href: '/tours/inca-jungle-trek-machupicchu-4d-3n/' },
-    ],
-  },
-  {
-    label: 'EXPLORA',
-    href: '#',
-    children: [
-      { label: 'Taller de Cocina en Lima – 1 Día', href: '/tours/taller-de-cocina-en-lima-1-dia/' },
-      { label: 'Lago Titicaca / Salar de Uyuni 4 Días', href: '/tours/lago-titicaca-salar-de-uyuni-4-dias/' },
-      { label: 'Cusco Retiro Ayahuasca – 1 Día', href: '/tours/cusco-retiro-ayahuasca-1-dia/' },
-      { label: 'Ausangate 7 Lagunas – DownHill – 1 Día', href: '/tours/ausangate-7-lagunas-downhill-1-dia/' },
-      { label: 'Tour Maras & Moray – DownHill– Medio Día', href: '/tours/tour-maras-moray-downhill-medio-dia/' },
-      { label: 'Picnic Andino – Medio Día', href: '/tours/picnic-andino-medio-dia/' },
-      { label: 'Huacachina + Islas Ballestas – Full Day', href: '/tours/huacachina-islas-ballestas-full-day/' },
-      { label: 'Cuatrimotos Maras & Moray – Medio Día', href: '/tours/cuatrimotos-maras-moray-medio-dia/' },
-      { label: 'Salar de Uyuni – 5 Días / 4 Noches desde Puno', href: '/tours/salar-de-uyuni-5-dias-4-noches-desde-puno/' },
-    ],
-  },
-  {
-    label: 'SÚPER PAQUETES',
-    href: '#',
-    children: [
-      { label: 'Inca Trip 8D / 7N', href: '/tours/inca-trip-8d-7n/' },
-      { label: 'Peru Aventura total 7D / 6N', href: '/tours/peru-aventura-total-7d-6n/' },
-      { label: 'Peru Aventura Total 8D / 7N', href: '/tours/peru-aventura-total-8d-7n/' },
-      { label: 'Peru Aventura Total 10D / 9N', href: '/tours/peru-aventura-total-10d-9n/' },
-      { label: 'Peru Aventura Total 9D / 8N', href: '/tours/peru-aventura-total-9d-8n/' },
-      { label: 'Peru Aventura Total 13D / 12N', href: '/tours/peru-aventura-total-13d-12n/' },
-    ],
-  },
-];
+/** Navegación: ver `src/i18n/nav-data.ts` + Header (i18n). */
 
 export const FEATURES = [
   {
@@ -129,7 +49,7 @@ export const TOURS = [
     type: 'Aventura, Cultural, Natural',
     difficulty: 'Moderada',
     availability: 'Todo el año',
-    image: '/images/Siitulo-2-922x1024.jpg',
+    image: '/images/Sin-titulo-1-6-866x1024.jpg',
     href: '/tours/peru-aventura-total-10d-9n/',
   },
   {
@@ -139,7 +59,7 @@ export const TOURS = [
     type: 'Aventura, Cultural, Natural',
     difficulty: 'Moderada',
     availability: 'Todo el año',
-    image: '/images/maaaaaaaaaaae-810x1024.jpg',
+    image: '/images/Sin-titulo-6-1-768x908.jpg',
     href: '/tours/peru-aventura-total-9d-8n/',
   },
   {
@@ -149,7 +69,7 @@ export const TOURS = [
     type: 'Aventura, Cultural, Natural',
     difficulty: 'Moderada',
     availability: 'Todo el año',
-    image: '/images/pexels-marcio-arias-811024542-19988408-819x1024.jpg',
+    image: '/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg',
     href: '/tours/peru-aventura-total-8d-7n/',
   },
   {
@@ -159,17 +79,17 @@ export const TOURS = [
     type: 'Aventura, Cultural, Natural',
     difficulty: 'Moderada',
     availability: 'Todo el año',
-    image: '/images/e53f4f0c17099254dc58c70b1309e3df-819x1024.jpg',
+    image: '/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg',
     href: '/tours/peru-aventura-total-7d-6n/',
   },
   {
     title: 'TOUR EN CUSCO - 6 DIAS / 5 NOCHES',
-    price: '$459.00',
+    price: '$449.00',
     duration: '6 Días / 5 Noches',
     type: 'Aventura, Cultural, Natural',
     difficulty: 'Moderada',
     availability: 'Todo el año',
-    image: '/images/1fce25411825d57efe4d5163003ddd5f-819x1024.jpg',
+    image: '/images/tours/cuatrimotos-maras-moray.jpg',
     href: '/tours/cusco-valle-sagrado-6d-5n/',
   },
   {
@@ -180,7 +100,7 @@ export const TOURS = [
     difficulty: 'Fácil',
     availability: 'Todo el año',
     image: '/images/Sin-titu-2-922x1024.jpg',
-    href: '/tours/machupicchu-laguna-humantay-6d-5n/',
+    href: '/tours/cusco-inolvidable-5d-4n/',
   },
   {
     title: 'VALLE SAGRADO MARAS Y MORAY - 4 DIAS / 3 NOCHES',

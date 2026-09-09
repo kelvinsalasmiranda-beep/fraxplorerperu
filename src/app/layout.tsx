@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { Cinzel_Decorative, Playfair_Display, Poppins } from 'next/font/google';
 import './globals.css';
+import AppProviders from '@/components/AppProviders';
+import SkipLink from '@/components/SkipLink';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollToTop from '@/components/ScrollToTop';
+import CookieConsent from '@/components/CookieConsent';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 
 const poppins = Poppins({
@@ -48,17 +51,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={`${poppins.variable} ${playfair.variable} ${cinzel.variable} font-sans`}>
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white">
-          Ir al contenido
-        </a>
-        <Header />
-        <ScrollProgress />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <ScrollToTop />
+        <AppProviders>
+          <SkipLink />
+          <Header />
+          <ScrollProgress />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+          <ScrollToTop />
+          <CookieConsent />
+        </AppProviders>
       </body>
     </html>
   );

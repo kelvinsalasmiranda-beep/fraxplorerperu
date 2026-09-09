@@ -3,11 +3,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FAQ as FAQ_ITEMS } from '@/data/site';
+import { useLanguage } from '@/context/LanguageContext';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
 
-function LlamaMascot({ speaking }: { speaking: boolean }) {
+function LlamaMascot({ speaking, alt }: { speaking: boolean; alt: string }) {
   return (
     <motion.div
       className="relative mx-auto w-[200px] sm:w-[240px] md:w-[280px]"
@@ -24,7 +24,7 @@ function LlamaMascot({ speaking }: { speaking: boolean }) {
       <div className="absolute -inset-4 rounded-full bg-brand-accent/10 blur-2xl" aria-hidden="true" />
       <Image
         src="/images/llama-mascot.png"
-        alt="Llamita guía de FraXplorer"
+        alt={alt}
         width={280}
         height={320}
         className="relative z-10 w-full h-auto drop-shadow-lg"
@@ -56,11 +56,15 @@ function SpeechBubble({
   answer,
   isOpen,
   index,
+  telling,
+  wondering,
 }: {
   question: string;
   answer: string;
   isOpen: boolean;
   index: number;
+  telling: string;
+  wondering: string;
 }) {
   return (
     <AnimatePresence mode="wait">
@@ -77,7 +81,7 @@ function SpeechBubble({
           aria-hidden="true"
         />
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent mb-2">
-          {isOpen ? 'Te cuento…' : '¿Te preguntas…?'}
+          {isOpen ? telling : wondering}
         </p>
         <p className="font-semibold text-brand-dark text-sm md:text-base leading-snug">
           {isOpen ? answer : question}
@@ -88,6 +92,8 @@ function SpeechBubble({
 }
 
 export default function FAQSection() {
+  const { t } = useLanguage();
+  const faqItems = t.faq;
   const [openIndex, setOpenIndex] = useState<number>(0);
   const [speaking, setSpeaking] = useState(false);
 
@@ -124,35 +130,35 @@ export default function FAQSection() {
     return () => clearTimeout(t);
   }, []);
 
-  const active = FAQ_ITEMS[openIndex];
+  const active = faqItems[openIndex];
 
   return (
     <section className="py-24 md:py-32 bg-gradient-to-b from-white via-[#f4fafb] to-white overflow-hidden">
       <div className="mx-auto max-w-6xl px-4">
         <Reveal className="text-center mb-12 md:mb-16">
-          <SectionBadge>FAQ</SectionBadge>
-          <h2 className="section-title mt-4">Preguntas Frecuentes</h2>
-          <p className="text-gray-500 text-sm mt-3 max-w-lg mx-auto">
-            Nuestra llamita te guía — toca una pregunta y te responde al instante
-          </p>
+          <SectionBadge>{t.faqUi.badge}</SectionBadge>
+          <h2 className="section-title mt-4">{t.faqUi.title}</h2>
+          <p className="text-gray-500 text-sm mt-3 max-w-lg mx-auto">{t.faqUi.subtitle}</p>
         </Reveal>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(260px,320px)_1fr] lg:gap-14 items-start">
           {/* Llamita + burbuja */}
           <Reveal className="lg:sticky lg:top-28 flex flex-col items-center gap-5">
-            <LlamaMascot speaking={speaking} />
+            <LlamaMascot speaking={speaking} alt={t.welcome.llamaAlt} />
             <div className="w-full max-w-sm">
               <SpeechBubble
                 question={active.question}
                 answer={active.answer}
                 isOpen={true}
                 index={openIndex}
+                telling={t.faqUi.telling}
+                wondering={t.faqUi.wondering}
               />
             </div>
 
             {/* Chips rápidos */}
             <div className="flex flex-wrap justify-center gap-2 w-full max-w-sm">
-              {FAQ_ITEMS.slice(0, 4).map((item, i) => (
+              {faqItems.slice(0, 4).map((item, i) => (
                 <button
                   key={i}
                   type="button"
@@ -172,7 +178,7 @@ export default function FAQSection() {
 
           {/* Acordeón */}
           <div className="space-y-3">
-            {FAQ_ITEMS.map((item, i) => (
+            {faqItems.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}

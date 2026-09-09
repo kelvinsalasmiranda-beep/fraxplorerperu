@@ -4,18 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CONTACT } from '@/data/site';
+import { useLanguage } from '@/context/LanguageContext';
 import Reveal from '@/components/ui/Reveal';
+import { openCookieSettings } from '@/lib/cookie-consent';
 
 export default function Footer() {
-  const footerLinks = [
-    { label: 'Inicio', href: '/' },
-    { label: 'Sobre Nosotros', href: '/sobre-nosotros/' },
-    { label: 'Machu Picchu', href: '/tours/tour-machu-picchu-full-day/' },
-    { label: 'Tour en Cusco', href: '/tours/cusco-valle-sagrado-6d-5n/' },
-    { label: 'Camino Inca', href: '/tours/camino-inca-4d-3n/' },
-    { label: 'Términos y condiciones', href: '/terminos-condiciones/' },
-    { label: 'Políticas de Privacidad', href: '/politicas-privacidad/' },
-  ];
+  const { t } = useLanguage();
 
   return (
     <footer className="relative bg-brand-dark text-white overflow-hidden">
@@ -33,14 +27,16 @@ export default function Footer() {
               className="mb-5 brightness-0 invert"
             />
             <p className="text-sm text-white/60 leading-relaxed">
-              {CONTACT.company} — experiencias auténticas que conectan a cada viajero con la esencia del Perú.
+              {CONTACT.company} — {t.footer.tagline}
             </p>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h3 className="mb-5 font-heading text-sm font-bold uppercase tracking-[0.2em] text-brand-gold">Navegación</h3>
+            <h3 className="mb-5 font-heading text-sm font-bold uppercase tracking-[0.2em] text-brand-gold">
+              {t.footer.navigation}
+            </h3>
             <ul className="space-y-2.5">
-              {footerLinks.map((link) => (
+              {t.footer.links.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/60 hover:text-brand-gold transition-colors inline-flex items-center gap-1 group">
                     <span className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-gold">→</span>
@@ -52,7 +48,9 @@ export default function Footer() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <h3 className="mb-5 font-heading text-sm font-bold uppercase tracking-[0.2em] text-brand-gold">Contactos</h3>
+            <h3 className="mb-5 font-heading text-sm font-bold uppercase tracking-[0.2em] text-brand-gold">
+              {t.footer.contacts}
+            </h3>
             <ul className="space-y-2.5 text-sm text-white/60">
               <li><a href={`tel:+${CONTACT.whatsapp1}`} className="hover:text-brand-gold transition">✆ +51 931 536 444</a></li>
               <li><a href={`tel:+${CONTACT.whatsapp2}`} className="hover:text-brand-gold transition">✆ +51 900 567 224</a></li>
@@ -63,16 +61,25 @@ export default function Footer() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <h3 className="mb-5 font-heading text-sm font-bold uppercase tracking-[0.2em] text-brand-gold">Horario</h3>
-            <p className="text-sm text-white/60 mb-6">{CONTACT.officeHours}</p>
-            <p className="text-xs text-brand-gold mb-3 uppercase tracking-wider">Métodos de pago</p>
+            <h3 className="mb-5 font-heading text-sm font-bold uppercase tracking-[0.2em] text-brand-gold">
+              {t.footer.schedule}
+            </h3>
+            <p className="text-sm text-white/60 mb-6">{t.footer.officeHours}</p>
+            <p className="text-xs text-brand-gold mb-3 uppercase tracking-wider">{t.footer.paymentMethods}</p>
             <Image src="/images/pagos-1-1536x473-4-1024x315.png" alt="Pagos" width={220} height={68} className="rounded-xl opacity-80" />
           </Reveal>
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8">
           <p className="text-xs text-white/40">
-            © Fraxplorer Peru {new Date().getFullYear()} · Todos los derechos reservados
+            © Fraxplorer Peru {new Date().getFullYear()} · {t.footer.rights} ·{' '}
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="underline underline-offset-4 hover:text-brand-gold transition-colors"
+            >
+              {t.cookies.settingsLabel}
+            </button>
           </p>
           <div className="flex gap-3">
             {[CONTACT.facebook, CONTACT.instagram, CONTACT.youtube, CONTACT.tiktok].map((href, i) => (

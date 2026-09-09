@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { CONTACT } from '@/data/site';
-import { ABOUT_HERO, ABOUT_GALLERY, ABOUT_SECTIONS } from '@/data/about';
+import { ABOUT_HERO, ABOUT_GALLERY } from '@/data/about';
+import { useLanguage } from '@/context/LanguageContext';
 import MagneticButton from '@/components/ui/MagneticButton';
 import Reveal from '@/components/ui/Reveal';
 
 export default function AboutHero() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
@@ -21,7 +23,7 @@ export default function AboutHero() {
         <motion.div className="absolute inset-0" style={{ y }}>
           <Image
             src={ABOUT_HERO}
-            alt="Descubre la magia del Perú — FraXplorer Perú"
+            alt={t.about.heroAlt}
             fill
             className="object-cover object-center"
             priority
@@ -33,7 +35,7 @@ export default function AboutHero() {
       <section className="bg-brand-teal py-14 md:py-16">
         <Reveal>
           <h2 className="text-center font-heading text-3xl md:text-5xl font-black text-white px-4">
-            Así nace la aventura: Sobre nosotros
+            {t.about.sectionTitle}
           </h2>
         </Reveal>
       </section>
@@ -42,25 +44,15 @@ export default function AboutHero() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid items-start gap-14 lg:grid-cols-2">
             <Reveal direction="left">
-              <h3 className="font-heading text-3xl font-bold text-brand-dark mb-6">
-                Compartimos la belleza del Perú
-              </h3>
+              <h3 className="font-heading text-3xl font-bold text-brand-dark mb-6">{t.about.heading}</h3>
               <p className="text-gray-500 leading-relaxed mb-4 text-lg">
-                <strong className="text-brand-dark">{CONTACT.company}</strong> se creó para compartir la belleza y
-                cultura del Perú, ofreciendo experiencias auténticas que conectan a cada viajero con la esencia de
-                nuestro país.
+                <strong className="text-brand-dark">{CONTACT.company}</strong> {t.about.p1}
               </p>
-              <p className="text-gray-500 leading-relaxed mb-4">
-                Operamos con licencia MINCETUR, RUC {CONTACT.ruc}, y protocolos de bioseguridad avalados por el sello
-                Safe Travels.
-              </p>
-              <p className="text-gray-500 leading-relaxed">
-                Desde Cusco hasta Ica, desde Machu Picchu hasta la Montaña de Colores — diseñamos cada tour pensando
-                en ti.
-              </p>
+              <p className="text-gray-500 leading-relaxed mb-4">{t.about.p2}</p>
+              <p className="text-gray-500 leading-relaxed">{t.about.p3}</p>
 
               <div className="mt-8 space-y-5">
-                {ABOUT_SECTIONS.map((block) => (
+                {t.about.sections.map((block) => (
                   <div key={block.title} className="rounded-2xl border border-brand-accent/15 bg-brand-teal/5 p-5">
                     <h4 className="font-heading font-bold text-brand-dark mb-2">{block.title}</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">{block.text}</p>
@@ -83,14 +75,14 @@ export default function AboutHero() {
                 ))}
               </div>
               <p className="mt-4 text-center text-xs text-gray-400">
-                Fotos reales de FraXplorer Perú ·{' '}
+                {t.about.galleryNote}{' '}
                 <a
                   href={CONTACT.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-brand-accent hover:underline"
                 >
-                  Síguenos en Facebook
+                  {t.about.followFb}
                 </a>
               </p>
             </Reveal>
@@ -102,19 +94,18 @@ export default function AboutHero() {
 }
 
 export function AboutCTA() {
+  const { t } = useLanguage();
   return (
     <section className="py-20 bg-brand-dark relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-30" />
       <Reveal className="relative text-center px-4">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-          ¿Listo para tu próxima aventura?
-        </h2>
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-6">{t.about.ctaTitle}</h2>
         <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-gold">
-          Escríbenos por WhatsApp
+          {t.about.ctaBtn}
         </MagneticButton>
         <p className="mt-6">
           <Link href="/" className="text-brand-gold hover:underline text-sm">
-            ← Volver al inicio
+            {t.about.backHome}
           </Link>
         </p>
       </Reveal>

@@ -10,10 +10,11 @@ import { SOCIAL_VIDEOS, SocialVideoItem } from '@/data/social-videos';
 import {
   resolveSocialPlayer,
   getPlatformLabel,
-  getOpenLabel,
   getExternalUrl,
   type PlayerKind,
 } from '@/lib/social-embed';
+import { useLanguage } from '@/context/LanguageContext';
+import { socialVideoCaption, openPlatformLabel } from '@/i18n/tours';
 import Reveal from '@/components/ui/Reveal';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -127,6 +128,8 @@ function VideoFrame({ video, player }: { video: SocialVideoItem; player: PlayerK
 }
 
 function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: () => void }) {
+  const { t, locale } = useLanguage();
+  const ui = t.videosUi;
   const frameRef = useRef<HTMLDivElement>(null);
   const player = resolveSocialPlayer(video);
   const externalUrl = getExternalUrl(video);
@@ -153,7 +156,7 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
     <motion.div
       role="dialog"
       aria-modal="true"
-      aria-label="Reproductor de video"
+      aria-label={ui.videoPlayerLabel}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -183,7 +186,7 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
               type="button"
               onClick={onClose}
               className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
-              aria-label="Cerrar"
+              aria-label={ui.close}
             >
               <CloseIcon />
             </button>
@@ -201,7 +204,7 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
         {/* Controles inferiores */}
         <nav
           className="mt-3 flex items-center justify-between gap-3"
-          aria-label="Controles de video"
+          aria-label={ui.controlsLabel}
         >
           <a
             href={externalUrl}
@@ -210,13 +213,13 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/90 px-4 py-2.5 text-sm font-medium text-gray-800 shadow-lg backdrop-blur-sm transition hover:bg-white"
           >
             <ExternalIcon />
-            {getOpenLabel(video.platform)}
+            {openPlatformLabel(video.platform, locale)}
           </a>
           <button
             type="button"
             onClick={toggleFullscreen}
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/90 text-gray-700 shadow-lg backdrop-blur-sm transition hover:bg-white"
-            aria-label="Pantalla completa"
+            aria-label={ui.fullscreen}
           >
             <FullscreenIcon />
           </button>
@@ -227,18 +230,22 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
 }
 
 function VideoCard({ video, onPlay }: { video: SocialVideoItem; onPlay: () => void }) {
+  const { t, locale } = useLanguage();
+  const ui = t.videosUi;
+  const caption = socialVideoCaption(video.id, locale, video.caption);
+
   return (
     <button
       type="button"
       onClick={onPlay}
-      aria-label={`Reproducir video de ${video.platform}`}
+      aria-label={`${ui.playVideoPrefix} ${video.platform}`}
       className="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-2xl"
     >
       <div className="rounded-2xl overflow-hidden bg-white/80 backdrop-blur-sm shadow-md ring-1 ring-black/5 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-0.5">
         <div className="relative aspect-[9/14] overflow-hidden bg-gray-100">
           <Image
             src={video.thumbnail}
-            alt={video.caption}
+            alt={caption}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="220px"
@@ -265,7 +272,7 @@ function VideoCard({ video, onPlay }: { video: SocialVideoItem; onPlay: () => vo
 
         <div className="px-3 py-2.5 text-center">
           <span className="text-sm font-semibold text-brand-accent group-hover:text-brand-teal transition">
-            Reproducir
+            {ui.play}
           </span>
         </div>
       </div>
@@ -274,6 +281,8 @@ function VideoCard({ video, onPlay }: { video: SocialVideoItem; onPlay: () => vo
 }
 
 export default function FacebookVideos() {
+  const { t } = useLanguage();
+  const ui = t.videosUi;
   const [active, setActive] = useState<SocialVideoItem | null>(null);
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const close = useCallback(() => setActive(null), []);
@@ -292,10 +301,10 @@ export default function FacebookVideos() {
         <Reveal className="mb-8">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-brand-dark flex items-center gap-3">
             <span className="inline-block w-1 h-8 rounded-full bg-brand-accent" aria-hidden="true" />
-            Videos
+            {t.sections.videos}
           </h2>
           <p className="text-gray-500 text-sm mt-2 ml-4">
-            Toca una miniatura para abrir el panel con sonido.
+            {ui.subtitle}
           </p>
         </Reveal>
 
@@ -323,7 +332,7 @@ export default function FacebookVideos() {
 
             <button
               type="button"
-              aria-label="Anterior"
+              aria-label={ui.prev}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg text-gray-600 hover:text-brand-accent hover:scale-110 transition-all"
               onClick={() => swiper?.slidePrev()}
             >
@@ -331,7 +340,7 @@ export default function FacebookVideos() {
             </button>
             <button
               type="button"
-              aria-label="Siguiente"
+              aria-label={ui.next}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg text-gray-600 hover:text-brand-accent hover:scale-110 transition-all"
               onClick={() => swiper?.slideNext()}
             >

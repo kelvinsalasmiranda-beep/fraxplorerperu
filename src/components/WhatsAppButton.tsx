@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CONTACT } from '@/data/site';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function WhatsAppButton() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
 
   return (
@@ -18,8 +20,8 @@ export default function WhatsAppButton() {
             className="mb-4 w-80 overflow-hidden rounded-3xl glass shadow-2xl"
           >
             <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 text-white">
-              <p className="font-bold">¡Hola! 👋</p>
-              <p className="text-sm text-white/80">¿En qué podemos ayudarle?</p>
+              <p className="font-bold">{t.whatsapp.greeting}</p>
+              <p className="text-sm text-white/80">{t.whatsapp.help}</p>
             </div>
             <div className="p-4 space-y-2">
               <a
@@ -53,7 +55,7 @@ export default function WhatsAppButton() {
         animate={{ y: [0, -4, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white shadow-xl shadow-green-500/40"
-        aria-label="WhatsApp"
+        aria-label={t.whatsapp.label}
       >
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20" />
         <svg className="relative h-7 w-7" fill="currentColor" viewBox="0 0 24 24">

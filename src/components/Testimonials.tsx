@@ -7,18 +7,22 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import { TESTIMONIALS } from '@/data/site';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
+import { useLanguage } from '@/context/LanguageContext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function Testimonials() {
+  const { t } = useLanguage();
+  const ui = t.testimonialsUi;
+
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-30" />
       <div className="relative mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">
-          <SectionBadge>Testimonios reales</SectionBadge>
-          <h2 className="section-title mt-4">Lo Que Dicen Nuestros Clientes</h2>
-          <p className="section-subtitle">Experiencias reales de viajeros que confiaron en FraXplorer.</p>
+          <SectionBadge>{ui.badge}</SectionBadge>
+          <h2 className="section-title mt-4">{t.sections.testimonials}</h2>
+          <p className="section-subtitle">{ui.subtitle}</p>
         </Reveal>
 
         <Swiper
@@ -38,7 +42,7 @@ export default function Testimonials() {
               >
                 <Image
                   src={img}
-                  alt={`Testimonio ${i + 1}`}
+                  alt={`${ui.altPrefix} ${i + 1}`}
                   fill
                   className="object-contain p-2"
                   sizes="33vw"

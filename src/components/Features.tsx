@@ -2,25 +2,24 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FEATURES } from '@/data/site';
+import { useLanguage } from '@/context/LanguageContext';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
 
 export default function Features() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-40" />
       <div className="relative mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">
-          <SectionBadge>Por qué elegirnos</SectionBadge>
-          <h2 className="section-title mt-4">Por qué elegir FraXplorer Peru</h2>
-          <p className="section-subtitle">
-            Más que una agencia de turismo — somos tu compañero de aventura en cada rincón del Perú.
-          </p>
+          <SectionBadge>{t.featuresUi.badge}</SectionBadge>
+          <h2 className="section-title mt-4">{t.featuresUi.title}</h2>
+          <p className="section-subtitle">{t.featuresUi.subtitle}</p>
         </Reveal>
 
         <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature, i) => (
+          {t.features.map((feature, i) => (
             <StaggerItem key={feature.title}>
               <motion.div
                 whileHover={{ y: -8, rotateX: 2 }}

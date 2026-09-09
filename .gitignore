@@ -6,9 +6,11 @@ node_modules/
 # Build
 .next/
 out/
-deploy/
 dist/
 build/
+deploy/
+deploy.zip
+tsconfig.tsbuildinfo
 
 # Debug
 npm-debug.log*

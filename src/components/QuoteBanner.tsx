@@ -1,9 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 import Reveal from '@/components/ui/Reveal';
 
 export default function QuoteBanner() {
+  const { t } = useLanguage();
   return (
     <section className="relative py-32 overflow-hidden">
       <div className="absolute inset-0 bg-brand-dark" />
@@ -17,10 +19,10 @@ export default function QuoteBanner() {
           viewport={{ once: true }}
         >
           <p className="font-display text-3xl md:text-4xl lg:text-5xl italic text-white leading-snug">
-            &ldquo;El mundo es demasiado grande para quedarse en un solo lugar, y la vida demasiado corta para no explorarlo.&rdquo;
+            &ldquo;{t.sections.quote}&rdquo;
           </p>
           <footer className="mt-8 text-brand-gold text-sm uppercase tracking-[0.3em] font-semibold">
-            — FraXplorer Perú
+            — {t.sections.quoteAuthor}
           </footer>
         </motion.blockquote>
       </Reveal>

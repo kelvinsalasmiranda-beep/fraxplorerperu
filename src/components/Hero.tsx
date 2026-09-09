@@ -4,11 +4,12 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CONTACT, HERO_VIDEO } from '@/data/site';
+import { useLanguage } from '@/context/LanguageContext';
 import MagneticButton from '@/components/ui/MagneticButton';
 
-const words = ['Cruza', 'Fronteras'];
-
 export default function Hero() {
+  const { t } = useLanguage();
+  const words = [t.hero.line1, t.hero.line2];
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
@@ -49,7 +50,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 rounded-full glass-dark px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/90 mb-8"
         >
           <span className="h-2 w-2 rounded-full bg-brand-gold animate-pulse" />
-          Perú te espera · 2026
+          {t.hero.badge}
         </motion.div>
 
         {/* Animated headline */}
@@ -74,7 +75,7 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mt-2"
         >
-          <span className="text-gradient">Rompe Rutinas</span>
+          <span className="text-gradient">{t.hero.line3}</span>
         </motion.h1>
 
         <motion.p
@@ -83,7 +84,7 @@ export default function Hero() {
           transition={{ delay: 1 }}
           className="mt-8 text-lg md:text-xl text-white/80 font-light max-w-xl mx-auto"
         >
-          Descubre el Perú con FraXplorer — experiencias auténticas que transforman cada viaje en una historia inolvidable.
+          {t.hero.subtitleLong}
         </motion.p>
 
         <motion.div
@@ -93,10 +94,10 @@ export default function Hero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-gold animate-glow">
-            ✈ Reserva ahora
+            {t.hero.cta}
           </MagneticButton>
           <MagneticButton href="#tours" className="btn-outline !border-white/30 !text-white hover:!bg-white/10 hover:!text-white" strength={0.2}>
-            Ver tours ↓
+            {t.hero.viewTours}
           </MagneticButton>
         </motion.div>
 
@@ -139,7 +140,7 @@ export default function Hero() {
           transition={{ repeat: Infinity, duration: 1.5 }}
           className="flex flex-col items-center gap-2 text-white/50 text-xs uppercase tracking-widest"
         >
-          <span>Scroll</span>
+          <span>{t.hero.scroll}</span>
           <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent" />
         </motion.div>
       </motion.div>

@@ -54,11 +54,8 @@ MANUAL: dict[str, dict] = {
     "tour-machu-picchu-full-day": {
         "hero": "/images/Siitulo-2-922x1024.jpg",
         "gallery": [
-            "/images/d5c317e89f5b1e24573d6410a9a7ec8f.jpg",
-            "/images/Sin-titulo-2-6-768x908.jpg",
-            "/images/Sin-titulo-6-1-866x1024.jpg",
-            "/images/Sin-titulo-1-2-866x1024.jpg",
-            "/images/Sin-titulo-2-7-866x1024.jpg",
+            "/images/pexels-sergei-a-1322276-2539417-1536x1022.jpg",
+            "/images/1fce25411825d57efe4d5163003ddd5f-819x1024.jpg",
             "/images/maaaaaaaaaaae-810x1024.jpg",
         ],
     },

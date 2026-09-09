@@ -2,26 +2,26 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { DESTINATIONS } from '@/data/site';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Destinations() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 md:py-32 bg-brand-dark relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-20" />
       <div className="relative mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">
-          <SectionBadge>Destinos</SectionBadge>
-          <h2 className="section-title !text-white mt-4">Destinos Sugeridos en Perú</h2>
-          <p className="section-subtitle !text-white/60">
-            Desde montañas arcoíris hasta valles sagrados — el Perú te espera con los brazos abiertos.
-          </p>
+          <SectionBadge>{t.destinationsUi.badge}</SectionBadge>
+          <h2 className="section-title !text-white mt-4">{t.sections.destinations}</h2>
+          <p className="section-subtitle !text-white/60">{t.destinationsUi.subtitle}</p>
         </Reveal>
 
         <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {DESTINATIONS.map((dest, i) => (
-            <StaggerItem key={dest.title}>
+          {t.destinations.map((dest, i) => (
+            <StaggerItem key={dest.href}>
               <motion.a
                 href={dest.href}
                 whileHover={{ scale: 1.02 }}
@@ -46,7 +46,7 @@ export default function Destinations() {
                     <h3 className="font-heading text-xl font-bold text-white">{dest.title}</h3>
                     <p className="text-sm text-brand-gold mt-1">{dest.location}</p>
                     <span className="inline-flex items-center gap-1 mt-3 text-xs text-white/70 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Explorar →
+                      {t.common.explore} →
                     </span>
                   </motion.div>
                 </div>

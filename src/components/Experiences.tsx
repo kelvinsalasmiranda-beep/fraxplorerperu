@@ -5,28 +5,30 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
-import { EXPERIENCES, CONTACT } from '@/data/site';
+import { CONTACT } from '@/data/site';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
 import MagneticButton from '@/components/ui/MagneticButton';
+import { useLanguage } from '@/context/LanguageContext';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 
 export default function Experiences() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
+  const experiences = t.experiences;
 
   return (
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4">
         <Reveal className="text-center mb-16">
-          <SectionBadge>Experiencias</SectionBadge>
-          <h2 className="section-title mt-4">Explora nuestras experiencias turísticas</h2>
-          <p className="section-subtitle">Elige la que más te guste y vive Perú a tu manera.</p>
+          <SectionBadge>{t.experiencesUi.badge}</SectionBadge>
+          <h2 className="section-title mt-4">{t.sections.experiences}</h2>
+          <p className="section-subtitle">{t.sections.experiencesSub}</p>
         </Reveal>
 
-        {/* Tab pills */}
         <div className="mb-12 flex flex-wrap justify-center gap-2">
-          {EXPERIENCES.map((exp, i) => (
+          {experiences.map((exp, i) => (
             <motion.button
               key={exp.title}
               onClick={() => setActive(i)}
@@ -61,11 +63,11 @@ export default function Experiences() {
           >
             <div>
               <h3 className="font-heading text-3xl font-bold text-brand-dark mb-4">
-                {EXPERIENCES[active].title}
+                {experiences[active].title}
               </h3>
-              <p className="text-gray-500 mb-6 text-lg leading-relaxed">{EXPERIENCES[active].description}</p>
+              <p className="text-gray-500 mb-6 text-lg leading-relaxed">{experiences[active].description}</p>
               <ul className="mb-8 space-y-3">
-                {EXPERIENCES[active].bullets.map((b) => (
+                {experiences[active].bullets.map((b) => (
                   <motion.li
                     key={b}
                     initial={{ opacity: 0, x: -10 }}
@@ -78,7 +80,7 @@ export default function Experiences() {
                 ))}
               </ul>
               <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-primary">
-                Descubrir ahora →
+                {t.experiencesUi.discoverNow}
               </MagneticButton>
             </div>
 
@@ -90,7 +92,7 @@ export default function Experiences() {
                 loop
                 className="rounded-3xl overflow-hidden shadow-2xl"
               >
-                {EXPERIENCES[active].images.map((img, i) => (
+                {experiences[active].images.map((img, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative h-80 md:h-96">
                       <Image src={img} alt="" fill className="object-cover" sizes="50vw" />
@@ -99,9 +101,8 @@ export default function Experiences() {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              {/* Thumbnail strip */}
               <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-                {EXPERIENCES[active].images.slice(0, 4).map((img, i) => (
+                {experiences[active].images.slice(0, 4).map((img, i) => (
                   <div key={i} className="relative h-16 w-16 shrink-0 rounded-xl overflow-hidden opacity-70 hover:opacity-100 transition">
                     <Image src={img} alt="" fill className="object-cover" sizes="64px" />
                   </div>

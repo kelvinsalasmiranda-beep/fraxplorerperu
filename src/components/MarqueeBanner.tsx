@@ -1,20 +1,10 @@
 'use client';
 
-const items = [
-  '🏔 Machu Picchu',
-  '🌈 Montaña de Colores',
-  '💧 Laguna Humantay',
-  '🏜 Huacachina',
-  '🌄 Valle Sagrado',
-  '⛰ Montaña Palcoyo',
-  '🚂 Tren a Machu Picchu',
-  '🏄 Islas Ballestas',
-  '✨ Cusco Mágico',
-  '🇵🇪 Perú te espera',
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function MarqueeBanner() {
-  const doubled = [...items, ...items];
+  const { t } = useLanguage();
+  const doubled = [...t.marquee, ...t.marquee];
 
   return (
     <div className="relative overflow-hidden bg-brand-teal py-4 border-y border-brand-accent/20">

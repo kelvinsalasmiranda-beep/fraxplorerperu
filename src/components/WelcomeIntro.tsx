@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 const LOGO = '/images/cropped-FRAXPLORER-scaled-1-1024x620.png';
 const STORAGE_KEY = 'fraxplorer-intro-seen';
@@ -18,6 +19,7 @@ function PlaneIcon({ className }: { className?: string }) {
 }
 
 export default function WelcomeIntro({ onComplete }: { onComplete: () => void }) {
+  const { t } = useLanguage();
   const [phase, setPhase] = useState<Phase>('logo');
   const [visible, setVisible] = useState(true);
 
@@ -130,7 +132,7 @@ export default function WelcomeIntro({ onComplete }: { onComplete: () => void })
                 className="relative z-10 text-center px-6 mt-4"
               >
                 <p className="text-brand-gold text-sm md:text-base uppercase tracking-[0.35em] mb-3 font-semibold">
-                  Bienvenido a
+                  {t.welcome.welcomeTo}
                 </p>
                 <h1 className="font-heading text-4xl md:text-6xl font-black text-white leading-tight">
                   Fra<span className="text-brand-gold">X</span>plorer
@@ -142,7 +144,7 @@ export default function WelcomeIntro({ onComplete }: { onComplete: () => void })
                   transition={{ delay: 0.4 }}
                   className="mt-4 text-white/60 text-sm md:text-base"
                 >
-                  Cruza fronteras · Rompe rutinas
+                  {t.welcome.tagline}
                 </motion.p>
               </motion.div>
             )}

@@ -4,19 +4,25 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CONTACT, NAV_ITEMS } from '@/data/site';
+import { CONTACT } from '@/data/site';
+import { useLanguage } from '@/context/LanguageContext';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import GoogleAuthMenu from '@/components/ui/GoogleAuthMenu';
 import MagneticButton from '@/components/ui/MagneticButton';
 
-const NAV_IMAGES: Record<string, string> = {
-  'CUSCO EN UN DÍA': '/images/lagunaab-768x1024.jpg',
-  'PAQUETES CUSCO': '/images/frax3-768x1024.jpg',
-  MACHUPICCHU: '/images/d5c317e89f5b1e24573d6410a9a7ec8f.jpg',
-  'CAMINO INCA': '/images/pexels-marcio-arias-811024542-19988408-819x1024.jpg',
-  EXPLORA: '/images/hucachina6-819x1024.jpg',
-  'SÚPER PAQUETES': '/images/Siitulo-2-922x1024.jpg',
-};
+const NAV_IMAGES: (string | null)[] = [
+  null,
+  '/images/lagunaab-768x1024.jpg',
+  '/images/frax3-768x1024.jpg',
+  '/images/d5c317e89f5b1e24573d6410a9a7ec8f.jpg',
+  '/images/pexels-marcio-arias-811024542-19988408-819x1024.jpg',
+  '/images/hucachina6-819x1024.jpg',
+  '/images/Siitulo-2-922x1024.jpg',
+];
 
 export default function Header() {
+  const { t } = useLanguage();
+  const navItems = t.nav.items;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -60,8 +66,10 @@ export default function Header() {
               className="rounded-full bg-white px-5 py-1.5 text-xs font-bold uppercase text-brand-teal shadow-md"
               strength={0.2}
             >
-              PREGUNTE AHORA
+              {t.nav.askNow}
             </MagneticButton>
+            <GoogleAuthMenu compact className="text-white" />
+            <LanguageSwitcher compact />
             <div className="flex items-center gap-2.5">
               <SocialIcon href={CONTACT.facebook} label="Facebook"><FacebookIcon /></SocialIcon>
               <SocialIcon href={CONTACT.instagram} label="Instagram"><InstagramIcon /></SocialIcon>
@@ -98,7 +106,7 @@ export default function Header() {
 
           {/* Desktop mega menu */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item, navIdx) => (
               <div
                 key={item.label}
                 className="relative"
@@ -134,10 +142,10 @@ export default function Header() {
                       className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50"
                     >
                       <div className="flex overflow-hidden rounded-2xl glass shadow-2xl shadow-brand-dark/20 min-w-[520px]">
-                        {NAV_IMAGES[item.label] && (
+                        {NAV_IMAGES[navIdx] && (
                           <div className="relative w-44 shrink-0 hidden xl:block">
                             <Image
-                              src={NAV_IMAGES[item.label]}
+                              src={NAV_IMAGES[navIdx]!}
                               alt={item.label}
                               fill
                               className="object-cover"
@@ -173,17 +181,21 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <GoogleAuthMenu compact />
+            </div>
+            <LanguageSwitcher />
             <Link
               href="/sobre-nosotros/"
               className="hidden md:inline-flex text-xs font-semibold text-brand-dark hover:text-brand-accent transition px-3"
             >
-              Nosotros
+              {t.nav.about}
             </Link>
             <button
               type="button"
               className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition"
               onClick={() => setMobileOpen(true)}
-              aria-label="Abrir menú"
+              aria-label={t.nav.openMenu}
             >
               <MenuIcon />
             </button>
@@ -211,18 +223,31 @@ export default function Header() {
             >
               <div className="flex items-center justify-between p-4 border-b">
                 <Image src="/images/cropped-FRAXPLORER-scaled-1-113x68.png" alt="Logo" width={90} height={54} />
-                <button onClick={() => setMobileOpen(false)} className="p-2 rounded-xl hover:bg-gray-100" aria-label="Cerrar">
+                <button onClick={() => setMobileOpen(false)} className="p-2 rounded-xl hover:bg-gray-100" aria-label={t.nav.closeMenu}>
                   <CloseIcon />
                 </button>
               </div>
               <div className="p-4 space-y-1">
-                {NAV_ITEMS.map((item) => (
+                {navItems.map((item) => (
                   <MobileNavItem key={item.label} item={item} onClose={() => setMobileOpen(false)} />
                 ))}
+                <Link
+                  href="/sobre-nosotros/"
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-3 text-sm font-bold uppercase text-brand-accent border-t border-gray-100 mt-2"
+                >
+                  {t.nav.about}
+                </Link>
               </div>
-              <div className="p-4 border-t mt-4">
+              <div className="p-4 border-t mt-4 space-y-3">
+                <div className="flex justify-center">
+                  <GoogleAuthMenu />
+                </div>
+                <div className="flex justify-center">
+                  <LanguageSwitcher />
+                </div>
                 <a href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-primary w-full text-center">
-                  PREGUNTE AHORA
+                  {t.nav.askNow}
                 </a>
               </div>
             </motion.div>
@@ -233,7 +258,9 @@ export default function Header() {
   );
 }
 
-function MobileNavItem({ item, onClose }: { item: typeof NAV_ITEMS[0]; onClose: () => void }) {
+import type { NavItem } from '@/i18n/types';
+
+function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-gray-100 last:border-0">

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && next dev",
+    "dev:clean": "node scripts/kill-dev-ports.js && node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,9 +13,12 @@
     "scrape-tours": "node scripts/scrape-tours.js",
     "assign-tour-images": "python scripts/assign-tour-images.py",
     "download-fb-photos": "node scripts/download-fb-photos.js",
-    "deploy:static": "npm run build && node scripts/prepare-hostinger.js"
+    "deploy:static": "npm run build && node scripts/prepare-hostinger.js",
+    "audit:tours": "node scripts/audit-tours.mjs",
+    "audit:pages": "node scripts/audit-tour-pages.mjs"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.13.5",
     "framer-motion": "^11.15.0",
     "next": "^14.2.35",
     "react": "^18.3.1",
