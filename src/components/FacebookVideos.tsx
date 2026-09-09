@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
-import { SOCIAL_VIDEOS, SocialVideoItem } from '@/data/social-videos';
+import { SOCIAL_LINKS, SOCIAL_VIDEOS, SocialVideoItem } from '@/data/social-videos';
 import {
   resolveSocialPlayer,
   getPlatformLabel,
@@ -24,6 +24,7 @@ const PLATFORM_BADGE = {
   tiktok: 'bg-black',
   local: 'bg-brand-accent',
   youtube: 'bg-red-600',
+  instagram: 'bg-gradient-to-r from-[#f58529] via-[#dd2a7b] to-[#8134af]',
 } as const;
 
 function CloseIcon() {
@@ -83,30 +84,68 @@ function LocalPlayer({ src, poster }: { src: string; poster: string }) {
 
 function TikTokProfileEmbed({ handle, cite }: { handle: string; cite: string }) {
   useEffect(() => {
-    if (document.querySelector('script[data-tiktok-embed]')) return;
+    document.querySelectorAll('script[data-tiktok-embed]').forEach((node) => node.remove());
     const script = document.createElement('script');
-    script.src = 'https://www.tiktok.com/embed.js';
+    script.src = `https://www.tiktok.com/embed.js?t=${Date.now()}`;
     script.async = true;
     script.dataset.tiktokEmbed = 'true';
     document.body.appendChild(script);
-  }, []);
+  }, [handle, cite]);
 
   return (
-    <div className="h-full w-full overflow-y-auto bg-white flex justify-center py-1">
+    <div className="flex h-full w-full justify-center overflow-y-auto bg-white py-1">
       <blockquote
         className="tiktok-embed"
         cite={cite}
         data-unique-id={handle}
         data-embed-type="creator"
-        style={{ maxWidth: 340, minWidth: 325 }}
+        style={{ maxWidth: 340, minWidth: 288 }}
       >
-        <section />
+        <section>
+          <a href={cite} target="_blank" rel="noopener noreferrer">
+            @{handle}
+          </a>
+        </section>
       </blockquote>
     </div>
   );
 }
 
-function VideoFrame({ video, player }: { video: SocialVideoItem; player: PlayerKind }) {
+function ExternalPreview({
+  href,
+  poster,
+  label,
+}: {
+  href: string;
+  poster: string;
+  label: string;
+}) {
+  return (
+    <div className="relative h-full w-full bg-black">
+      <Image src={poster} alt="" fill className="object-cover opacity-80" />
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 flex items-center justify-center bg-black/35"
+      >
+        <span className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-brand-dark shadow-lg">
+          {label}
+        </span>
+      </a>
+    </div>
+  );
+}
+
+function VideoFrame({
+  video,
+  player,
+  openLabel,
+}: {
+  video: SocialVideoItem;
+  player: PlayerKind;
+  openLabel: string;
+}) {
   if (player.type === 'local') {
     return <LocalPlayer src={player.src} poster={video.thumbnail} />;
   }
@@ -115,10 +154,14 @@ function VideoFrame({ video, player }: { video: SocialVideoItem; player: PlayerK
     return <TikTokProfileEmbed handle={player.handle} cite={player.cite} />;
   }
 
+  if (player.type === 'external') {
+    return <ExternalPreview href={player.href} poster={video.thumbnail} label={openLabel} />;
+  }
+
   return (
     <iframe
       src={player.iframeSrc}
-      title={`Video ${getPlatformLabel(video.platform)}`}
+      title={`${getPlatformLabel(video.platform)} FraXplorer Perú`}
       className="h-full w-full border-0 bg-black"
       allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
       allowFullScreen
@@ -133,7 +176,7 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
   const frameRef = useRef<HTMLDivElement>(null);
   const player = resolveSocialPlayer(video);
   const externalUrl = getExternalUrl(video);
-  const isEmbed = player.type === 'facebook-reel' || player.type === 'tiktok-video';
+  const openLabel = openPlatformLabel(video.platform, locale);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -195,9 +238,9 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
           {/* Reproductor vertical 9:16 */}
           <div
             ref={frameRef}
-            className={`relative w-full bg-black ${isEmbed ? 'aspect-[9/16]' : 'aspect-[9/16]'}`}
+            className="relative aspect-[9/16] w-full bg-black"
           >
-            <VideoFrame video={video} player={player} />
+            <VideoFrame video={video} player={player} openLabel={openLabel} />
           </div>
         </div>
 
@@ -303,25 +346,46 @@ export default function FacebookVideos() {
             <span className="inline-block w-1 h-8 rounded-full bg-brand-accent" aria-hidden="true" />
             {t.sections.videos}
           </h2>
-          <p className="text-gray-500 text-sm mt-2 ml-4">
-            {ui.subtitle}
-          </p>
+          <p className="mt-2 ml-4 text-sm text-gray-500">{ui.subtitle}</p>
+          <div className="mt-4 ml-4 flex flex-wrap gap-2">
+            <span className="self-center text-xs font-semibold uppercase tracking-wide text-gray-400">
+              {ui.followUs}
+            </span>
+            {(
+              [
+                ['TikTok', SOCIAL_LINKS.tiktok],
+                ['Facebook', SOCIAL_LINKS.facebook],
+                ['Instagram', SOCIAL_LINKS.instagram],
+                ['YouTube', SOCIAL_LINKS.youtube],
+              ] as const
+            ).map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-brand-dark shadow-sm ring-1 ring-black/5 hover:text-brand-accent"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="relative video-carousel px-6">
+          <div className="relative video-carousel px-8 sm:px-10">
             <Swiper
               modules={[Navigation]}
               onSwiper={setSwiper}
-              spaceBetween={16}
-              slidesPerView={1.4}
+              spaceBetween={12}
+              slidesPerView={1.15}
               breakpoints={{
-                480: { slidesPerView: 2.2 },
-                768: { slidesPerView: 3.2 },
-                1024: { slidesPerView: 4.2 },
-                1280: { slidesPerView: 5.2 },
+                480: { slidesPerView: 1.6, spaceBetween: 14 },
+                768: { slidesPerView: 2.4, spaceBetween: 16 },
+                1024: { slidesPerView: 3.4, spaceBetween: 16 },
+                1280: { slidesPerView: 4.2, spaceBetween: 16 },
               }}
-              className="!overflow-visible"
+              className="overflow-hidden"
             >
               {SOCIAL_VIDEOS.map((video) => (
                 <SwiperSlide key={video.id}>

@@ -468,12 +468,18 @@ export function socialVideoCaption(id: string, locale: Locale, fallback: string)
 
 /** Open-on-platform label for social embeds */
 export function openPlatformLabel(
-  platform: 'facebook' | 'tiktok' | 'local' | 'youtube',
+  platform: 'facebook' | 'tiktok' | 'local' | 'youtube' | 'instagram',
   locale: Locale
 ): string {
   const ui = locale === 'en' ? en.videosUi : null;
   if (!ui) {
-    const es = { facebook: 'Abrir Facebook', tiktok: 'Abrir TikTok', local: 'Ver más', youtube: 'Abrir YouTube' };
+    const es = {
+      facebook: 'Abrir Facebook',
+      tiktok: 'Abrir TikTok',
+      local: 'Ver más',
+      youtube: 'Abrir YouTube',
+      instagram: 'Abrir Instagram',
+    };
     return es[platform];
   }
   const map = {
@@ -481,6 +487,7 @@ export function openPlatformLabel(
     tiktok: ui.openTiktok,
     local: ui.seeMore,
     youtube: ui.openYoutube,
+    instagram: ui.openInstagram,
   };
   return map[platform];
 }

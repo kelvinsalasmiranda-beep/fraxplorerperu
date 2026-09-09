@@ -264,7 +264,9 @@ export type Dictionary = {
     openFacebook: string;
     openTiktok: string;
     openYoutube: string;
+    openInstagram: string;
     seeMore: string;
+    followUs: string;
   };
   socialVideos: SocialVideoCaption[];
   pages: { privacy: LegalPageContent; terms: LegalPageContent };

@@ -9,7 +9,8 @@ export const CONTACT = {
   facebook: 'https://www.facebook.com/profile.php?id=61577758311529',
   instagram: 'https://www.instagram.com/fraxplorer_peru/',
   youtube: 'https://www.youtube.com/@fraxplorerperu',
-  tiktok: 'https://www.tiktok.com/@fraxplorer_peru',
+  tiktok: 'https://www.tiktok.com/@agency_fraxplorer_peru',
+  tiktokHandle: 'agency_fraxplorer_peru',
 };
 
 /** Navegación: ver `src/i18n/nav-data.ts` + Header (i18n). */
