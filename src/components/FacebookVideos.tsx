@@ -7,14 +7,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { SOCIAL_LINKS, SOCIAL_VIDEOS, SocialVideoItem } from '@/data/social-videos';
-import {
-  resolveSocialPlayer,
-  getPlatformLabel,
-  getExternalUrl,
-  type PlayerKind,
-} from '@/lib/social-embed';
+import { resolveSocialPlayer, getPlatformLabel } from '@/lib/social-embed';
 import { useLanguage } from '@/context/LanguageContext';
-import { socialVideoCaption, openPlatformLabel } from '@/i18n/tours';
+import { socialVideoCaption } from '@/i18n/tours';
 import Reveal from '@/components/ui/Reveal';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -31,19 +26,6 @@ function CloseIcon() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
       <path fill="none" stroke="currentColor" strokeWidth="2" d="M6 6l12 12M18 6L6 18" />
-    </svg>
-  );
-}
-
-function ExternalIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        d="M14 3h7v7M10 14L21 3M21 14v7h-7M3 10V3h7"
-      />
     </svg>
   );
 }
@@ -65,7 +47,22 @@ function LocalPlayer({ src, poster }: { src: string; poster: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const t = setTimeout(() => videoRef.current?.play().catch(() => {}), 300);
+    const el = videoRef.current;
+    if (!el) return;
+
+    const tryPlay = async () => {
+      try {
+        el.muted = false;
+        await el.play();
+      } catch {
+        el.muted = true;
+        await el.play().catch(() => {});
+      }
+    };
+
+    const t = setTimeout(() => {
+      void tryPlay();
+    }, 150);
     return () => clearTimeout(t);
   }, [src]);
 
@@ -82,101 +79,11 @@ function LocalPlayer({ src, poster }: { src: string; poster: string }) {
   );
 }
 
-function TikTokProfileEmbed({ handle, cite }: { handle: string; cite: string }) {
-  useEffect(() => {
-    document.querySelectorAll('script[data-tiktok-embed]').forEach((node) => node.remove());
-    const script = document.createElement('script');
-    script.src = `https://www.tiktok.com/embed.js?t=${Date.now()}`;
-    script.async = true;
-    script.dataset.tiktokEmbed = 'true';
-    document.body.appendChild(script);
-  }, [handle, cite]);
-
-  return (
-    <div className="flex h-full w-full justify-center overflow-y-auto bg-white py-1">
-      <blockquote
-        className="tiktok-embed"
-        cite={cite}
-        data-unique-id={handle}
-        data-embed-type="creator"
-        style={{ maxWidth: 340, minWidth: 288 }}
-      >
-        <section>
-          <a href={cite} target="_blank" rel="noopener noreferrer">
-            @{handle}
-          </a>
-        </section>
-      </blockquote>
-    </div>
-  );
-}
-
-function ExternalPreview({
-  href,
-  poster,
-  label,
-}: {
-  href: string;
-  poster: string;
-  label: string;
-}) {
-  return (
-    <div className="relative h-full w-full bg-black">
-      <Image src={poster} alt="" fill className="object-cover opacity-80" />
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute inset-0 flex items-center justify-center bg-black/35"
-      >
-        <span className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-brand-dark shadow-lg">
-          {label}
-        </span>
-      </a>
-    </div>
-  );
-}
-
-function VideoFrame({
-  video,
-  player,
-  openLabel,
-}: {
-  video: SocialVideoItem;
-  player: PlayerKind;
-  openLabel: string;
-}) {
-  if (player.type === 'local') {
-    return <LocalPlayer src={player.src} poster={video.thumbnail} />;
-  }
-
-  if (player.type === 'tiktok-profile') {
-    return <TikTokProfileEmbed handle={player.handle} cite={player.cite} />;
-  }
-
-  if (player.type === 'external') {
-    return <ExternalPreview href={player.href} poster={video.thumbnail} label={openLabel} />;
-  }
-
-  return (
-    <iframe
-      src={player.iframeSrc}
-      title={`${getPlatformLabel(video.platform)} FraXplorer Perú`}
-      className="h-full w-full border-0 bg-black"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-      allowFullScreen
-      loading="eager"
-    />
-  );
-}
-
 function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: () => void }) {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const ui = t.videosUi;
   const frameRef = useRef<HTMLDivElement>(null);
   const player = resolveSocialPlayer(video);
-  const externalUrl = getExternalUrl(video);
-  const openLabel = openPlatformLabel(video.platform, locale);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -216,9 +123,7 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
         className="relative w-full max-w-[380px]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Panel principal — estilo miproximohogar */}
         <div className="rounded-2xl overflow-hidden bg-white shadow-2xl ring-1 ring-black/5">
-          {/* Barra superior */}
           <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-b border-gray-100 bg-white">
             <span
               className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white ${PLATFORM_BADGE[video.platform]}`}
@@ -235,33 +140,16 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
             </button>
           </div>
 
-          {/* Reproductor vertical 9:16 */}
-          <div
-            ref={frameRef}
-            className="relative aspect-[9/16] w-full bg-black"
-          >
-            <VideoFrame video={video} player={player} openLabel={openLabel} />
+          <div ref={frameRef} className="relative aspect-[9/16] w-full bg-black">
+            <LocalPlayer src={player.src} poster={video.thumbnail} />
           </div>
         </div>
 
-        {/* Controles inferiores */}
-        <nav
-          className="mt-3 flex items-center justify-between gap-3"
-          aria-label={ui.controlsLabel}
-        >
-          <a
-            href={externalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/90 px-4 py-2.5 text-sm font-medium text-gray-800 shadow-lg backdrop-blur-sm transition hover:bg-white"
-          >
-            <ExternalIcon />
-            {openPlatformLabel(video.platform, locale)}
-          </a>
+        <nav className="mt-2 flex items-center justify-end px-1" aria-label={ui.controlsLabel}>
           <button
             type="button"
             onClick={toggleFullscreen}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/90 text-gray-700 shadow-lg backdrop-blur-sm transition hover:bg-white"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-white/80 transition hover:bg-white/10 hover:text-white"
             aria-label={ui.fullscreen}
           >
             <FullscreenIcon />
