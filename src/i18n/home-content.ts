@@ -126,7 +126,7 @@ export const HOME_ES = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Toca Reproducir: videos reales de TikTok, Facebook, Instagram y YouTube.',
+    subtitle: 'Videos reales de Instagram. Toca play en cada tarjeta.',
     play: 'Reproducir',
     playVideoPrefix: 'Reproducir video de',
     close: 'Cerrar',
@@ -143,12 +143,12 @@ export const HOME_ES = {
     followUs: 'Síguenos',
   },
   socialVideos: [
-    { id: 'tiktok-featured', caption: 'Publicación real en TikTok @agency_fraxplorer_peru.' },
-    { id: 'facebook-live', caption: 'Videos de la página de Facebook FraXplorer Perú.' },
-    { id: 'instagram-reel-1', caption: 'Reel real en Instagram @fraxplorer_peru.' },
-    { id: 'youtube-santa-ana', caption: 'Santa Ana, el mirador más bonito de Cusco — toma aérea 4K.' },
-    { id: 'instagram-reel-2', caption: 'Otro reel real de @fraxplorer_peru.' },
-    { id: 'instagram-reel-3', caption: 'Más videos reales de nuestros viajeros en Instagram.' },
+    { id: 'instagram-reel-1', caption: 'Reel de @fraxplorer_peru' },
+    { id: 'instagram-reel-2', caption: 'Reel de @fraxplorer_peru' },
+    { id: 'instagram-reel-3', caption: 'Reel de @fraxplorer_peru' },
+    { id: 'instagram-reel-4', caption: 'Reel de @fraxplorer_peru' },
+    { id: 'instagram-reel-5', caption: 'Reel de @fraxplorer_peru' },
+    { id: 'instagram-reel-6', caption: 'Reel de @fraxplorer_peru' },
   ] satisfies SocialVideoCaption[],
   pages: {
     privacy: {
@@ -265,7 +265,7 @@ export const HOME_EN = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Tap Play: real videos from TikTok, Facebook, Instagram and YouTube.',
+    subtitle: 'Real Instagram videos. Tap play on each card.',
     play: 'Play',
     playVideoPrefix: 'Play video from',
     close: 'Close',
@@ -282,12 +282,12 @@ export const HOME_EN = {
     followUs: 'Follow us',
   },
   socialVideos: [
-    { id: 'tiktok-featured', caption: 'Real TikTok post from @agency_fraxplorer_peru.' },
-    { id: 'facebook-live', caption: 'Videos from the FraXplorer Peru Facebook page.' },
-    { id: 'instagram-reel-1', caption: 'Real Instagram reel from @fraxplorer_peru.' },
-    { id: 'youtube-santa-ana', caption: 'Santa Ana, the most beautiful viewpoint in Cusco — 4K aerial shot.' },
-    { id: 'instagram-reel-2', caption: 'Another real reel from @fraxplorer_peru.' },
-    { id: 'instagram-reel-3', caption: 'More real traveler videos on Instagram.' },
+    { id: 'instagram-reel-1', caption: 'Reel from @fraxplorer_peru' },
+    { id: 'instagram-reel-2', caption: 'Reel from @fraxplorer_peru' },
+    { id: 'instagram-reel-3', caption: 'Reel from @fraxplorer_peru' },
+    { id: 'instagram-reel-4', caption: 'Reel from @fraxplorer_peru' },
+    { id: 'instagram-reel-5', caption: 'Reel from @fraxplorer_peru' },
+    { id: 'instagram-reel-6', caption: 'Reel from @fraxplorer_peru' },
   ] satisfies SocialVideoCaption[],
   pages: {
     privacy: {
