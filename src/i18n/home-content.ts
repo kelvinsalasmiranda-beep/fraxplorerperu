@@ -111,9 +111,9 @@ export const HOME_ES = {
   ] satisfies DestinationItem[],
   testimonialsUi: {
     badge: 'Testimonios reales',
-    subtitle: 'Mensajes de viajeros que recorrieron el Perú con nosotros.',
+    subtitle: 'Viajeros que recorrieron el Perú con Fraxplorer.',
     altPrefix: 'Testimonio',
-    viaLabel: 'Viajeros reales · WhatsApp',
+    viaLabel: 'WhatsApp',
   },
   legal: {
     badge: 'Respaldo legal',
@@ -250,9 +250,9 @@ export const HOME_EN = {
   ] satisfies DestinationItem[],
   testimonialsUi: {
     badge: 'Real testimonials',
-    subtitle: 'Messages from travelers who explored Peru with us.',
+    subtitle: 'Travelers who explored Peru with Fraxplorer.',
     altPrefix: 'Testimonial',
-    viaLabel: 'Real travelers · WhatsApp',
+    viaLabel: 'WhatsApp',
   },
   legal: {
     badge: 'Legal backing',

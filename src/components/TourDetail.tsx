@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TourPage, getRelatedTours, tourHref } from '@/data/tours';
-import { CONTACT, TESTIMONIALS } from '@/data/site';
+import { CONTACT } from '@/data/site';
+import { TESTIMONIALS } from '@/data/testimonials';
 import { useLanguage } from '@/context/LanguageContext';
 import { localizeTour, tourLabelFromNav, isSuperPackageCategory } from '@/i18n/tours';
 import Reveal from '@/components/ui/Reveal';
@@ -309,24 +310,23 @@ export default function TourDetail({ tour: rawTour }: { tour: TourPage }) {
           backgroundImage={tour.heroImage}
         />
 
-        {/* Testimonials strip */}
         <Reveal className="mt-20">
           <SectionHeading title={t.tour.testimonials} center />
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-            {TESTIMONIALS.map((img, i) => (
-              <div key={i} className="w-[200px] shrink-0 sm:w-[220px]">
-                <div className="rounded-[1.5rem] bg-[#f7f4ee] p-2 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.3)] ring-1 ring-black/5">
-                  <div className="relative aspect-[9/16] overflow-hidden rounded-[1.15rem] bg-white">
-                    <Image
-                      src={img}
-                      alt={`${t.testimonialsUi.altPrefix} ${i + 1}`}
-                      fill
-                      className="object-contain object-top"
-                      sizes="220px"
-                    />
-                  </div>
-                </div>
-              </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {TESTIMONIALS.slice(0, 4).map((item) => (
+              <article
+                key={item.name}
+                className="rounded-3xl bg-white p-6 md:p-7 shadow-[0_12px_32px_-16px_rgba(0,45,51,0.2)] ring-1 ring-black/5"
+              >
+                <p className="font-display text-xl md:text-2xl text-brand-dark leading-snug">
+                  “{item.quote[locale === 'en' ? 'en' : 'es']}”
+                </p>
+                <p className="mt-5 text-brand-gold text-lg">★★★★★</p>
+                <p className="mt-2 text-lg font-bold text-brand-dark">{item.name}</p>
+                <p className="text-base text-gray-500">
+                  {item.from[locale === 'en' ? 'en' : 'es']} · {item.tour[locale === 'en' ? 'en' : 'es']}
+                </p>
+              </article>
             ))}
           </div>
         </Reveal>

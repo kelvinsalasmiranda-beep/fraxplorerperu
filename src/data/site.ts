@@ -275,14 +275,6 @@ export const DESTINATIONS = [
   },
 ];
 
-export const TESTIMONIALS = [
-  '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.03.14_889f3aad.jpg',
-  '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.20.44_638e999d.jpg',
-  '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.26.36_f739ad7c.jpg',
-  '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.31.39_2d83e2f3.jpg',
-  '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.34.49_9380b644.jpg',
-];
-
 export const FAQ = [
   {
     question: '¿Cómo son los tours en Perú con Fraxplorer?',

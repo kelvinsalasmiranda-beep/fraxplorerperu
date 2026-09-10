@@ -76,6 +76,10 @@ body {
   @apply font-heading text-[1.65rem] leading-tight sm:text-3xl md:text-5xl font-bold text-brand-dark text-center mb-4 tracking-tight px-1;
 }
 
+.testimonials-swiper .swiper-slide {
+  height: auto;
+}
+
 .section-subtitle {
   @apply text-center text-gray-500 max-w-2xl mx-auto mb-12 text-base md:text-lg leading-relaxed;
 }
