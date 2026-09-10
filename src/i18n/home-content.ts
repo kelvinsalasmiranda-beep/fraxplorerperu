@@ -120,6 +120,8 @@ export const HOME_ES = {
     body: 'En Fraxplorer Perú operamos con todas las licencias exigidas por el Estado Peruano. Registrados en MINCETUR, RUC activo, licencia municipal y protocolos avalados por el sello Safe Travels.',
     safeTravelsAlt: 'Safe Travels WTTC',
     responsibleAlt: 'Turismo Responsable',
+    minceturAlt: 'MINCETUR — Ministerio de Comercio Exterior y Turismo',
+    municipalityAlt: 'Municipalidad Provincial del Cusco',
   },
   videosUi: {
     title: 'Videos',
@@ -256,6 +258,8 @@ export const HOME_EN = {
     body: 'At FraXplorer Peru we operate with all licenses required by the Peruvian State. Registered with MINCETUR, active RUC, municipal license and protocols endorsed by the Safe Travels seal.',
     safeTravelsAlt: 'Safe Travels WTTC',
     responsibleAlt: 'Responsible Tourism',
+    minceturAlt: 'MINCETUR — Ministry of Foreign Trade and Tourism',
+    municipalityAlt: 'Provincial Municipality of Cusco',
   },
   videosUi: {
     title: 'Videos',

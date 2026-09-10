@@ -249,6 +249,8 @@ export type Dictionary = {
     body: string;
     safeTravelsAlt: string;
     responsibleAlt: string;
+    minceturAlt: string;
+    municipalityAlt: string;
   };
   videosUi: {
     title: string;
