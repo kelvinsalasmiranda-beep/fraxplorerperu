@@ -94,7 +94,7 @@ export const HOME_ES = {
   ] satisfies ExperienceItem[],
   trendingUi: { badge: 'Tendencias 2026', trendingLabel: 'Trending', idealPrefix: 'Ideal:' },
   trending: [
-    { title: 'Laguna Humantay', description: 'La alternativa menos exigente a Vinicunca, pero igual de colorida. Tres montañas arcoíris, bosque de piedras y paisajes de otro mundo.', ideal: 'aventura tranquila + paisajes únicos', image: H['laguna-humantay-full-day'].hero, href: '/tours/laguna-humantay-full-day/' },
+    { title: 'Laguna Humantay', description: 'Caminata a la laguna turquesa al pie del Salkantay. Desayuno y almuerzo en Mollepata, y tiempo para fotos en el mirador.', ideal: 'trekking moderado + naturaleza', image: H['laguna-humantay-full-day'].hero, href: '/tours/laguna-humantay-full-day/' },
     { title: 'Montaña Palcoyo (Cusco)', description: 'La alternativa menos exigente a Vinicunca, pero igual de colorida. Tres montañas arcoíris, bosque de piedras y paisajes de otro mundo.', ideal: 'aventura tranquila + paisajes únicos', image: H['montana-palcoyo-full-day'].hero, href: '/tours/montana-palcoyo-full-day/' },
     { title: 'Machu Picchu en tren turístico (Cusco)', description: 'Viaja con comodidad por el Valle Sagrado hasta llegar a la maravilla del mundo. Una experiencia cultural y visual inolvidable.', ideal: 'cultura + comodidad + paisaje', image: H['tour-machu-picchu-full-day'].hero, href: '/tours/tour-machu-picchu-full-day/' },
     { title: 'Huacachina (Ica)', description: 'Un oasis en medio del desierto. Vive adrenalina pura con buggy, sandboard y atardeceres dorados sobre las dunas.', ideal: 'aventura + emoción + fotos épicas', image: H['huacachina-islas-ballestas-full-day'].hero, href: '/tours/huacachina-islas-ballestas-full-day/' },
@@ -233,7 +233,7 @@ export const HOME_EN = {
   ] satisfies ExperienceItem[],
   trendingUi: { badge: 'Trends 2026', trendingLabel: 'Trending', idealPrefix: 'Ideal for:' },
   trending: [
-    { title: 'Humantay Lagoon', description: 'A less demanding alternative to Vinicunca, but equally colorful. Three rainbow mountains, stone forests and otherworldly landscapes.', ideal: 'gentle adventure + unique landscapes', image: H['laguna-humantay-full-day'].hero, href: '/tours/laguna-humantay-full-day/' },
+    { title: 'Humantay Lagoon', description: 'Hike to the turquoise lagoon at the foot of Salkantay. Breakfast and lunch in Mollepata, plus time for photos at the viewpoint.', ideal: 'moderate trek + nature', image: H['laguna-humantay-full-day'].hero, href: '/tours/laguna-humantay-full-day/' },
     { title: 'Palcoyo Mountain (Cusco)', description: 'A less demanding alternative to Vinicunca, but equally colorful. Three rainbow mountains, stone forests and otherworldly landscapes.', ideal: 'gentle adventure + unique landscapes', image: H['montana-palcoyo-full-day'].hero, href: '/tours/montana-palcoyo-full-day/' },
     { title: 'Machu Picchu by Tourist Train (Cusco)', description: 'Travel comfortably through the Sacred Valley to reach the wonder of the world. An unforgettable cultural and visual experience.', ideal: 'culture + comfort + scenery', image: H['tour-machu-picchu-full-day'].hero, href: '/tours/tour-machu-picchu-full-day/' },
     { title: 'Huacachina (Ica)', description: 'An oasis in the middle of the desert. Pure adrenaline with buggies, sandboarding and golden sunsets over the dunes.', ideal: 'adventure + excitement + epic photos', image: H['huacachina-islas-ballestas-full-day'].hero, href: '/tours/huacachina-islas-ballestas-full-day/' },

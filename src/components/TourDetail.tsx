@@ -20,10 +20,9 @@ export default function TourDetail({ tour: rawTour }: { tour: TourPage }) {
   const navTitle = tourLabelFromNav(`/tours/${tour.slug}/`);
   if (navTitle && locale === 'en') tour = { ...tour, title: navTitle };
   const related = getRelatedTours(rawTour).map((r) => localizeTour(r, locale));
-  const filtered = tour.images.filter(
-    (img) => img !== tour.heroImage && !/pagos|logo|cropped-LOGO|cropped-FRAX/i.test(img)
-  );
-  const gallery = (filtered.length > 0 ? filtered : [tour.heroImage]).slice(0, 12);
+  const filtered = tour.images.filter((img) => !/pagos|logo|cropped-LOGO|cropped-FRAX/i.test(img));
+  const unique = filtered.filter((img, i, arr) => arr.indexOf(img) === i);
+  const gallery = (unique.length > 0 ? unique : [tour.heroImage]).slice(0, 12);
   const whyBookImages = getTourWhyBookImages(tour.slug);
   const [openDay, setOpenDay] = useState<number | null>(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);

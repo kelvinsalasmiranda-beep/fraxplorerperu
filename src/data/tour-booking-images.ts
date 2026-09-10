@@ -89,6 +89,18 @@ const TOUR_WHY_BOOK_OVERRIDES: Record<string, string[]> = {
     '/images/778218d7d4252d82475ec90875f51531-1-819x1024.jpg',
     '/images/pexels-marcio-arias-811024542-19988408-819x1024.jpg',
   ],
+  'cuatrimotos-maras-moray-medio-dia': [
+    '/images/tours/cuatrimotos-maras-moray.jpg',
+    '/images/tours/maras-moray-downhill.jpg',
+    '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
+    '/images/Sin-titulo-1-2-838x1024.jpg',
+  ],
+  'valle-sagrado-con-maras-y-moray-full-day': [
+    '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
+    '/images/tours/valle-sagrado-incas.jpg',
+    '/images/Sin-titulo-1-2-838x1024.jpg',
+    '/images/Sin-titul1-768x1024.jpg',
+  ],
   'inca-trip-10d-9n': [
     '/images/Sin-titulo-1-6-866x1024.jpg',
     '/images/Sin-titulo-2-11-866x1024.jpg',

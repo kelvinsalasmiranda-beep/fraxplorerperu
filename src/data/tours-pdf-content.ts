@@ -47,48 +47,49 @@ const CITY_TOUR_DAY: ItineraryDay = {
   day: 'Día 1',
   title: 'Recojo del aeropuerto de Cusco / City Tour tarde',
   content:
-    'Bienvenida en el aeropuerto y traslado al hotel. Mañana libre para aclimatarse. A las 14:00 hrs inicia el City Tour: Qorikancha, Sacsayhuamán, Qenqo, Tambomachay y Puka Pukara. Retorno al hotel ~18:30 hrs.',
+    'A su llegada al aeropuerto de Cusco, nuestro personal lo espera para la bienvenida y el traslado al hotel.\n\nMañana libre: descanse y aclimátese a la altura (3,400 m s.n.m.).\n\nA las 2:00 p.m. recojo en el hotel para el City Tour: Templo del Sol (Qorikancha), Sacsayhuamán, Qenqo, Tambomachay y Puka Pukara.\n\nRetorno al hotel alrededor de las 6:30 p.m.',
 };
 
 const VALLE_AGUAS_DAY: ItineraryDay = {
   day: 'Día 2',
   title: 'Valle Sagrado / Aguas Calientes',
   content:
-    'Desayuno en hotel. Recojo ~07:30 hrs. Visita a Pisac y Ollantaytambo. Almuerzo buffet en Urubamba. Tren turístico Ollantaytambo–Aguas Calientes. Traslado al hotel y pernocte en Aguas Calientes.',
+    'Desayuno en el hotel. Recojo alrededor de las 7:30 a.m. para iniciar el Valle Sagrado.\n\nVisita a Pisac: andenes, templos y mercado artesanal. Luego Ollantaytambo, fortaleza inca con terrazas y murallas.\n\nAlmuerzo buffet en un restaurante turístico de Urubamba.\n\nPor la tarde, tren turístico desde Ollantaytambo hasta Aguas Calientes. Nuestro personal lo recibe en la estación y lo acompaña al hotel.\n\nNoche en Aguas Calientes.',
 };
 
 const MACHU_PICCHU_DAY: ItineraryDay = {
   day: 'Día 3',
   title: 'Machu Picchu / retorno a Cusco',
   content:
-    'Desayuno en hotel. Bus a la ciudadela. Visita guiada ~3 horas. Descenso a Aguas Calientes, almuerzo en restaurante turístico. Tren retorno a Ollantaytambo y transporte privado a Cusco.',
+    'Desayuno en el hotel. Caminamos a la estación de buses y subimos a la ciudadela de Machu Picchu.\n\nVisita guiada de aproximadamente 3 horas: templos, terrazas, recintos sagrados y tiempo para fotografías.\n\nDescenso a Aguas Calientes y almuerzo en restaurante turístico.\n\nPor la tarde, tren de retorno a Ollantaytambo y transporte privado a Cusco.',
 };
 
 const HUMANTAY_DAY = (dayNum: number): ItineraryDay => ({
   day: `Día ${dayNum}`,
   title: 'Laguna Humantay',
   content:
-    'Recojo 4:30–5:00 a.m. Transporte a Mollepata (~3 h). Desayuno en Mollepata. Caminata a la Laguna Humantay (~1h30 subida, ~1h20 bajada). Almuerzo en Mollepata. Retorno a Cusco ~18:00 hrs.',
+    'Recojo entre 4:30 y 5:00 a.m. Viaje a Mollepata (~3 h) para el desayuno buffet.\n\nContinuamos a Soraypampa (3,900 m). Caminata de unos 90 minutos hasta la Laguna Humantay, con vista al Salkantay.\n\nTiempo libre para fotos y descanso. Descenso (~1 h 20) y almuerzo buffet en Mollepata.\n\nLlegada a Cusco alrededor de las 6:00 p.m.',
 });
 
 const AIRPORT_DAY = (dayNum: number): ItineraryDay => ({
   day: `Día ${dayNum}`,
   title: 'Traslado al aeropuerto de Cusco',
-  content: 'Traslado al aeropuerto según horario de su vuelo. Fin de servicios.',
+  content:
+    'Según el horario de su vuelo, lo trasladamos del hotel al aeropuerto de Cusco. Fin de servicios.\n\nRecomendamos programar vuelos a partir del mediodía para viajar con calma.',
 });
 
 const CUATRIMOTOS_MARAS_DAY: ItineraryDay = {
   day: 'Día 4',
   title: 'Salineras de Maras y Moray en cuatrimotos',
   content:
-    'Recojo 6:30–7:00 a.m. hacia Cruz Pata. Briefing de seguridad y familiarización con las cuatrimotos. Recorrido a Moray (terrazas circulares) y Salineras de Maras (+3,000 pozas). Retorno en cuatrimotos a la base y transporte a Cusco ~14:30 hrs.',
+    'Recojo entre 6:30 y 7:00 a.m. Traslado a Cruz Pata, base de cuatrimotos en el Valle Sagrado.\n\nBriefing de seguridad y tiempo para familiarizarse con el vehículo.\n\nRecorrido guiado a Moray (andenes circulares) y a las Salineras de Maras (más de 3,000 pozas).\n\nRetorno a la base y transporte a Cusco, cerca de la Plaza Principal, alrededor de las 2:30 p.m.',
 };
 
 const MONTANA_COLORES_DAY = (dayNum: number): ItineraryDay => ({
   day: `Día ${dayNum}`,
   title: 'Montaña de Colores',
   content:
-    'Recojo 4:30–5:00 a.m. Transporte a Cusipata (~3 h). Desayuno en Cusipata. Caminata a Vinicunca (1h30 subida, 1h20 bajada). Almuerzo buffet en Cusipata. Retorno a Cusco ~18:00 hrs.',
+    'Recojo entre 4:30 y 5:00 a.m. Viaje a Cusipata (~3 h) para el desayuno.\n\nCaminata desde Phulawasipata hasta el mirador de Vinicunca (más de 5,000 m): unos 90 minutos de subida.\n\nTiempo libre para fotos. Descenso y almuerzo buffet en Cusipata.\n\nLlegada a Cusco alrededor de las 6:00 p.m.',
 });
 
 export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
@@ -98,15 +99,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Asciende a la Montaña de Colores (Vinicunca) desde Cusco con desayuno y almuerzo buffet, guía bilingüe y paisajes altoandinos inolvidables.',
     intro: [
-      'Horario: salida 04:00 a.m. – retorno 05:00 p.m. aprox.',
-      'Recojo desde su hotel en Cusco, desayuno en Cusipata, caminata hacia Vinicunca (5,000 m s.n.m.) y almuerzo buffet incluido.',
+      'Horario: 04:00 a.m. – 05:00 p.m. Salidas todos los días, todo el año. Nivel moderado.',
+      'Recojo a las 4:00 a.m. en su hotel de Cusco. Desayuno en Cusipata, caminata desde Phulawasipata (4,626 m s.n.m.) hasta el mirador de Vinicunca (más de 5,000 m) y almuerzo buffet de regreso.',
+      'La caminata dura unos 90 minutos de subida. Se recomienda aclimatarse 1 o 2 días en Cusco. La entrada (25 soles) se paga en el lugar.',
+    ],
+    detailParagraphs: [
+      'Vinicunca es una de las formaciones más fotografiadas de los Andes. En el camino se ven llamas, alpacas y el nevado Ausangate, la montaña más alta del Cusco.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Cusipata – Montaña de Colores – Cusco',
         content:
-          'Recojo en hotel (04:00 a.m.) → Cusipata (desayuno) → Phulawasipata (4,626 m s.n.m.) → caminata ~1h30 hacia el mirador de Vinicunca → tiempo libre para fotos → retorno → almuerzo buffet en Cusipata → llegada a Cusco ~6:00 p.m.',
+          '4:00 a.m. — Recojo en su hotel en Cusco. Viaje hacia el pueblo de Cusipata, donde disfrutará de un desayuno incluido.\n\nContinuamos por un paisaje altoandino hasta Phulawasipata (4,626 m s.n.m.), punto de inicio de la caminata hacia la Montaña de Colores (Vinicunca).\n\nEn el trayecto se aprecian llamas, alpacas y nevados como el Ausangate. Tras aproximadamente 1 hora y 30 minutos de caminata llegamos al mirador principal, con tonos rojizos, dorados y turquesa.\n\nTiempo libre para fotografías, descanso y disfrutar el paisaje.\n\nRetorno por el mismo camino. Almuerzo buffet en Cusipata.\n\nLlegada a Cusco alrededor de las 6:00 p.m.',
       },
     ],
     highlights: [
@@ -143,15 +148,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Chinchero, Salineras de Maras, Moray y picnic andino en Mountain View (Tipi) con frutas, quesos, vinos, llamas y vicuñas en el Valle Sagrado.',
     intro: [
-      'Horario: 08:00 a.m. – 06:00 p.m. | Recojo entre 8:30 y 9:00 a.m.',
-      'Picnic andino en Mountain View con transporte privado incluido.',
+      'Horario: 08:00 a.m. – 06:00 p.m. Recojo entre 8:30 y 9:00 a.m. Duración: 8 horas. Nivel moderado.',
+      'Recorrido por Chinchero, Salineras de Maras y Moray, y picnic andino en Mountain View (Tipi) con frutas, quesos, vinos, llamas y vicuñas.',
+      'Las entradas (boleto turístico y Salineras de Maras) se pagan en el lugar. Lleve efectivo en soles.',
+    ],
+    detailParagraphs: [
+      'El picnic se sirve en un Tipi, con vista al Valle Sagrado. Es un día más relajado que los trekkings de alta montaña, con tiempo para fotos y para conocer el proceso de la sal y los andenes de Moray.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Chinchero – Maras – Moray – Mountain View – Cusco',
         content:
-          'Recojo 8:30–9:00 a.m. → Chinchero (comunidad artesanal y lana de llama) → Salineras de Maras → Moray (laboratorio agrícola inca) → Mountain View: picnic andino en Tipi (frutas, quesos, vinos) con llamas y vicuñas → retorno a Cusco ~5:30–6:00 p.m.',
+          '8:30–9:00 a.m. — Recojo en su hotel en Cusco. Viaje a Chinchero: comunidad artesanal y proceso tradicional de la lana de llama.\n\nVisita a las Salineras de Maras. El guía explica la extracción de sal. Tiempo libre para fotos.\n\nContinuamos a Moray, antiguo laboratorio agrícola inca.\n\nPor la tarde, picnic andino en Mountain View, en un Tipi, con frutas, quesos y vinos. Interacción con llamas y vicuñas.\n\nRetorno a Cusco entre 5:30 y 6:00 p.m.',
       },
     ],
     highlights: [
@@ -194,6 +203,9 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
       'El recojo es a las 4:30 a.m. en su hotel de Cusco. Viajamos a Mollepata para el desayuno y luego a Soraypampa (3,900 m s.n.m.), donde comienza la caminata de unos 90 minutos hasta la laguna.',
       'En el mirador hay tiempo para fotos y descanso. El descenso vuelve a Mollepata para el almuerzo buffet y el retorno a Cusco es alrededor de las 6:00 p.m.',
     ],
+    detailParagraphs: [
+      'Nivel moderado. Se recomienda aclimatarse 1 o 2 días en Cusco. La entrada a Soraypampa / Laguna Humantay (aprox. 20 soles) se paga en el lugar. El caballo es opcional.',
+    ],
     itinerary: [
       {
         day: 'Full Day',
@@ -234,15 +246,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Alternativa más accesible a Vinicunca: tres montañas arcoíris, caminata suave de 40–50 minutos, desayuno y almuerzo buffet incluidos.',
     intro: [
-      'Horario: 04:00 a.m. – 05:00 p.m. | Salidas todos los días.',
-      'Caminata progresiva desde la comunidad de Palcoyo (~4,900 m s.n.m.).',
+      'Horario: 04:00 a.m. – 05:00 p.m. Salidas todos los días. Nivel moderado, caminata ligera.',
+      'Recojo a las 4:00 a.m. Desayuno en Cusipata y caminata suave de 40–50 minutos desde Palcoyo (~4,900 m s.n.m.) hasta los miradores de tres montañas de colores.',
+      'Es la alternativa menos exigente a Vinicunca, con las mismas vistas de colores y del Ausangate. La entrada (15 soles) se paga en el lugar.',
+    ],
+    detailParagraphs: [
+      'Ideal si busca paisajes de montañas arcoíris sin la subida larga de Vinicunca. Lleve ropa en capas, gorro y bloqueador: el viento en altura es frío.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Cusipata – Palcoyo – Cusco',
         content:
-          'Recojo 4:00 a.m. → Cusipata (desayuno) → Palcoyo → caminata suave 40–50 min a miradores de tres montañas multicolores → tiempo libre → almuerzo buffet → retorno a Cusco ~5:00 p.m.',
+          '4:00 a.m. — Recojo en su hotel en Cusco. Viaje a Cusipata para el desayuno incluido.\n\nContinuamos hasta la comunidad de Palcoyo (~4,900 m s.n.m.), inicio de una caminata suave y progresiva.\n\nEn el camino: tres montañas multicolores, llamas, alpacas y vistas de la Cordillera del Ausangate, sin gran exigencia física.\n\nA los 40–50 minutos llegamos a los miradores. Tiempo libre para fotos y descanso.\n\nRetorno a Cusipata. Almuerzo buffet.\n\nLlegada a Cusco alrededor de las 5:00 p.m.',
       },
     ],
     highlights: [
@@ -276,18 +292,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Mirador de Taray, Pisac, almuerzo buffet en Urubamba, Ollantaytambo y Chinchero con talleres textiles en un recorrido completo por el Valle Sagrado.',
     intro: [
-      'Horario: 07:00 a.m. – 07:00 p.m. | Salidas todos los días.',
-      'Recojo desde su hotel en Cusco a las 7:00 a.m. con desayuno en hotel y almuerzo buffet incluido.',
+      'Horario: 07:00 a.m. – 07:00 p.m. Salidas todos los días. Nivel moderado.',
+      'Recojo a las 7:00 a.m. en su hotel. Mirador de Taray, Pisac, almuerzo buffet en Urubamba, Ollantaytambo y Chinchero. Retorno a Cusco alrededor de las 7:00 p.m.',
     ],
     detailParagraphs: [
-      'Precio del tour: USD 25 por persona. Reserva con el 30% del precio final. El pago restante se realiza en Cusco.',
+      'Un día completo por los pueblos más emblemáticos del Valle Sagrado: andenes, templos y talleres textiles. El boleto turístico (parcial 70 soles o general 130 soles) se paga en el lugar.',
+      'Precio del tour: USD 25 por persona. Reserva con el 30% del precio final. El saldo se paga en Cusco.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Taray – Pisac – Urubamba – Ollantaytambo – Chinchero',
         content:
-          'Recojo 7:00 a.m. → Mirador de Taray (vistas panorámicas) → Pisac (andenes, templos y mercado artesanal) → almuerzo buffet en Urubamba → Ollantaytambo (fortaleza inca) → Chinchero (iglesia colonial y talleres textiles) → retorno a Cusco ~7:00 p.m.',
+          '7:00 a.m. — Recojo en su hotel en Cusco. Primera parada en el Mirador de Taray, con vista panorámica del Valle Sagrado.\n\nPisac: andenes, templos incas y mercado artesanal.\n\nAlmuerzo buffet en Urubamba, con platos típicos.\n\nPor la tarde, Ollantaytambo: templos, terrazas y murallas incas.\n\nChinchero: iglesia colonial sobre muros incas y talleres textiles (teñido y tejido andino).\n\nLlegada a Cusco alrededor de las 7:00 p.m.',
       },
     ],
     highlights: [
@@ -329,15 +346,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Chinchero, Moray, Salineras de Maras, almuerzo buffet en Urubamba, Ollantaytambo y Pisac en un recorrido completo por el Valle Sagrado.',
     intro: [
-      'Horario: 07:00 a.m. – 07:00 p.m. | Recojo entre 6:30 y 7:00 a.m.',
-      'Incluye almuerzo buffet en Urubamba y guía profesional bilingüe.',
+      'Horario: 07:00 a.m. – 07:00 p.m. Recojo entre 6:30 y 7:00 a.m. Nivel moderado.',
+      'Chinchero, Moray, Salineras de Maras, almuerzo buffet en Urubamba, Ollantaytambo y Pisac. Guía bilingüe incluido.',
+      'El boleto turístico y la entrada a las Salineras de Maras (20 soles) se pagan en el lugar. Lleve efectivo en soles.',
+    ],
+    detailParagraphs: [
+      'Combina el Valle Sagrado clásico con Moray y las salineras milenarias. Es el full day más completo si quiere ver terrazas, sal y dos complejos incas en una sola jornada.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Chinchero – Moray – Maras – Urubamba – Ollantaytambo – Pisac',
         content:
-          'Recojo 6:30–7:00 a.m. → Chinchero (terrazas y centro textil con tintes naturales) → Moray (terrazas circulares) → Salineras de Maras (+3,000 pozas) → almuerzo buffet en Urubamba → Ollantaytambo → Pisac (vista panorámica) → retorno a Cusco ~19:00 hrs.',
+          '6:30–7:00 a.m. — Recojo en su hotel. Viaje al Valle Sagrado.\n\nChinchero: terrazas agrícolas y centro textil con teñido de pigmentos naturales.\n\nMoray: andenes circulares, laboratorio agrícola inca.\n\nSalineras de Maras: extracción ancestral de sal.\n\nAlmuerzo buffet en Urubamba.\n\nPor la tarde, Ollantaytambo y Pisac, con vista panorámica del valle.\n\nLlegada a Cusco alrededor de las 7:00 p.m.',
       },
     ],
     highlights: [
@@ -377,15 +398,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Recorre Moray y las Salineras de Maras en cuatrimotos con briefing de seguridad, guía bilingüe y transporte desde Cusco.',
     intro: [
-      'Horario: 07:00 a.m. – 02:30 p.m. | Recojo entre 6:30 y 7:00 a.m.',
-      'Base de cuatrimotos en Cruz Pata, Valle Sagrado.',
+      'Horario: 07:00 a.m. – 02:30 p.m. Recojo entre 6:30 y 7:00 a.m. Nivel moderado.',
+      'Base de cuatrimotos en Cruz Pata, Valle Sagrado. Briefing de seguridad, recorrido a Moray y Salineras de Maras, y retorno a Cusco cerca de la Plaza Principal alrededor de las 2:30 p.m.',
+      'Las entradas (boleto turístico y Salineras de Maras, 20 soles) se pagan en el lugar.',
+    ],
+    detailParagraphs: [
+      'Combina aventura y cultura: usted maneja el cuatrimoto con guía. Use ropa cómoda, guantes y lentes de sol. No se requiere experiencia previa; hay tiempo para familiarizarse en la base.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Cruz Pata – Moray – Maras – Cusco',
         content:
-          'Recojo en hotel → Cruz Pata (briefing y cuatrimotos) → Moray → Salineras de Maras → retorno a base → transporte a Cusco ~14:30 hrs cerca de la Plaza Principal.',
+          '6:30–7:00 a.m. — Recojo en su hotel en Cusco. Traslado a Cruz Pata, en el Valle Sagrado.\n\nBriefing de seguridad y entrega de cuatrimotos.\n\nRecorrido guiado a Moray, laboratorio agrícola inca de andenes circulares.\n\nContinuamos a las Salineras de Maras (más de 3,000 pozas).\n\nRetorno a la base y transporte a Cusco, cerca de la Plaza Principal, alrededor de las 2:30 p.m.',
       },
     ],
     highlights: [
@@ -421,15 +446,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Qorikancha, Centro Histórico, Catedral y complejo arqueológico de Sacsayhuamán, Qenqo, Puca Pucara y Tambomachay.',
     intro: [
-      'Horarios: mañana 04:00 a.m.–11:00 p.m. o tarde 2:30 p.m.–6:30 p.m.',
-      'Duración aproximada: 6 horas | Nivel: Fácil | Salidas todos los días.',
+      'Duración: 6 horas. Nivel fácil. Salidas todos los días.',
+      'Horario de tarde: 2:30 p.m. – 6:30 p.m. Recojo en hotel, Qorikancha, centro histórico, Catedral y el circuito de Sacsayhuamán, Qenqo, Puca Pucara y Tambomachay.',
+      'Las entradas se pagan en el lugar: Qorikancha 15 soles y Boleto Turístico Parcial 70 soles.',
+    ],
+    detailParagraphs: [
+      'Es el recorrido clásico para entender Cusco en una tarde: templo del Sol, Plaza de Armas y los cuatro sitios arqueológicos de los alrededores. Use calzado cómodo; hay tramos a pie y algo de altura.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'City Tour Cusco + Complejo Arqueológico',
         content:
-          'Recojo en hotel → Qorikancha → Centro Histórico y Catedral → Sacsayhuamán → Qenqo → Puca Pucara → Tambomachay → retorno ~6:00 p.m.',
+          'Recojo en su hotel en Cusco para un recorrido de historia y tradición.\n\nPrimera visita: Templo del Sol o Qorikancha, fusión de arquitectura inca y colonial.\n\nCentro histórico: calles empedradas, casonas y la Catedral del Cusco (Escuela Cusqueña).\n\nCircuito arqueológico: Sacsayhuamán (bloques de piedra), Qenqo (centro ceremonial), Puca Pucara (fortaleza) y Tambomachay (Baño del Inca).\n\nRetorno al Cusco alrededor de las 6:00 p.m.',
       },
     ],
     highlights: [
@@ -465,15 +494,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Caminata moderada hacia la Montaña Pallay Punchu con formaciones rocosas en filamentos, vistas al lago Langui, desayuno y almuerzo incluidos.',
     intro: [
-      'Horario: 04:00 a.m. – 06:00 p.m. | Salidas todos los días.',
-      'Recorrido al distrito de Layo, provincia de Canas, al sur del Cusco.',
+      'Horario: 04:00 a.m. – 06:00 p.m. Salidas todos los días. Nivel moderado.',
+      'Recojo a las 4:00 a.m. Viaje al sur (distrito de Layo, Canas), caminata moderada a Pallay Punchu y almuerzo incluido. Retorno a Cusco alrededor de las 6:00 p.m.',
+      'La entrada a Pallay Punchu (15 soles) se paga en el lugar. Lleve ropa abrigada y zapatillas de trekking.',
+    ],
+    detailParagraphs: [
+      'Pallay Punchu destaca por sus formaciones rocosas en filamentos y la vista del lago Langui. Es un destino menos masivo que Vinicunca, con el mismo espíritu de alta montaña.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Layo – Pallay Punchu – Cusco',
         content:
-          'Recojo 4:00 a.m. → parada con desayuno → Layo → caminata moderada a Pallay Punchu → tiempo libre → almuerzo → retorno a Cusco ~6:00 p.m.',
+          '4:00 a.m. — Recojo en su hotel en Cusco. Viaje al sur, entre paisajes andinos.\n\nParada en ruta para el desayuno. Continuamos al distrito de Layo, provincia de Canas.\n\nCaminata moderada hacia Pallay Punchu: formaciones rocosas en filamentos y vistas del lago Langui.\n\nTiempo libre para fotos y descanso.\n\nAlmuerzo en restaurante local.\n\nLlegada a Cusco alrededor de las 6:00 p.m.',
       },
     ],
     highlights: [
@@ -507,15 +540,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Recorre el Valle Sagrado en transporte privado hasta Ollantaytambo y continúa hacia Aguas Calientes para visitar la ciudadela de Machu Picchu con guía profesional, entrada incluida y almuerzo.',
     intro: [
-      'Horario: 04:00 a.m. – 11:00 p.m. | Salidas todos los días.',
-      'Opción económica para conocer Machu Picchu en un solo día: traslado en carro desde Cusco, tren local y bus a la ciudadela con visita guiada.',
+      'Horario: 04:00 a.m. – 11:00 p.m. Salidas todos los días. Nivel moderado.',
+      'Recojo a las 4:00 a.m. Carro por el Valle Sagrado hasta Ollantaytambo, tren a Aguas Calientes, bus y visita guiada de unas 2 h 30 en Machu Picchu. Almuerzo incluido. Retorno a Cusco alrededor de las 9:00 p.m.',
+      'Incluye tren turístico, entrada a Machu Picchu y guía. Reserva con anticipación: los cupos de la ciudadela son limitados. Lleve pasaporte original.',
+    ],
+    detailParagraphs: [
+      'Opción para conocer Machu Picchu en un solo día desde Cusco, sin noche en Aguas Calientes. Opcional: Huayna Picchu (+60 USD) o tren Vistadome (+40 USD un tramo, +70 USD ambos).',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Ollantaytambo – Aguas Calientes – Machu Picchu – Cusco',
         content:
-          'Recojo 4:00 a.m. → traslado en carro por el Valle Sagrado → Ollantaytambo → tren a Aguas Calientes → bus a Machu Picchu → tour guiado ~2h30 → tiempo libre → almuerzo → retorno en tren y carro a Cusco ~9:00 p.m.',
+          '4:00 a.m. — Recojo en su hotel en Cusco. Traslado en carro por el Valle Sagrado hasta la estación de Ollantaytambo.\n\nTren hacia Aguas Calientes, con vistas de montañas, río y valle.\n\nBus a la ciudadela. Recorrido guiado de unas 2 horas 30 minutos: templos, terrazas y miradores.\n\nTiempo libre para fotos.\n\nDescenso a Aguas Calientes y almuerzo en restaurante local.\n\nTren de retorno a Ollantaytambo y carro a Cusco, alrededor de las 9:00 p.m.',
       },
     ],
     highlights: [
@@ -549,15 +586,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Vive una experiencia única hacia la imponente fortaleza de Waqrapukara, un destino místico rodeado de paisajes andinos, cañones profundos y una energía ancestral que te conecta con la historia inca.',
     intro: [
-      'Vive una experiencia única hacia la imponente fortaleza de Waqrapukara, un destino místico rodeado de paisajes andinos, cañones profundos y una energía ancestral.',
-      'Salida temprana desde Cusco hacia Sangarará (desayuno incluido), caminata moderada de 1h30–2h por el cañón del Apurímac hasta el complejo arqueológico en forma de cuernos, almuerzo incluido y retorno a Cusco por la tarde.',
+      'Horario: salida 4:30–5:00 a.m. Retorno a Cusco entre 5:30 y 6:30 p.m. Nivel moderado. Duración aprox. 12 horas.',
+      'Salida temprana hacia Sangarará (desayuno andino), caminata de 1 h 30 a 2 h por el cañón del Apurímac hasta la fortaleza en forma de cuernos, almuerzo típico y retorno por la tarde.',
+      'La entrada al complejo (aprox. 20 soles / 6 USD) se paga en el lugar. Clima frío y variable: lleve cortaviento y calzado de trekking.',
+    ],
+    detailParagraphs: [
+      'Waqrapukara es un destino menos masivo, con vistas del cañón y una visita guiada al sitio arqueológico. Ideal si ya conoce Vinicunca o Humantay y busca otra cara de los Andes.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Sangarará – Waqrapukara – Cusco',
         content:
-          'Recojo 04:30–05:00 h → viaje al sur → desayuno en Sangarará → traslado al inicio del trekking → caminata moderada ~2 h → visita guiada a Waqrapukara → retorno caminando → almuerzo típico → llegada a Cusco 17:30–18:30 h.',
+          '4:30–5:00 a.m. — Recojo en Cusco. Viaje al sur hasta Sangarará para el desayuno andino.\n\nTraslado al inicio del trekking. Caminata moderada de 1 h 30 a 2 h por el cañón del Apurímac.\n\nVisita guiada a Waqrapukara, la fortaleza en forma de cuernos.\n\nDescenso por el mismo camino. Almuerzo típico en restaurante local.\n\nLlegada a Cusco entre 5:30 y 6:30 p.m.',
       },
     ],
     highlights: [
@@ -638,16 +679,19 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Descubre el glaciar tropical más grande del mundo con desayuno y almuerzo, caminata por la puna andina y guía profesional desde Cusco.',
     intro: [
-      'Descubre el gigante blanco de los Andes.',
-      'La aventura inicia de madrugada en Cusco, saliendo hacia el sur entre paisajes andinos y comunidades altoandinas. Tras una parada para el desayuno, continuamos hasta la comunidad de Phinaya, donde comienza la caminata.',
-      'El sendero recorre la puna andina, rodeado de montañas, lagunas y fauna local, hasta llegar al Glaciar de Quelccaya, el glaciar tropical más grande del mundo.',
+      'Horario: 04:00 a.m. – 6:00 p.m. Salidas todos los días. Nivel moderado.',
+      'Recojo a las 4:00 a.m. Viaje al sur hasta Cusipata para el desayuno. Continuamos hacia la comunidad cercana al glaciar (Phinaya), caminata ligera al mirador y almuerzo andino. Retorno a Cusco alrededor de las 6:00 p.m.',
+      'Quelccaya es el glaciar tropical más grande del mundo. La entrada (15 soles) se paga en el lugar. Zona de alta montaña: lleve ropa muy abrigada, gorro, guantes y lentes de sol.',
+    ],
+    detailParagraphs: [
+      'El guía explica el glaciar y el impacto del cambio climático. En el camino se ven llamas, alpacas y planicies altoandinas. Bastones y oxígeno van incluidos.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Cusipata – Glaciar Quelccaya – Cusco',
         content:
-          'Recojo 4:00 a.m. → Cusipata (desayuno) → comunidad cercana al glaciar → caminata ligera al mirador → almuerzo andino → retorno ~6:00 p.m.',
+          '4:00 a.m. — Recojo en su hotel en Cusco. Viaje al sur hasta Cusipata para el desayuno incluido.\n\nContinuamos hacia la comunidad cercana al Glaciar de Quelccaya, el glaciar tropical más grande del mundo. En el camino: llamas, alpacas y planicies altoandinas.\n\nCaminata ligera hasta un mirador. Tiempo libre para fotos. El guía explica el glaciar y el cambio climático.\n\nRetorno a Cusipata. Almuerzo andino.\n\nLlegada a Cusco alrededor de las 6:00 p.m.',
       },
     ],
     highlights: [
@@ -769,13 +813,13 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
         day: 'Día 1',
         title: 'Lima – Islas Ballestas – Huacachina – Ica',
         content:
-          'Recojo 4:30–5:00 a.m. → Islas Ballestas → viñedo con almuerzo y degustación → Huacachina (tubulares y sandboarding) → hotel en Ica.',
+          'Recojo en su hotel de Lima entre 4:30 y 5:00 a.m. Viaje a Paracas.\n\nTour en lancha a las Islas Ballestas: lobos marinos, aves guaneras y formaciones rocosas (el Candelabro).\n\nVisita a un viñedo con almuerzo y degustación de pisco.\n\nPor la tarde, oasis de Huacachina: tubulares y sandboarding en las dunas.\n\nNoche de hotel en Ica.',
       },
       {
         day: 'Día 2',
         title: 'Sobrevuelo Nazca – Retorno Lima',
         content:
-          'Recojo en hotel Ica → sobrevuelo 35 min sobre Líneas de Nazca → almuerzo → retorno a Lima ~10:00 p.m.',
+          'Desayuno en el hotel. Recojo y traslado al aeródromo.\n\nSobrevuelo de unos 35 minutos sobre las Líneas de Nazca (Patrimonio UNESCO).\n\nAlmuerzo. Retorno a Lima, con llegada alrededor de las 10:00 p.m.',
       },
     ],
     highlights: [
@@ -828,13 +872,13 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
         day: 'Día 1',
         title: 'Cusco – Puno (bus nocturno)',
         content:
-          'Salida 22:00 hrs desde Cusco → llegada a Puno ~5:00 a.m. → desayuno en hotel → traslado al puerto.',
+          'Salida a las 10:00 p.m. desde Cusco en bus turístico hacia Puno.\n\nViaje nocturno por el altiplano. Llegada a Puno alrededor de las 5:00 a.m.\n\nDesayuno en hotel y traslado al puerto para iniciar el tour del lago.',
       },
       {
         day: 'Día 2',
         title: 'Lago Titicaca – Uros – Taquile – Retorno Cusco',
         content:
-          'Navegación a Isla de los Uros → Isla Taquile con almuerzo tradicional → fin del tour ~17:00 hrs → tarde libre en Puno → bus retorno 22:00 hrs → llegada Cusco ~5:00 a.m.',
+          'Navegación en lancha rápida a las islas flotantes de los Uros. El guía explica la vida sobre totora.\n\nContinuamos a la Isla Taquile: cultura ancestral, tejidos y almuerzo típico con vista al lago.\n\nFin del tour del lago alrededor de las 5:00 p.m. Tarde libre en Puno.\n\nBus de retorno a las 10:00 p.m. Llegada a Cusco alrededor de las 5:00 a.m.',
       },
     ],
     highlights: [
@@ -1014,21 +1058,25 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     description:
       'Tour de 2 días y 1 noche: Valle Sagrado (Pisac, Urubamba, Ollantaytambo), pernocte en Aguas Calientes y visita guiada a Machu Picchu.',
     intro: [
-      'Valle Sagrado el primer día · Machu Picchu al amanecer del segundo día.',
-      'Incluye tren, bus, entradas y guía profesional.',
+      'Tour de 2 días y 1 noche por Ollantaytambo: Valle Sagrado el día 1 y Machu Picchu el día 2.',
+      'Incluye tren turístico, bus a la ciudadela, entradas, guía profesional y almuerzos según itinerario.',
+      'Lleve pasaporte original. Reserva con anticipación: los cupos de Machu Picchu son limitados.',
+    ],
+    detailParagraphs: [
+      'El primer día recorre Pisac y Ollantaytambo, almuerza en Urubamba y toma el tren hacia Aguas Calientes. El segundo día sube en bus a Machu Picchu para una visita guiada de unas 3 horas y retorna a Cusco por la tarde.',
     ],
     itinerary: [
       {
         day: 'Día 1',
         title: 'Cusco / Valle Sagrado / Aguas Calientes',
         content:
-          'Desayuno en hotel. Recojo ~07:30 hrs. Pisac y Ollantaytambo. Almuerzo buffet en Urubamba. Tren a Aguas Calientes. Traslado al hotel y pernocte.',
+          'Desayuno en el hotel. Recojo alrededor de las 7:30 a.m. para iniciar el tour.\n\nVisita a los centros arqueológicos de Pisac y Ollantaytambo, dos sitios clave del Valle Sagrado de los Incas.\n\nAlmuerzo buffet en un restaurante turístico de Urubamba.\n\nPor la tarde, tren turístico desde Ollantaytambo hacia Aguas Calientes.\n\nA su llegada, nuestro personal lo recibe en la estación y lo acompaña al hotel.\n\nNoche de hotel en Aguas Calientes.',
       },
       {
         day: 'Día 2',
         title: 'Machu Picchu / retorno a Cusco',
         content:
-          'Desayuno en hotel. Bus a Machu Picchu. Visita guiada ~3 horas. Almuerzo en Aguas Calientes. Tren a Ollantaytambo y transporte privado a Cusco.',
+          'Después del desayuno en el hotel, nos dirigimos a la estación de buses para subir a la ciudadela de Machu Picchu.\n\nVisita guiada de aproximadamente 3 horas: templos, terrazas, recintos sagrados y tiempo para fotografías.\n\nA la hora indicada descendemos a Aguas Calientes para almorzar en un restaurante turístico.\n\nPor la tarde, tren de retorno a Ollantaytambo. Desde allí, transporte privado lo lleva de regreso a Cusco.',
       },
     ],
     highlights: [
@@ -1642,13 +1690,13 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
         day: 'Día 1',
         title: 'Cusco – Km 104 – Camino Inca – Aguas Calientes',
         content:
-          'Recojo temprano en tu hotel en Cusco. Traslado a Km 104 (inicio del Camino Inca). Trekking por senderos incas, bosques nubosos y ruinas como Patallacta y Wiñay Wayna. Almuerzo tipo picnic. Llegada a Inti Punku (Puerta del Sol) y acceso a Machu Picchu. Descenso a Aguas Calientes para alojamiento nocturno.',
+          'Recojo temprano en su hotel en Cusco. Traslado al Km 104, inicio oficial del Camino Inca corto.\n\nTrekking por senderos incas, bosques nubosos y sitios como Wiñay Wayna. Almuerzo tipo picnic en ruta.\n\nLlegada a Inti Punku (Puerta del Sol) y primer acceso a Machu Picchu.\n\nDescenso a Aguas Calientes. Noche de hotel.',
       },
       {
         day: 'Día 2',
         title: 'Machu Picchu Full Day – Regreso a Cusco',
         content:
-          'Desayuno en Aguas Calientes. Visita guiada por Machu Picchu: templos, plazas y terrazas. Tiempo libre para fotos. Tren de regreso a Cusco desde Aguas Calientes. Traslado al hotel. Fin del tour.',
+          'Desayuno en Aguas Calientes. Subida a la ciudadela.\n\nVisita guiada por templos, plazas y terrazas. Tiempo libre para fotos.\n\nTren de retorno y traslado a su hotel en Cusco. Fin del tour.',
       },
     ],
     includes: [
@@ -1784,7 +1832,13 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
         day: 'Día 4',
         title: 'Aguas Calientes – Machu Picchu – Cusco',
         content:
-          'Muy temprano, ascenso a Machu Picchu. Visita guiada y tiempo libre. Tren a Ollantaytambo y transporte a Cusco. Fin del tour.',
+          'Muy temprano, ascenso a Machu Picchu. Visita guiada y tiempo libre para fotos.\n\nTren a Ollantaytambo y transporte a Cusco. Noche en Cusco.',
+      },
+      {
+        day: 'Día 5',
+        title: 'Cusco / fin de servicios',
+        content:
+          'Día libre o traslado al aeropuerto según su vuelo. Fin de servicios.',
       },
     ],
     includes: [
@@ -1882,6 +1936,99 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     tourType: 'Aventura, Cultural, Natural',
     category: 'Camino Inca',
   },
+  'cusco-montana-de-colores-4d-3n': {
+    title: 'Cusco / Montaña de colores 4D / 3N',
+    subtitle: 'City Tour, Machu Picchu y Montaña de Colores en 4 días',
+    description:
+      'Paquete de 4 días y 3 noches: City Tour, Machu Picchu en un día desde Cusco y trek a la Montaña de Colores (Vinicunca).',
+    intro: [
+      'City Tour · Machu Picchu full day · Montaña de Colores.',
+      'Ideal si tiene poco tiempo y quiere la ciudadela y Vinicunca.',
+    ],
+    detailParagraphs: [
+      'Día 1 en Cusco para aclimatarse y el City Tour. Día 2 a Machu Picchu por Ollantaytambo. Día 3 caminata a Vinicunca. Día 4 traslado al aeropuerto.',
+    ],
+    itinerary: [
+      CITY_TOUR_DAY,
+      {
+        day: 'Día 2',
+        title: 'Machu Picchu full day / retorno a Cusco',
+        content:
+          'Recojo a las 4:00 a.m. Traslado a la estación de Ollantaytambo y tren a Aguas Calientes.\n\nBus a Machu Picchu. Visita guiada de unas 2 h 30: templos, terrazas y miradores.\n\nAlmuerzo en Aguas Calientes. Tren y transporte de retorno a Cusco.',
+      },
+      MONTANA_COLORES_DAY(3),
+      AIRPORT_DAY(4),
+    ],
+    highlights: [
+      'City Tour por los principales sitios incas de Cusco.',
+      'Machu Picchu con tren, bus y guía incluidos.',
+      'Caminata a la Montaña de 7 Colores (Vinicunca).',
+      'Traslados aeropuerto incluidos.',
+    ],
+    includes: [
+      'Recojo y traslado aeropuerto–hotel–aeropuerto.',
+      'Transporte turístico Cusco–Ollantaytambo–Cusco.',
+      'Tren turístico y bus Machu Picchu (ambos tramos).',
+      'Entrada a Machu Picchu y sitios del City Tour.',
+      'Guía profesional (español / inglés).',
+      'Desayuno y almuerzo buffet en Montaña de Colores.',
+      'Bastones y oxígeno para Vinicunca.',
+    ],
+    excludes: PACKAGE_EXCLUDES,
+    recommendations: PACKAGE_RECOMMENDATIONS,
+    price: '$350.00',
+    priceNote: 'Servicio compartido: USD 350 por persona. Reserva con 30% del total; saldo en Cusco.',
+    duration: '4 Días / 3 Noches',
+    difficulty: 'Moderado',
+    tourType: 'Aventura, Cultural',
+    category: 'Paquetes Cusco',
+  },
+  'maras-moray-valle-sagrado-5d-4n': {
+    title: 'Maras Moray / Valle Sagrado 5D / 4N',
+    subtitle: 'Valle Sagrado, Maras, Moray, Machu Picchu y Montaña de Colores',
+    description:
+      'Paquete de 5 días y 4 noches: City Tour, Valle Sagrado con Maras y Moray, Machu Picchu y Montaña de Colores.',
+    intro: [
+      'City Tour · Valle Sagrado, Maras y Moray · Machu Picchu · Montaña de Colores.',
+      'Precio desde USD 390 por persona. Reserva con 30% del total.',
+    ],
+    detailParagraphs: [
+      'Combina el Valle Sagrado y las salineras con una noche en Aguas Calientes, la visita a Machu Picchu y el trek a Vinicunca.',
+    ],
+    itinerary: [
+      CITY_TOUR_DAY,
+      {
+        day: 'Día 2',
+        title: 'Valle Sagrado, Maras y Moray / Aguas Calientes',
+        content:
+          'Recojo temprano hacia el Valle Sagrado.\n\nPisac y su mercado artesanal. Luego Maras (salineras) y Moray (andenes circulares).\n\nPor la tarde, tren desde Ollantaytambo a Aguas Calientes.\n\nNoche de hotel en Aguas Calientes.',
+      },
+      MACHU_PICCHU_DAY,
+      MONTANA_COLORES_DAY(4),
+      AIRPORT_DAY(5),
+    ],
+    highlights: [
+      'Valle Sagrado, Salineras de Maras y Moray.',
+      'Machu Picchu con tren, bus y visita guiada.',
+      'Montaña de Colores (Vinicunca).',
+      'City Tour en Cusco.',
+    ],
+    includes: [
+      'Traslados aeropuerto–hotel–aeropuerto.',
+      'Transporte turístico en las excursiones.',
+      'Tren y bus Machu Picchu.',
+      'Guía profesional (español / inglés).',
+      'Desayunos y almuerzos según itinerario.',
+    ],
+    excludes: PACKAGE_EXCLUDES,
+    recommendations: PACKAGE_RECOMMENDATIONS,
+    price: '$390.00',
+    priceNote: 'Desde USD 390 por persona. Reserva con 30% del total; saldo en Cusco.',
+    duration: '5 Días / 4 Noches',
+    difficulty: 'Moderado',
+    tourType: 'Naturaleza, Aventura',
+    category: 'Paquetes Cusco',
+  },
 };
 
 /** Tours nuevos que no existen en tours-scraped.json */
@@ -1908,7 +2055,7 @@ export function buildCustomTourFromPdf(slug: string): TourPage | null {
     subtitle: pdf.subtitle || null,
     description: pdf.description || '',
     intro: pdf.intro || [],
-    detailParagraphs: [],
+    detailParagraphs: pdf.detailParagraphs || [],
     highlights: pdf.highlights || [],
     tourType: pdf.tourType || 'Aventura, Cultural',
     difficulty: pdf.difficulty || 'Moderado',

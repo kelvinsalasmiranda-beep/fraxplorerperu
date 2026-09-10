@@ -4,6 +4,81 @@ export type TourHeroEntry = {
   gallery: string[];
 };
 
+const MP_PHOTOS = [
+  '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
+  '/images/pexels-gilmar-santos-1157205006-22717159-scaled.jpg',
+  '/images/1fce25411825d57efe4d5163003ddd5f-819x1024.jpg',
+  '/images/27e3963669cc07eefe489d2933c16115.jpg',
+  '/images/975aa7ef2e3b9f53387df687342b1e48.jpg',
+  '/images/712069dd3e031f7431963927bded8f28.jpg',
+  '/images/a98b63616963b41d43fac1cfe1344998.jpg',
+  '/images/d5c317e89f5b1e24573d6410a9a7ec8f.jpg',
+];
+
+const VALLE_PHOTOS = [
+  '/images/tours/valle-sagrado-incas.jpg',
+  '/images/Sin-titul1-768x1024.jpg',
+  '/images/Sin-titulo-1-3-768x1024.jpg',
+  '/images/Sin-titulo-2-3-768x1024.jpg',
+  '/images/Sin-titulo-3-5-768x1024.jpg',
+  '/images/Sin-titulo-4-2-768x1024.jpg',
+];
+
+const HUMANTAY_PHOTOS = [
+  '/images/lagunaab.jpg',
+  '/images/83f0b9ebcd3eccc5bbacab5bcfb69e67.jpg',
+  '/images/278f302b5a5ee0d82c1deb8e29a6a266.jpg',
+  '/images/e53f4f0c17099254dc58c70b1309e3df.jpg',
+  '/images/5e9a0ffd519bd6c06a66afce7742183f.jpg',
+];
+
+const CUSCO_PHOTOS = [
+  '/images/pexels-angel-valladares-242487480-17060841-scaled.jpg',
+  '/images/tours/city-tour-cusco.jpg',
+  '/images/1.jpg',
+  '/images/2.jpg',
+  '/images/3.jpg',
+  '/images/c71ae50025b786242292dbd09e83e1f9.jpg',
+];
+
+const COLORES_PHOTOS = ['/images/1-1.jpg', '/images/2-1.jpg', '/images/3-1.jpg', '/images/4-1.jpg'];
+
+const MARAS_PHOTOS = [
+  '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
+  '/images/Sin-titulo-1-2-838x1024.jpg',
+  '/images/Sin-titulo-2-2-838x1024.jpg',
+  '/images/Sin-titulo-4-1-838x1024.jpg',
+  '/images/tours/cuatrimotos-maras-moray.jpg',
+];
+
+const PALCOYO_PHOTOS = [
+  '/images/Sin-titu3.jpg',
+  '/images/Sin-titulo-3-1.jpg',
+  '/images/Sin-titulo-7.jpg',
+  '/images/Sin-titulo-8.jpg',
+  '/images/b16192c7deddc180574d48ede9ebc06c.jpg',
+];
+
+const COSTA_PHOTOS = [
+  '/images/hucachina6-819x1024.jpg',
+  '/images/tours/city-tour-lima.jpg',
+  '/images/tours/city-tour-lima-parque-amor.jpg',
+  '/images/tours/city-tour-lima-costa-verde.jpg',
+  '/images/frax3-768x1024.jpg',
+];
+
+function padGallery(hero: string, extras: string[], pads: string[][]): TourHeroEntry {
+  const gallery: string[] = [];
+  const seen = new Set<string>();
+  for (const img of [hero, ...extras, ...pads.flat()]) {
+    if (!img || seen.has(img)) continue;
+    seen.add(img);
+    gallery.push(img);
+    if (gallery.length >= 8) break;
+  }
+  return { hero, gallery };
+}
+
 export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
   'montana-de-colores-full-day': {
     hero: '/images/1-1.jpg',
@@ -46,6 +121,7 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     hero: '/images/Sin-titul1-768x1024.jpg',
     gallery: [
       '/images/Sin-titul1-768x1024.jpg',
+      '/images/tours/valle-sagrado-incas.jpg',
       '/images/Sin-titulo-1-3-768x1024.jpg',
       '/images/Sin-titulo-2-3-768x1024.jpg',
       '/images/Sin-titulo-3-5-768x1024.jpg',
@@ -57,8 +133,10 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     gallery: [
       '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
       '/images/tours/valle-sagrado-incas.jpg',
-      '/images/tours/cuatrimotos-maras-moray.jpg',
+      '/images/Sin-titulo-1-2-838x1024.jpg',
+      '/images/Sin-titulo-4-1-838x1024.jpg',
       '/images/Sin-titul1-768x1024.jpg',
+      '/images/Sin-titulo-2-3-768x1024.jpg',
     ],
   },
   'maras-y-moray-con-picnic-andino-full-day': {
@@ -93,18 +171,22 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     hero: '/images/pexels-angel-valladares-242487480-17060841-scaled.jpg',
     gallery: [
       '/images/pexels-angel-valladares-242487480-17060841-scaled.jpg',
+      '/images/tours/city-tour-cusco.jpg',
       '/images/1.jpg',
       '/images/2.jpg',
       '/images/3.jpg',
       '/images/4.jpg',
       '/images/5.jpg',
       '/images/6.jpg',
+      '/images/c71ae50025b786242292dbd09e83e1f9.jpg',
+      '/images/c0147acaeadf2532c8d2de8f70888baf-1.jpg',
     ],
   },
   'glaciar-qelccaya-full-day': {
     hero: '/images/Sin-titulo--768x1024.jpg',
     gallery: [
       '/images/Sin-titulo--768x1024.jpg',
+      '/images/tours/glaciar-qelccaya.jpg',
       '/images/Sin-titulo-2-768x1024.jpg',
       '/images/Sin-titulo-3-2-768x1024.jpg',
       '/images/Sin-titulo-4-768x1024.jpg',
@@ -127,6 +209,7 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
       '/images/27e3963669cc07eefe489d2933c16115.jpg',
       '/images/975aa7ef2e3b9f53387df687342b1e48.jpg',
       '/images/712069dd3e031f7431963927bded8f28.jpg',
+      '/images/a98b63616963b41d43fac1cfe1344998.jpg',
     ],
   },
   'huacachina-islas-ballestas-full-day': {
@@ -155,7 +238,13 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
   },
   'cuatrimotos-maras-moray-medio-dia': {
     hero: '/images/tours/cuatrimotos-maras-moray.jpg',
-    gallery: ['/images/tours/cuatrimotos-maras-moray.jpg'],
+    gallery: [
+      '/images/tours/cuatrimotos-maras-moray.jpg',
+      '/images/tours/maras-moray-downhill.jpg',
+      '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
+      '/images/Sin-titulo-1-2-838x1024.jpg',
+      '/images/Sin-titulo-4-1-838x1024.jpg',
+    ],
   },
   'lago-titicaca-desde-cusco-full-day': {
     hero: '/images/tours/lago-titicaca-cusco.jpg',
@@ -171,19 +260,29 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     ],
   },
   'cusco-inolvidable-4d-3n': {
-    hero: '/images/Siitulo-2-922x1024.jpg',
+    hero: '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
     gallery: [
-      '/images/Siitulo-2-922x1024.jpg',
-      '/images/lagunaab-768x1024.jpg',
+      '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
+      '/images/lagunaab.jpg',
       '/images/tours/city-tour-cusco.jpg',
+      '/images/1fce25411825d57efe4d5163003ddd5f-819x1024.jpg',
+      '/images/a98b63616963b41d43fac1cfe1344998.jpg',
+      '/images/1.jpg',
+      '/images/1-1.jpg',
+      '/images/e53f4f0c17099254dc58c70b1309e3df.jpg',
     ],
   },
   'valle-sagrado-machu-picchu': {
-    hero: '/images/Siitulo-2-922x1024.jpg',
+    hero: '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
     gallery: [
-      '/images/Siitulo-2-922x1024.jpg',
+      '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
       '/images/1fce25411825d57efe4d5163003ddd5f-819x1024.jpg',
       '/images/tours/valle-sagrado-incas.jpg',
+      '/images/a98b63616963b41d43fac1cfe1344998.jpg',
+      '/images/27e3963669cc07eefe489d2933c16115.jpg',
+      '/images/Sin-titul1-768x1024.jpg',
+      '/images/712069dd3e031f7431963927bded8f28.jpg',
+      '/images/Sin-titulo-2-3-768x1024.jpg',
     ],
   },
   'cusco-valle-sagrado-6d-5n': {
@@ -196,12 +295,12 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     ],
   },
   'cusco-inolvidable-5d-4n': {
-    hero: '/images/Sin-titu-2-922x1024.jpg',
+    hero: '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
     gallery: [
-      '/images/Sin-titu-2-922x1024.jpg',
-      '/images/lagunaab-768x1024.jpg',
-      '/images/Siitulo-2-922x1024.jpg',
+      '/images/pexels-gilmar-santos-1157205006-22717159-1536x1152.jpg',
+      '/images/lagunaab.jpg',
       '/images/tours/valle-sagrado-incas.jpg',
+      '/images/tours/city-tour-cusco.jpg',
     ],
   },
   'cusco-laguna-humantay-6d-5n': {
@@ -359,15 +458,90 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     hero: '/images/712069dd3e031f7431963927bded8f28.jpg',
     gallery: [
       '/images/712069dd3e031f7431963927bded8f28.jpg',
-      '/images/frax3-768x1024.jpg',
       '/images/1fce25411825d57efe4d5163003ddd5f-819x1024.jpg',
-      '/images/hucachina6-819x1024.jpg',
+      '/images/a98b63616963b41d43fac1cfe1344998.jpg',
+      '/images/27e3963669cc07eefe489d2933c16115.jpg',
     ],
+  },
+  'cusco-montana-de-colores-4d-3n': {
+    hero: '/images/1-1.jpg',
+    gallery: ['/images/1-1.jpg', '/images/2-1.jpg', '/images/tours/city-tour-cusco.jpg'],
+  },
+  'maras-moray-valle-sagrado-5d-4n': {
+    hero: '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
+    gallery: [
+      '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
+      '/images/tours/valle-sagrado-incas.jpg',
+    ],
+  },
+  'peru-aventura-total-7d-6n': {
+    hero: '/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg',
+    gallery: ['/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg'],
+  },
+  'peru-aventura-total-8d-7n': {
+    hero: '/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg',
+    gallery: ['/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg'],
+  },
+  'peru-aventura-total-9d-8n': {
+    hero: '/images/Sin-titulo-6-1-768x908.jpg',
+    gallery: ['/images/Sin-titulo-6-1-768x908.jpg'],
+  },
+  'peru-aventura-total-10d-9n': {
+    hero: '/images/Sin-titulo-1-6-866x1024.jpg',
+    gallery: ['/images/Sin-titulo-1-6-866x1024.jpg'],
+  },
+  'peru-aventura-total-13d-12n': {
+    hero: '/images/Sin-titulo-1-6-866x1024.jpg',
+    gallery: ['/images/Sin-titulo-1-6-866x1024.jpg'],
   },
 };
 
+const SLUG_PADS: Record<string, string[][]> = {
+  'valle-sagrado-machu-picchu': [MP_PHOTOS, VALLE_PHOTOS],
+  'tour-machu-picchu-full-day': [MP_PHOTOS],
+  'machu-picchu-full-day': [MP_PHOTOS],
+  'machu-picchu-en-carro-desde-cusco': [MP_PHOTOS],
+  'huaynapicchu-machupicchu': [MP_PHOTOS],
+  'camino-inca-machupicchu-2d-1n': [MP_PHOTOS],
+  'camino-inca-4d-3n': [MP_PHOTOS],
+  'salkantay-trek-machupicchu-5d-4n': [MP_PHOTOS, HUMANTAY_PHOTOS],
+  'inca-jungle-trek-machupicchu-4d-3n': [MP_PHOTOS],
+  'cusco-inolvidable-4d-3n': [MP_PHOTOS, HUMANTAY_PHOTOS, CUSCO_PHOTOS],
+  'cusco-inolvidable-5d-4n': [MP_PHOTOS, VALLE_PHOTOS, HUMANTAY_PHOTOS, CUSCO_PHOTOS],
+  'cusco-inolvidable-7d-6n': [MP_PHOTOS, HUMANTAY_PHOTOS, MARAS_PHOTOS, COLORES_PHOTOS],
+  'cusco-valle-sagrado-6d-5n': [MP_PHOTOS, VALLE_PHOTOS, MARAS_PHOTOS, COLORES_PHOTOS],
+  'cusco-laguna-humantay-6d-5n': [MP_PHOTOS, HUMANTAY_PHOTOS, COLORES_PHOTOS, CUSCO_PHOTOS],
+  'machupicchu-laguna-humantay-6d-5n': [MP_PHOTOS, HUMANTAY_PHOTOS, MARAS_PHOTOS, COLORES_PHOTOS],
+  'cusco-montana-de-colores-4d-3n': [MP_PHOTOS, COLORES_PHOTOS, CUSCO_PHOTOS],
+  'maras-moray-valle-sagrado-5d-4n': [MP_PHOTOS, VALLE_PHOTOS, MARAS_PHOTOS, COLORES_PHOTOS],
+  'laguna-humantay-full-day': [HUMANTAY_PHOTOS],
+  'montana-de-colores-full-day': [COLORES_PHOTOS, PALCOYO_PHOTOS],
+  'montana-palcoyo-full-day': [PALCOYO_PHOTOS],
+  'valle-sagrado-full-day': [VALLE_PHOTOS, MARAS_PHOTOS],
+  'valle-sagrado-con-maras-y-moray-full-day': [VALLE_PHOTOS, MARAS_PHOTOS],
+  'maras-y-moray-con-picnic-andino-full-day': [MARAS_PHOTOS, VALLE_PHOTOS],
+  'cuatrimotos-maras-moray-medio-dia': [MARAS_PHOTOS, VALLE_PHOTOS],
+  'city-tour-medio-dia': [CUSCO_PHOTOS],
+  'islas-ballestas-nazca-2d-1n': [COSTA_PHOTOS],
+  'huacachina-islas-ballestas-full-day': [COSTA_PHOTOS],
+  'city-tour-lima-full-day': [COSTA_PHOTOS],
+  'peru-aventura-total-7d-6n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'peru-aventura-total-8d-7n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'peru-aventura-total-9d-8n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'peru-aventura-total-10d-9n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'peru-aventura-total-13d-12n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'inca-trip-7d-6n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'inca-trip-8d-7n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'inca-trip-9d-8n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+  'inca-trip-10d-9n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
+};
+
 export function getTourHero(slug: string): TourHeroEntry | undefined {
-  return PDF_TOUR_HERO_IMAGES[slug];
+  const raw = PDF_TOUR_HERO_IMAGES[slug];
+  if (!raw) return undefined;
+  const pads = SLUG_PADS[slug];
+  if (!pads) return raw.gallery.length >= 6 ? raw : padGallery(raw.hero, raw.gallery, [MP_PHOTOS, VALLE_PHOTOS, CUSCO_PHOTOS]);
+  return padGallery(raw.hero, raw.gallery, pads);
 }
 
 export function getTourHeroPath(slug: string): string | undefined {
