@@ -7,9 +7,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { SOCIAL_LINKS, SOCIAL_VIDEOS, SocialVideoItem } from '@/data/social-videos';
-import { resolveSocialPlayer, getPlatformLabel } from '@/lib/social-embed';
+import { getExternalUrl, getPlatformLabel, resolveSocialPlayer } from '@/lib/social-embed';
 import { useLanguage } from '@/context/LanguageContext';
-import { socialVideoCaption } from '@/i18n/tours';
+import { openPlatformLabel, socialVideoCaption } from '@/i18n/tours';
 import Reveal from '@/components/ui/Reveal';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -79,11 +79,25 @@ function LocalPlayer({ src, poster }: { src: string; poster: string }) {
   );
 }
 
+function IframePlayer({ src, title }: { src: string; title: string }) {
+  return (
+    <iframe
+      src={src}
+      title={title}
+      className="h-full w-full border-0 bg-black"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen"
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="origin-when-cross-origin"
+    />
+  );
+}
+
 function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: () => void }) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const ui = t.videosUi;
   const frameRef = useRef<HTMLDivElement>(null);
-  const player = resolveSocialPlayer(video);
+  const player = resolveSocialPlayer(video, { autoplay: true });
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -120,7 +134,7 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.96, opacity: 0, y: 12 }}
         transition={{ type: 'spring', damping: 28, stiffness: 320 }}
-        className="relative w-full max-w-[380px]"
+        className={`relative w-full ${video.platform === 'youtube' ? 'max-w-3xl' : 'max-w-[380px]'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="rounded-2xl overflow-hidden bg-white shadow-2xl ring-1 ring-black/5">
@@ -140,12 +154,27 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
             </button>
           </div>
 
-          <div ref={frameRef} className="relative aspect-[9/16] w-full bg-black">
-            <LocalPlayer src={player.src} poster={video.thumbnail} />
+          <div
+            ref={frameRef}
+            className={`relative w-full bg-black ${video.platform === 'youtube' ? 'aspect-video' : 'aspect-[9/16]'}`}
+          >
+            {player.type === 'local' ? (
+              <LocalPlayer src={player.src} poster={video.thumbnail} />
+            ) : (
+              <IframePlayer src={player.src} title={getPlatformLabel(video.platform)} />
+            )}
           </div>
         </div>
 
-        <nav className="mt-2 flex items-center justify-end px-1" aria-label={ui.controlsLabel}>
+        <nav className="mt-2 flex items-center justify-between px-1" aria-label={ui.controlsLabel}>
+          <a
+            href={player.type === 'iframe' ? player.originalUrl : getExternalUrl(video)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-semibold text-white/90 underline-offset-2 hover:underline"
+          >
+            {openPlatformLabel(video.platform, locale)}
+          </a>
           <button
             type="button"
             onClick={toggleFullscreen}
@@ -160,10 +189,44 @@ function VideoLightbox({ video, onClose }: { video: SocialVideoItem; onClose: ()
   );
 }
 
-function VideoCard({ video, onPlay }: { video: SocialVideoItem; onPlay: () => void }) {
+function VideoCard({
+  video,
+  inline,
+  onPlay,
+}: {
+  video: SocialVideoItem;
+  inline?: boolean;
+  onPlay: () => void;
+}) {
   const { t, locale } = useLanguage();
   const ui = t.videosUi;
   const caption = socialVideoCaption(video.id, locale, video.caption);
+  const player = resolveSocialPlayer(video);
+
+  if (inline && player.type === 'iframe') {
+    return (
+      <div className="swiper-no-swiping w-full rounded-2xl overflow-hidden bg-white/80 backdrop-blur-sm shadow-md ring-1 ring-black/5">
+        <div className="relative aspect-[9/14] overflow-hidden bg-black">
+          <span
+            className={`absolute top-3 left-3 z-10 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white ${PLATFORM_BADGE[video.platform]}`}
+          >
+            {getPlatformLabel(video.platform)}
+          </span>
+          <IframePlayer src={player.src} title={caption} />
+        </div>
+        <div className="px-3 py-2.5 text-center">
+          <a
+            href={player.originalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-brand-accent hover:text-brand-teal transition"
+          >
+            {openPlatformLabel(video.platform, locale)}
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <button
@@ -189,10 +252,7 @@ function VideoCard({ video, onPlay }: { video: SocialVideoItem; onPlay: () => vo
             {getPlatformLabel(video.platform)}
           </span>
 
-          <span
-            className="absolute inset-0 flex items-center justify-center"
-            aria-hidden="true"
-          >
+          <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-brand-dark shadow-lg transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 24 24" width="22" height="22">
                 <path fill="currentColor" d="M8 5v14l11-7z" />
@@ -275,9 +335,13 @@ export default function FacebookVideos() {
               }}
               className="overflow-hidden"
             >
-              {SOCIAL_VIDEOS.map((video) => (
+              {SOCIAL_VIDEOS.map((video, index) => (
                 <SwiperSlide key={video.id}>
-                  <VideoCard video={video} onPlay={() => setActive(video)} />
+                  <VideoCard
+                    video={video}
+                    inline={index < 4}
+                    onPlay={() => setActive(video)}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -126,7 +126,7 @@ export const HOME_ES = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Toca Reproducir: el video suena aquí mismo, sin ir a TikTok ni Facebook.',
+    subtitle: 'Toca Reproducir: videos reales de TikTok, Facebook, Instagram y YouTube.',
     play: 'Reproducir',
     playVideoPrefix: 'Reproducir video de',
     close: 'Cerrar',
@@ -143,12 +143,12 @@ export const HOME_ES = {
     followUs: 'Síguenos',
   },
   socialVideos: [
-    { id: 'tiktok-live', caption: 'Cusco y aventuras — se reproduce aquí, como en nuestro TikTok.' },
-    { id: 'tiktok-featured', caption: 'Viajes reales con FraXplorer — play aquí mismo.' },
-    { id: 'facebook-live', caption: 'Paisajes del Perú — se reproduce en la web, no en Facebook.' },
-    { id: 'instagram-reel-1', caption: 'Machu Picchu y Cusco — el video suena aquí, no en Instagram.' },
-    { id: 'instagram-reel-2', caption: 'Otra toma de nuestros viajes — se reproduce en el sitio.' },
-    { id: 'peru-hero', caption: 'Descubre el Perú con FraXplorer — Machu Picchu, Cusco y aventuras inolvidables.' },
+    { id: 'tiktok-featured', caption: 'Publicación real en TikTok @agency_fraxplorer_peru.' },
+    { id: 'facebook-live', caption: 'Videos de la página de Facebook FraXplorer Perú.' },
+    { id: 'instagram-reel-1', caption: 'Reel real en Instagram @fraxplorer_peru.' },
+    { id: 'youtube-santa-ana', caption: 'Santa Ana, el mirador más bonito de Cusco — toma aérea 4K.' },
+    { id: 'instagram-reel-2', caption: 'Otro reel real de @fraxplorer_peru.' },
+    { id: 'instagram-reel-3', caption: 'Más videos reales de nuestros viajeros en Instagram.' },
   ] satisfies SocialVideoCaption[],
   pages: {
     privacy: {
@@ -265,7 +265,7 @@ export const HOME_EN = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Tap Play: the video plays right here, without going to TikTok or Facebook.',
+    subtitle: 'Tap Play: real videos from TikTok, Facebook, Instagram and YouTube.',
     play: 'Play',
     playVideoPrefix: 'Play video from',
     close: 'Close',
@@ -282,12 +282,12 @@ export const HOME_EN = {
     followUs: 'Follow us',
   },
   socialVideos: [
-    { id: 'tiktok-live', caption: 'Cusco and adventures — plays here, like on our TikTok.' },
-    { id: 'tiktok-featured', caption: 'Real trips with FraXplorer — play right here.' },
-    { id: 'facebook-live', caption: 'Peru landscapes — plays on the site, not on Facebook.' },
-    { id: 'instagram-reel-1', caption: 'Machu Picchu and Cusco — the video plays here, not on Instagram.' },
-    { id: 'instagram-reel-2', caption: 'Another clip from our trips — plays on the site.' },
-    { id: 'peru-hero', caption: 'Discover Peru with FraXplorer — Machu Picchu, Cusco and unforgettable adventures.' },
+    { id: 'tiktok-featured', caption: 'Real TikTok post from @agency_fraxplorer_peru.' },
+    { id: 'facebook-live', caption: 'Videos from the FraXplorer Peru Facebook page.' },
+    { id: 'instagram-reel-1', caption: 'Real Instagram reel from @fraxplorer_peru.' },
+    { id: 'youtube-santa-ana', caption: 'Santa Ana, the most beautiful viewpoint in Cusco — 4K aerial shot.' },
+    { id: 'instagram-reel-2', caption: 'Another real reel from @fraxplorer_peru.' },
+    { id: 'instagram-reel-3', caption: 'More real traveler videos on Instagram.' },
   ] satisfies SocialVideoCaption[],
   pages: {
     privacy: {
