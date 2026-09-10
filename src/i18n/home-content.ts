@@ -126,8 +126,9 @@ export const HOME_ES = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Videos reales de Instagram. Toca play en cada tarjeta.',
+    subtitle: 'Toca una miniatura para abrir el panel con sonido.',
     play: 'Reproducir',
+    playWithSound: 'Ver con sonido',
     playVideoPrefix: 'Reproducir video de',
     close: 'Cerrar',
     prev: 'Anterior',
@@ -265,8 +266,9 @@ export const HOME_EN = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Real Instagram videos. Tap play on each card.',
+    subtitle: 'Tap a thumbnail to open the panel with sound.',
     play: 'Play',
+    playWithSound: 'Watch with sound',
     playVideoPrefix: 'Play video from',
     close: 'Close',
     prev: 'Previous',

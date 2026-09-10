@@ -256,6 +256,7 @@ export type Dictionary = {
     title: string;
     subtitle: string;
     play: string;
+    playWithSound: string;
     playVideoPrefix: string;
     close: string;
     prev: string;
