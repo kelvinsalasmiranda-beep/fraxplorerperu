@@ -47,7 +47,12 @@ export const TOUR_EN: Record<
     subtitle: 'Discover the magic of Humantay Lagoon, a paradise among the mountains',
     category: 'CUSCO IN A DAY',
     description:
-      'Guided hike to Humantay Lagoon with buffet breakfast and lunch in Mollepata, trekking poles, oxygen and views of Salkantay snow-capped peak.',
+      'Full day from Cusco to Humantay Lagoon: hotel pick-up, buffet breakfast and lunch in Mollepata, guided hike with Salkantay views, poles and oxygen. A moderate trek among mountains and turquoise water.',
+    intro: [
+      'Hours: 4:00 a.m. – 6:00 p.m. Daily departures, year-round.',
+      'Pick-up is at 4:30 a.m. from your Cusco hotel. We travel to Mollepata for breakfast, then to Soraypampa (3,900 m a.s.l.), where the 90-minute hike to the lagoon begins.',
+      'At the viewpoint there is time for photos and rest. We descend to Mollepata for the buffet lunch and return to Cusco around 6:00 p.m.',
+    ],
     includes: [
       'Pick-up from your hotel in Cusco.',
       'Round-trip tourist transport.',

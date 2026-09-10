@@ -242,7 +242,7 @@ export type Dictionary = {
   trending: TrendingItem[];
   destinationsUi: { badge: string; subtitle: string };
   destinations: DestinationItem[];
-  testimonialsUi: { badge: string; subtitle: string; altPrefix: string };
+  testimonialsUi: { badge: string; subtitle: string; altPrefix: string; viaLabel: string };
   legal: {
     badge: string;
     title: string;

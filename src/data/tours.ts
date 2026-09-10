@@ -58,7 +58,7 @@ const FALLBACK_HERO: Record<string, string> = {
   'inca-trip-7d-6n': '/images/6c2ea90176f2dd285fb8cb5d313c655c-768x934.jpg',
   'inca-trip-9d-8n': '/images/Sin-titulo-6-1-768x908.jpg',
   'inca-trip-10d-9n': '/images/Sin-titulo-1-6-866x1024.jpg',
-  'laguna-humantay-full-day': '/images/5e9a0ffd519bd6c06a66afce7742183f.jpg',
+  'laguna-humantay-full-day': '/images/lagunaab.jpg',
   'montana-de-colores-full-day': '/images/1-1.jpg',
   'montana-palcoyo-full-day': '/images/Sin-titu3.jpg',
   'pallay-punchu-full-day': '/images/778218d7d4252d82475ec90875f51531-819x1024.jpg',

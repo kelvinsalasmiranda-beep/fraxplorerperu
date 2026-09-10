@@ -23,7 +23,7 @@ export default function TourDetail({ tour: rawTour }: { tour: TourPage }) {
   const filtered = tour.images.filter(
     (img) => img !== tour.heroImage && !/pagos|logo|cropped-LOGO|cropped-FRAX/i.test(img)
   );
-  const gallery = (filtered.length > 0 ? filtered : [tour.heroImage]).slice(0, 8);
+  const gallery = (filtered.length > 0 ? filtered : [tour.heroImage]).slice(0, 12);
   const whyBookImages = getTourWhyBookImages(tour.slug);
   const [openDay, setOpenDay] = useState<number | null>(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -58,7 +58,7 @@ export default function TourDetail({ tour: rawTour }: { tour: TourPage }) {
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
         ) : (
-          <Image src={tour.heroImage} alt={tour.title} fill className="object-cover scale-105" priority />
+          <Image src={tour.heroImage} alt={tour.title} fill className="object-cover object-center" priority />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/60 to-brand-dark/30" />
         <div className="relative z-10 mx-auto max-w-6xl w-full px-4 pb-14 pt-24">
@@ -313,10 +313,20 @@ export default function TourDetail({ tour: rawTour }: { tour: TourPage }) {
         {/* Testimonials strip */}
         <Reveal className="mt-20">
           <SectionHeading title={t.tour.testimonials} center />
-          <div className="flex gap-4 overflow-x-auto pb-4">
-            {TESTIMONIALS.slice(0, 4).map((img, i) => (
-              <div key={i} className="relative h-64 w-44 shrink-0 rounded-2xl overflow-hidden shadow-lg">
-                <Image src={img} alt={`${t.testimonialsUi.altPrefix} ${i + 1}`} fill className="object-contain bg-white" />
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+            {TESTIMONIALS.map((img, i) => (
+              <div key={i} className="w-[200px] shrink-0 sm:w-[220px]">
+                <div className="rounded-[1.5rem] bg-[#f7f4ee] p-2 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.3)] ring-1 ring-black/5">
+                  <div className="relative aspect-[9/16] overflow-hidden rounded-[1.15rem] bg-white">
+                    <Image
+                      src={img}
+                      alt={`${t.testimonialsUi.altPrefix} ${i + 1}`}
+                      fill
+                      className="object-contain object-top"
+                      sizes="220px"
+                    />
+                  </div>
+                </div>
               </div>
             ))}
           </div>

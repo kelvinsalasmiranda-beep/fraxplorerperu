@@ -188,17 +188,18 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
     title: 'Laguna Humantay Full Day',
     subtitle: 'Descubre la magia de la Laguna Humantay, un paraíso entre montañas',
     description:
-      'Caminata guiada a la Laguna Humantay con desayuno y almuerzo buffet en Mollepata, bastones, oxígeno y vistas al nevado Salkantay.',
+      'Full day desde Cusco hasta la Laguna Humantay: recojo en hotel, desayuno y almuerzo buffet en Mollepata, caminata guiada con vistas al Salkantay, bastones y oxígeno. Un día de trekking moderado entre montañas y aguas turquesa.',
     intro: [
-      'Horario: 04:00 a.m. – 6:00 p.m. | Salidas todos los días.',
-      'Recojo 4:30 a.m. desde su hotel en Cusco hacia Soraypampa (3,900 m s.n.m.).',
+      'Horario: 04:00 a.m. – 6:00 p.m. Salidas todos los días, todo el año.',
+      'El recojo es a las 4:30 a.m. en su hotel de Cusco. Viajamos a Mollepata para el desayuno y luego a Soraypampa (3,900 m s.n.m.), donde comienza la caminata de unos 90 minutos hasta la laguna.',
+      'En el mirador hay tiempo para fotos y descanso. El descenso vuelve a Mollepata para el almuerzo buffet y el retorno a Cusco es alrededor de las 6:00 p.m.',
     ],
     itinerary: [
       {
         day: 'Full Day',
         title: 'Cusco – Mollepata – Laguna Humantay – Cusco',
         content:
-          'Recojo en hotel → Mollepata (desayuno) → Soraypampa → caminata ~1h30 hacia la laguna → tiempo libre en el mirador → retorno → almuerzo buffet en Mollepata → llegada a Cusco ~6:00 p.m.',
+          '4:30 a.m. — Recojo en su hotel en Cusco. Viaje hacia Mollepata, donde disfrutará de un desayuno buffet incluido.\n\nContinuamos a Soraypampa (3,900 m s.n.m.), punto de inicio de la caminata.\n\nCaminata de aproximadamente 1 hora y 30 minutos hacia la Laguna Humantay, rodeada de paisajes andinos y con vista al nevado Salkantay. El guía comparte la importancia natural y espiritual de esta laguna sagrada.\n\nTiempo libre en la laguna para fotografías, descanso y admirar el color turquesa de sus aguas.\n\nRetorno a Soraypampa. Almuerzo buffet en Mollepata.\n\nLlegada a Cusco alrededor de las 6:00 p.m.',
       },
     ],
     highlights: [
@@ -221,7 +222,7 @@ export const PDF_TOUR_CONTENT: Record<string, PdfTourContent> = {
       'Zapatillas de trekking y botella de agua.',
       'Pastillas para el soroche si es sensible a la altura.',
     ],
-    price: '$30.00',
+    price: '$35.00',
     duration: '1 Día',
     difficulty: 'Moderado',
     tourType: 'Aventura, Naturaleza',

@@ -275,8 +275,14 @@ export default function TourBookingSection({
             </h2>
 
             {slides.length > 0 && (
-              <div className="relative mb-6 rounded-2xl overflow-hidden bg-gray-100 aspect-[16/7]">
-                <Image src={activeSlide} alt={b.whyCarouselAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <div className="relative mb-6 overflow-hidden rounded-2xl bg-[#eef4f1] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] max-h-[520px]">
+                <Image
+                  src={activeSlide}
+                  alt={b.whyCarouselAlt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
                 {slides.length > 1 && (
                   <>
                     <button

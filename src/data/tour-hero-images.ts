@@ -33,12 +33,13 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
     ],
   },
   'laguna-humantay-full-day': {
-    hero: '/images/5e9a0ffd519bd6c06a66afce7742183f.jpg',
+    hero: '/images/lagunaab.jpg',
     gallery: [
+      '/images/lagunaab.jpg',
+      '/images/83f0b9ebcd3eccc5bbacab5bcfb69e67.jpg',
+      '/images/278f302b5a5ee0d82c1deb8e29a6a266.jpg',
+      '/images/e53f4f0c17099254dc58c70b1309e3df.jpg',
       '/images/5e9a0ffd519bd6c06a66afce7742183f.jpg',
-      '/images/83f0b9ebcd3eccc5bbacab5bcfb69e67-819x1024.jpg',
-      '/images/278f302b5a5ee0d82c1deb8e29a6a266-819x1024.jpg',
-      '/images/e53f4f0c17099254dc58c70b1309e3df-819x1024.jpg',
     ],
   },
   'valle-sagrado-full-day': {

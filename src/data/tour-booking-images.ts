@@ -19,10 +19,10 @@ const TOUR_WHY_BOOK_OVERRIDES: Record<string, string[]> = {
     '/images/322ea6b83c34a8a85a8202d8d04a3b7b.jpg',
   ],
   'laguna-humantay-full-day': [
-    '/images/e53f4f0c17099254dc58c70b1309e3df-819x1024.jpg',
-    '/images/278f302b5a5ee0d82c1deb8e29a6a266-819x1024.jpg',
-    '/images/83f0b9ebcd3eccc5bbacab5bcfb69e67-819x1024.jpg',
-    '/images/5e9a0ffd519bd6c06a66afce7742183f.jpg',
+    '/images/lagunaab.jpg',
+    '/images/e53f4f0c17099254dc58c70b1309e3df.jpg',
+    '/images/278f302b5a5ee0d82c1deb8e29a6a266.jpg',
+    '/images/83f0b9ebcd3eccc5bbacab5bcfb69e67.jpg',
   ],
   'montana-de-colores-full-day': [
     '/images/1-1.jpg',

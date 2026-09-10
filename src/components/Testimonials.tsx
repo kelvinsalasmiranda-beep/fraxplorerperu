@@ -27,26 +27,31 @@ export default function Testimonials() {
 
         <Swiper
           modules={[Navigation, Autoplay]}
-          spaceBetween={24}
-          slidesPerView={1}
+          spaceBetween={20}
+          slidesPerView={1.15}
           navigation
-          autoplay={{ delay: 4000 }}
-          breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-          className="!pb-4"
+          autoplay={{ delay: 5500, disableOnInteraction: true }}
+          breakpoints={{ 640: { slidesPerView: 2.1 }, 1024: { slidesPerView: 3.15 } }}
+          className="!pb-2"
         >
           {TESTIMONIALS.map((img, i) => (
             <SwiperSlide key={i}>
               <motion.div
-                whileHover={{ y: -8, rotate: i % 2 === 0 ? 1 : -1 }}
-                className="relative mx-auto aspect-[9/16] max-h-[480px] overflow-hidden rounded-3xl shadow-xl border border-gray-100 bg-white"
+                whileHover={{ y: -4 }}
+                className="mx-auto max-w-[280px]"
               >
-                <Image
-                  src={img}
-                  alt={`${ui.altPrefix} ${i + 1}`}
-                  fill
-                  className="object-contain p-2"
-                  sizes="33vw"
-                />
+                <div className="rounded-[1.75rem] bg-[#f7f4ee] p-2.5 shadow-[0_12px_40px_-16px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
+                  <div className="relative aspect-[9/16] overflow-hidden rounded-[1.35rem] bg-white">
+                    <Image
+                      src={img}
+                      alt={`${ui.altPrefix} ${i + 1}`}
+                      fill
+                      className="object-contain object-top"
+                      sizes="280px"
+                    />
+                  </div>
+                </div>
+                <p className="mt-3 text-center text-xs text-gray-400">{ui.viaLabel}</p>
               </motion.div>
             </SwiperSlide>
           ))}
