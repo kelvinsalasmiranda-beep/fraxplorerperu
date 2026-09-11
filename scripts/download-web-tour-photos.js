@@ -7,18 +7,26 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const SEARCHES = {
   humantay: 'Laguna Humantay Peru',
-  colores: 'Vinicunca Rainbow Mountain Peru',
-  palcoyo: 'Palcoyo mountain Peru',
-  valle: 'Sacred Valley Pisac Peru',
-  maras: 'Maras salt mines Peru',
-  cusco: 'Cusco Plaza de Armas Peru',
-  ballestas: 'Islas Ballestas Paracas Peru',
-  huacachina: 'Huacachina oasis Peru',
-  titicaca: 'Lake Titicaca Uros Peru',
-  uyuni: 'Salar de Uyuni Bolivia',
-  lima: 'Lima Peru coast Malecon',
-  machupicchu: 'Machu Picchu Peru',
+  colores: 'Vinicunca Rainbow Mountain Cusco',
+  palcoyo: 'Palcoyo Peru',
+  pallay: 'Pallay Punchu Peru',
+  valle: 'Pisac Sacred Valley Peru',
+  maras: 'Salineras de Maras Peru',
+  moray: 'Moray Peru circular terraces',
+  cusco: 'Cusco historic center Peru',
+  ballestas: 'Islas Ballestas Paracas',
+  huacachina: 'Huacachina Ica Peru',
+  titicaca: 'Uros Lake Titicaca Peru',
+  uyuni: 'Salar de Uyuni',
+  lima: 'Miraflores Lima Peru',
+  machupicchu: 'Machu Picchu citadel Peru',
+  ausangate: 'Ausangate mountain Peru',
+  waqrapukara: 'Waqrapukara Peru',
+  qelccaya: 'Quelccaya glacier Peru',
+  salkantay: 'Salkantay trek Peru',
 };
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function getJson(url) {
   return new Promise((resolve, reject) => {
@@ -27,7 +35,7 @@ function getJson(url) {
         url,
         {
           headers: {
-            'User-Agent': 'FraXplorerPeruBot/1.0 (https://fraxplorerperu.com; photos for tour galleries)',
+            'User-Agent': 'FraXplorerPeruBot/1.0 (https://fraxplorerperu.com; tour gallery photos)',
             Accept: 'application/json',
           },
         },
@@ -63,7 +71,7 @@ function download(url, dest) {
         if (res.statusCode !== 200) {
           file.close();
           if (fs.existsSync(dest)) fs.unlinkSync(dest);
-          return reject(new Error(`${res.statusCode} ${url}`));
+          return reject(new Error(`${res.statusCode}`));
         }
         res.pipe(file);
         file.on('finish', () => {
@@ -79,7 +87,7 @@ function download(url, dest) {
   });
 }
 
-async function searchCommons(query, limit = 8) {
+async function searchCommons(query, limit = 10) {
   const url =
     'https://commons.wikimedia.org/w/api.php?' +
     new URLSearchParams({
@@ -89,8 +97,8 @@ async function searchCommons(query, limit = 8) {
       gsrnamespace: '6',
       gsrlimit: String(limit),
       prop: 'imageinfo',
-      iiprop: 'url|mime',
-      iiurlwidth: '1400',
+      iiprop: 'url|mime|size',
+      iiurlwidth: '2560',
       format: 'json',
     });
   const data = await getJson(url);
@@ -98,9 +106,8 @@ async function searchCommons(query, limit = 8) {
   return pages
     .map((p) => {
       const info = p.imageinfo?.[0];
-      if (!info) return null;
-      const mime = info.mime || '';
-      if (!mime.startsWith('image/')) return null;
+      if (!info || !String(info.mime || '').startsWith('image/')) return null;
+      if (String(info.mime).includes('svg')) return null;
       return info.thumburl || info.url;
     })
     .filter(Boolean);
@@ -109,10 +116,11 @@ async function searchCommons(query, limit = 8) {
 (async () => {
   const index = {};
   for (const [key, query] of Object.entries(SEARCHES)) {
-    console.log('search', key, query);
+    console.log('search', key);
+    await sleep(600);
     let urls = [];
     try {
-      urls = await searchCommons(query, 8);
+      urls = await searchCommons(query, 10);
     } catch (e) {
       console.log('  fail', e.message);
       continue;
@@ -121,26 +129,29 @@ async function searchCommons(query, limit = 8) {
     let n = 0;
     for (const url of urls) {
       n += 1;
-      const ext = url.includes('.png') ? 'png' : 'jpg';
-      const name = `${key}-${n}.${ext}`;
+      const ext = /\.png/i.test(url) ? 'png' : 'jpg';
+      if (ext === 'png') continue;
+      const name = `${key}-hq-${n}.jpg`;
       const dest = path.join(OUT, name);
+      await sleep(350);
       try {
         await download(url, dest);
         const size = fs.statSync(dest).size;
-        if (size < 8000) {
+        if (size < 20000 || size > 2800000) {
           fs.unlinkSync(dest);
-          console.log('  skip tiny', name);
+          console.log('  skip size', name, Math.round(size / 1024) + 'kb');
           continue;
         }
         index[key].push(`/images/web/${name}`);
         console.log('  ok', name, Math.round(size / 1024) + 'kb');
+        if (index[key].length >= 8) break;
       } catch (e) {
         console.log('  skip', e.message);
       }
     }
   }
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(index, null, 2));
-  console.log('done', index);
+  console.log('done');
 })().catch((e) => {
   console.error(e);
   process.exit(1);
