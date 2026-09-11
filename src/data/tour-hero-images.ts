@@ -13,6 +13,10 @@ const MP_PHOTOS = [
   '/images/712069dd3e031f7431963927bded8f28.jpg',
   '/images/a98b63616963b41d43fac1cfe1344998.jpg',
   '/images/d5c317e89f5b1e24573d6410a9a7ec8f.jpg',
+  '/images/web/machupicchu-1.jpg',
+  '/images/web/machupicchu-2.jpg',
+  '/images/web/machupicchu-3.jpg',
+  '/images/web/machupicchu-5.jpg',
 ];
 
 const VALLE_PHOTOS = [
@@ -22,6 +26,10 @@ const VALLE_PHOTOS = [
   '/images/Sin-titulo-2-3-768x1024.jpg',
   '/images/Sin-titulo-3-5-768x1024.jpg',
   '/images/Sin-titulo-4-2-768x1024.jpg',
+  '/images/web/valle-1.jpg',
+  '/images/web/valle-3.jpg',
+  '/images/web/valle-4.jpg',
+  '/images/web/valle-7.jpg',
 ];
 
 const HUMANTAY_PHOTOS = [
@@ -30,6 +38,11 @@ const HUMANTAY_PHOTOS = [
   '/images/278f302b5a5ee0d82c1deb8e29a6a266.jpg',
   '/images/e53f4f0c17099254dc58c70b1309e3df.jpg',
   '/images/5e9a0ffd519bd6c06a66afce7742183f.jpg',
+  '/images/web/humantay-1.jpg',
+  '/images/web/humantay-2.jpg',
+  '/images/web/humantay-4.jpg',
+  '/images/web/humantay-5.jpg',
+  '/images/web/humantay-8.jpg',
 ];
 
 const CUSCO_PHOTOS = [
@@ -39,9 +52,22 @@ const CUSCO_PHOTOS = [
   '/images/2.jpg',
   '/images/3.jpg',
   '/images/c71ae50025b786242292dbd09e83e1f9.jpg',
+  '/images/web/cusco-2.jpg',
+  '/images/web/cusco-3.jpg',
+  '/images/web/cusco-5.jpg',
+  '/images/web/cusco-6.jpg',
 ];
 
-const COLORES_PHOTOS = ['/images/1-1.jpg', '/images/2-1.jpg', '/images/3-1.jpg', '/images/4-1.jpg'];
+const COLORES_PHOTOS = [
+  '/images/1-1.jpg',
+  '/images/2-1.jpg',
+  '/images/3-1.jpg',
+  '/images/4-1.jpg',
+  '/images/web/colores-1.jpg',
+  '/images/web/colores-3.jpg',
+  '/images/web/colores-5.jpg',
+  '/images/web/colores-7.jpg',
+];
 
 const MARAS_PHOTOS = [
   '/images/pexels-susan-flores-232226967-33423804-681x1024.jpg',
@@ -49,6 +75,10 @@ const MARAS_PHOTOS = [
   '/images/Sin-titulo-2-2-838x1024.jpg',
   '/images/Sin-titulo-4-1-838x1024.jpg',
   '/images/tours/cuatrimotos-maras-moray.jpg',
+  '/images/web/maras-1.jpg',
+  '/images/web/maras-2.jpg',
+  '/images/web/maras-3.jpg',
+  '/images/web/maras-5.jpg',
 ];
 
 const PALCOYO_PHOTOS = [
@@ -57,6 +87,9 @@ const PALCOYO_PHOTOS = [
   '/images/Sin-titulo-7.jpg',
   '/images/Sin-titulo-8.jpg',
   '/images/b16192c7deddc180574d48ede9ebc06c.jpg',
+  '/images/web/colores-6.jpg',
+  '/images/web/colores-8.jpg',
+  '/images/web/colores-1.jpg',
 ];
 
 const COSTA_PHOTOS = [
@@ -65,6 +98,39 @@ const COSTA_PHOTOS = [
   '/images/tours/city-tour-lima-parque-amor.jpg',
   '/images/tours/city-tour-lima-costa-verde.jpg',
   '/images/frax3-768x1024.jpg',
+  '/images/web/huacachina-2.jpg',
+  '/images/web/huacachina-5.jpg',
+  '/images/web/ballestas-1.jpg',
+  '/images/web/ballestas-2.jpg',
+  '/images/web/ballestas-6.jpg',
+];
+
+const TITICACA_PHOTOS = [
+  '/images/tours/lago-titicaca-cusco.jpg',
+  '/images/web/titicaca-1.jpg',
+  '/images/web/titicaca-2.jpg',
+  '/images/web/titicaca-3.jpg',
+  '/images/web/titicaca-5.jpg',
+  '/images/web/titicaca-8.jpg',
+];
+
+const UYUNI_PHOTOS = [
+  '/images/pexels-willianjusten-30929499-scaled.jpg',
+  '/images/pexels-efrem-efre-2786187-33850121-1536x1024.jpg',
+  '/images/web/uyuni-1.jpg',
+  '/images/web/uyuni-2.jpg',
+  '/images/web/uyuni-8.jpg',
+  '/images/web/uyuni-3.jpg',
+];
+
+const LIMA_PHOTOS = [
+  '/images/tours/city-tour-lima.jpg',
+  '/images/tours/city-tour-lima-parque-amor.jpg',
+  '/images/tours/city-tour-lima-costa-verde.jpg',
+  '/images/tours/city-tour-lima-plaza-noche.jpg',
+  '/images/web/lima-1.jpg',
+  '/images/web/lima-2.jpg',
+  '/images/web/lima-3.png',
 ];
 
 function padGallery(hero: string, extras: string[], pads: string[][]): TourHeroEntry {
@@ -74,7 +140,7 @@ function padGallery(hero: string, extras: string[], pads: string[][]): TourHeroE
     if (!img || seen.has(img)) continue;
     seen.add(img);
     gallery.push(img);
-    if (gallery.length >= 8) break;
+    if (gallery.length >= 12) break;
   }
   return { hero, gallery };
 }
@@ -248,7 +314,13 @@ export const PDF_TOUR_HERO_IMAGES: Record<string, TourHeroEntry> = {
   },
   'lago-titicaca-desde-cusco-full-day': {
     hero: '/images/tours/lago-titicaca-cusco.jpg',
-    gallery: ['/images/tours/lago-titicaca-cusco.jpg'],
+    gallery: [
+      '/images/tours/lago-titicaca-cusco.jpg',
+      '/images/web/titicaca-1.jpg',
+      '/images/web/titicaca-2.jpg',
+      '/images/web/titicaca-5.jpg',
+      '/images/web/titicaca-8.jpg',
+    ],
   },
   'machupicchu-laguna-humantay-6d-5n': {
     hero: '/images/Sin-titu-2-922x1024.jpg',
@@ -516,7 +588,6 @@ const SLUG_PADS: Record<string, string[][]> = {
   'maras-moray-valle-sagrado-5d-4n': [MP_PHOTOS, VALLE_PHOTOS, MARAS_PHOTOS, COLORES_PHOTOS],
   'laguna-humantay-full-day': [HUMANTAY_PHOTOS],
   'montana-de-colores-full-day': [COLORES_PHOTOS, PALCOYO_PHOTOS],
-  'montana-palcoyo-full-day': [PALCOYO_PHOTOS],
   'valle-sagrado-full-day': [VALLE_PHOTOS, MARAS_PHOTOS],
   'valle-sagrado-con-maras-y-moray-full-day': [VALLE_PHOTOS, MARAS_PHOTOS],
   'maras-y-moray-con-picnic-andino-full-day': [MARAS_PHOTOS, VALLE_PHOTOS],
@@ -524,7 +595,19 @@ const SLUG_PADS: Record<string, string[][]> = {
   'city-tour-medio-dia': [CUSCO_PHOTOS],
   'islas-ballestas-nazca-2d-1n': [COSTA_PHOTOS],
   'huacachina-islas-ballestas-full-day': [COSTA_PHOTOS],
-  'city-tour-lima-full-day': [COSTA_PHOTOS],
+  'city-tour-lima-full-day': [LIMA_PHOTOS, COSTA_PHOTOS],
+  'taller-de-cocina-en-lima-1-dia': [LIMA_PHOTOS],
+  'lago-titicaca-desde-cusco-full-day': [TITICACA_PHOTOS],
+  'lago-titicaca-salar-de-uyuni-4-dias': [TITICACA_PHOTOS, UYUNI_PHOTOS],
+  'salar-de-uyuni-5-dias-4-noches-desde-puno': [UYUNI_PHOTOS, TITICACA_PHOTOS],
+  'montana-palcoyo-full-day': [PALCOYO_PHOTOS, COLORES_PHOTOS],
+  'pallay-punchu-full-day': [COLORES_PHOTOS, PALCOYO_PHOTOS],
+  'tour-maras-moray-downhill-medio-dia': [MARAS_PHOTOS, VALLE_PHOTOS],
+  'picnic-andino-medio-dia': [MARAS_PHOTOS, VALLE_PHOTOS],
+  'ausangate-7-lagunas-donhill-1-dia': [HUMANTAY_PHOTOS, COLORES_PHOTOS],
+  'ausangate-7-lagunas-downhill-1-dia': [HUMANTAY_PHOTOS, COLORES_PHOTOS],
+  'glaciar-qelccaya-full-day': [HUMANTAY_PHOTOS, COLORES_PHOTOS],
+  'waqrapukara-full-day': [VALLE_PHOTOS, CUSCO_PHOTOS],
   'peru-aventura-total-7d-6n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
   'peru-aventura-total-8d-7n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
   'peru-aventura-total-9d-8n': [MP_PHOTOS, CUSCO_PHOTOS, COLORES_PHOTOS, COSTA_PHOTOS],
