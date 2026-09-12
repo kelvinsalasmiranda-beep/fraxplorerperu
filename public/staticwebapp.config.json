@@ -1,0 +1,22 @@
+{
+  "routes": [
+    { "route": "/paquetes", "redirect": "/", "statusCode": 301 },
+    { "route": "/paquetes/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/machupicchu", "redirect": "/tours/tour-machu-picchu-full-day/", "statusCode": 301 },
+    { "route": "/machupicchu/*", "redirect": "/tours/tour-machu-picchu-full-day/", "statusCode": 301 },
+    { "route": "/tour-en-cusco", "redirect": "/", "statusCode": 301 },
+    { "route": "/tour-en-cusco/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/camino-inca", "redirect": "/tours/camino-inca-4d-3n/", "statusCode": 301 },
+    { "route": "/camino-inca/*", "redirect": "/tours/camino-inca-4d-3n/", "statusCode": 301 },
+    { "route": "/salkantay-y-otros", "redirect": "/tours/salkantay-trek-machupicchu-5d-4n/", "statusCode": 301 },
+    { "route": "/otros-destinos", "redirect": "/", "statusCode": 301 },
+    { "route": "/machu-picchu-full-day", "redirect": "/tours/tour-machu-picchu-full-day/", "statusCode": 301 },
+    { "route": "/nosotros", "redirect": "/sobre-nosotros/", "statusCode": 301 },
+    { "route": "/contacto", "redirect": "/", "statusCode": 301 }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html"
+    }
+  }
+}
