@@ -13,11 +13,28 @@ export type SocialVideoItem = {
 };
 
 /**
- * Reels reales de @fraxplorer_peru.
- * YouTube no se puede incrustar (música con copyright).
- * Facebook no tiene video embebible. TikTok es una foto, no un video.
+ * Videos reales de @agency_fraxplorer_peru y reels de @fraxplorer_peru.
+ * Solo posts que se pueden reproducir (no fotos ni enlaces de perfil).
  */
 export const SOCIAL_VIDEOS: SocialVideoItem[] = [
+  {
+    id: 'tiktok-video-1',
+    platform: 'tiktok',
+    brand: 'FraXplorer Perú',
+    caption: 'Cusco, un rincón de tranquilidad',
+    thumbnail: '/images/social/tiktok-7613988321751993601.jpg',
+    embedUrl: 'https://www.tiktok.com/@agency_fraxplorer_peru/video/7613988321751993601',
+    originalUrl: 'https://www.tiktok.com/@agency_fraxplorer_peru/video/7613988321751993601',
+  },
+  {
+    id: 'tiktok-video-2',
+    platform: 'tiktok',
+    brand: 'FraXplorer Perú',
+    caption: 'La caminata vale cada metro',
+    thumbnail: '/images/social/tiktok-7574117631586880785.jpg',
+    embedUrl: 'https://www.tiktok.com/@agency_fraxplorer_peru/video/7574117631586880785',
+    originalUrl: 'https://www.tiktok.com/@agency_fraxplorer_peru/video/7574117631586880785',
+  },
   {
     id: 'instagram-reel-1',
     platform: 'instagram',

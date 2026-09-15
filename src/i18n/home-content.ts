@@ -126,7 +126,7 @@ export const HOME_ES = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Toca una miniatura para abrir el panel con sonido.',
+    subtitle: 'Videos de TikTok e Instagram. Toca una miniatura para verlos con sonido.',
     play: 'Reproducir',
     playWithSound: 'Ver con sonido',
     playVideoPrefix: 'Reproducir video de',
@@ -144,6 +144,8 @@ export const HOME_ES = {
     followUs: 'Síguenos',
   },
   socialVideos: [
+    { id: 'tiktok-video-1', caption: 'Cusco, un rincón de tranquilidad' },
+    { id: 'tiktok-video-2', caption: 'La caminata vale cada metro' },
     { id: 'instagram-reel-1', caption: 'Reel de @fraxplorer_peru' },
     { id: 'instagram-reel-2', caption: 'Reel de @fraxplorer_peru' },
     { id: 'instagram-reel-3', caption: 'Reel de @fraxplorer_peru' },
@@ -266,7 +268,7 @@ export const HOME_EN = {
   },
   videosUi: {
     title: 'Videos',
-    subtitle: 'Tap a thumbnail to open the panel with sound.',
+    subtitle: 'TikTok and Instagram videos. Tap a thumbnail to watch with sound.',
     play: 'Play',
     playWithSound: 'Watch with sound',
     playVideoPrefix: 'Play video from',
@@ -284,6 +286,8 @@ export const HOME_EN = {
     followUs: 'Follow us',
   },
   socialVideos: [
+    { id: 'tiktok-video-1', caption: 'Cusco, a quiet corner' },
+    { id: 'tiktok-video-2', caption: 'Every meter of the hike is worth it' },
     { id: 'instagram-reel-1', caption: 'Reel from @fraxplorer_peru' },
     { id: 'instagram-reel-2', caption: 'Reel from @fraxplorer_peru' },
     { id: 'instagram-reel-3', caption: 'Reel from @fraxplorer_peru' },
