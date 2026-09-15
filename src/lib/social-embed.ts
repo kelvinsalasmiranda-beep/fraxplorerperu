@@ -16,7 +16,7 @@ export function buildInstagramEmbed(code: string): string {
 }
 
 export function buildTiktokEmbed(id: string): string {
-  return `https://www.tiktok.com/embed/v2/${id}`;
+  return `https://www.tiktok.com/embed/v2/${id}?lang=es`;
 }
 
 export function getExternalUrl(video: SocialVideoItem): string {

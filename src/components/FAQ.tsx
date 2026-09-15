@@ -1,55 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
-
-function LlamaMascot({ speaking, alt }: { speaking: boolean; alt: string }) {
-  return (
-    <motion.div
-      className="relative mx-auto w-[200px] sm:w-[240px] md:w-[280px]"
-      animate={{
-        y: speaking ? [0, -6, 0] : [0, -10, 0],
-        rotate: speaking ? [-1, 1, -1] : [0, 0.5, 0],
-      }}
-      transition={{
-        duration: speaking ? 0.6 : 3,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
-    >
-      <div className="absolute -inset-4 rounded-full bg-brand-accent/10 blur-2xl" aria-hidden="true" />
-      <Image
-        src="/images/llama-mascot.png"
-        alt={alt}
-        width={280}
-        height={320}
-        className="relative z-10 w-full h-auto drop-shadow-lg"
-        priority={false}
-      />
-      {speaking && (
-        <motion.span
-          className="absolute -right-1 top-8 flex gap-1"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.span
-              key={i}
-              className="h-2 w-2 rounded-full bg-brand-accent"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.12 }}
-            />
-          ))}
-        </motion.span>
-      )}
-    </motion.div>
-  );
-}
+import LlamaMascot from '@/components/LlamaMascot';
 
 function SpeechBubble({
   question,
@@ -99,7 +55,7 @@ export default function FAQSection() {
 
   const pulseSpeak = useCallback(() => {
     setSpeaking(true);
-    setTimeout(() => setSpeaking(false), 900);
+    setTimeout(() => setSpeaking(false), 2200);
   }, []);
 
   const selectQuestion = useCallback(
@@ -125,7 +81,7 @@ export default function FAQSection() {
   useEffect(() => {
     const t = setTimeout(() => {
       setSpeaking(true);
-      setTimeout(() => setSpeaking(false), 1200);
+      setTimeout(() => setSpeaking(false), 2200);
     }, 600);
     return () => clearTimeout(t);
   }, []);

@@ -144,7 +144,6 @@ export const HOME_ES = {
     followUs: 'Síguenos',
   },
   socialVideos: [
-    { id: 'tiktok-video-1', caption: 'Cusco, un rincón de tranquilidad' },
     { id: 'tiktok-video-2', caption: 'La caminata vale cada metro' },
     { id: 'instagram-reel-1', caption: 'Reel de @fraxplorer_peru' },
     { id: 'instagram-reel-2', caption: 'Reel de @fraxplorer_peru' },
@@ -286,7 +285,6 @@ export const HOME_EN = {
     followUs: 'Follow us',
   },
   socialVideos: [
-    { id: 'tiktok-video-1', caption: 'Cusco, a quiet corner' },
     { id: 'tiktok-video-2', caption: 'Every meter of the hike is worth it' },
     { id: 'instagram-reel-1', caption: 'Reel from @fraxplorer_peru' },
     { id: 'instagram-reel-2', caption: 'Reel from @fraxplorer_peru' },

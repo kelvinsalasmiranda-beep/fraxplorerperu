@@ -18,15 +18,6 @@ export type SocialVideoItem = {
  */
 export const SOCIAL_VIDEOS: SocialVideoItem[] = [
   {
-    id: 'tiktok-video-1',
-    platform: 'tiktok',
-    brand: 'FraXplorer Perú',
-    caption: 'Cusco, un rincón de tranquilidad',
-    thumbnail: '/images/social/tiktok-7613988321751993601.jpg',
-    embedUrl: 'https://www.tiktok.com/@agency_fraxplorer_peru/video/7613988321751993601',
-    originalUrl: 'https://www.tiktok.com/@agency_fraxplorer_peru/video/7613988321751993601',
-  },
-  {
     id: 'tiktok-video-2',
     platform: 'tiktok',
     brand: 'FraXplorer Perú',
