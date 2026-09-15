@@ -1,44 +1,35 @@
-/** Portada oficial Facebook — “Descubre la magia del Perú” */
-export const ABOUT_HERO = '/images/facebook-cover.jpg';
+/** Destinos reales que operan y publican en Instagram / TikTok */
+export const ABOUT_HERO = '/images/web/machupicchu-hq-6.jpg';
 
 export const ABOUT_GALLERY = [
   {
-    src: '/images/frax3.jpg',
-    alt: 'FraXplorer Perú — experiencias en Cusco',
+    src: '/images/web/machupicchu-hq-1.jpg',
+    alt: { es: 'Machu Picchu', en: 'Machu Picchu' },
+    label: { es: 'Machu Picchu', en: 'Machu Picchu' },
   },
   {
-    src: '/images/pexels-joanavittoria-2193392-scaled.jpg',
-    alt: 'Paisajes del Cusco',
+    src: '/images/web/humantay-hq-1.jpg',
+    alt: { es: 'Laguna Humantay', en: 'Humantay Lagoon' },
+    label: { es: 'Laguna Humantay', en: 'Humantay Lagoon' },
   },
   {
-    src: '/images/Siitulo-2-922x1024.jpg',
-    alt: 'Machu Picchu con FraXplorer',
+    src: '/images/social/tiktok-7574117631586880785.jpg',
+    alt: { es: 'Montaña de Colores — video de FraXplorer', en: 'Rainbow Mountain — FraXplorer video' },
+    label: { es: 'Montaña de Colores', en: 'Rainbow Mountain' },
   },
   {
-    src: '/images/maaaaaaaaaaae-810x1024.jpg',
-    alt: 'Aventura en los Andes',
+    src: '/images/social/tiktok-7613988321751993601.jpg',
+    alt: { es: 'Cusco — video de FraXplorer', en: 'Cusco — FraXplorer video' },
+    label: { es: 'Cusco', en: 'Cusco' },
   },
   {
-    src: '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.03.14_889f3aad.jpg',
-    alt: 'Viajeros FraXplorer Perú',
+    src: '/images/web/valle-1.jpg',
+    alt: { es: 'Valle Sagrado', en: 'Sacred Valley' },
+    label: { es: 'Valle Sagrado', en: 'Sacred Valley' },
   },
   {
-    src: '/images/Imagen-de-WhatsApp-2025-08-21-a-las-00.20.44_638e999d.jpg',
-    alt: 'Tours en Cusco',
-  },
-];
-
-export const ABOUT_SECTIONS = [
-  {
-    title: '¿Quiénes somos?',
-    text: 'FraXplorer Perú es una agencia de viajes nacida en Cusco, creada por amantes de su tierra con el firme propósito de compartir lo mejor del Perú con el mundo.',
-  },
-  {
-    title: 'Turismo con propósito',
-    text: 'Apostamos por un modelo responsable que protege la naturaleza, respeta las culturas ancestrales y apoya a las comunidades locales.',
-  },
-  {
-    title: 'Somos familia',
-    text: 'Nuestra historia comenzó como un sueño familiar y esa esencia sigue viva en cada experiencia que ofrecemos.',
+    src: '/images/web/cusco-hq-3.jpg',
+    alt: { es: 'Centro histórico del Cusco', en: 'Historic center of Cusco' },
+    label: { es: 'Centro del Cusco', en: 'Cusco center' },
   },
 ];

@@ -11,15 +11,15 @@ import MagneticButton from '@/components/ui/MagneticButton';
 import Reveal from '@/components/ui/Reveal';
 
 export default function AboutHero() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const lang = locale === 'en' ? 'en' : 'es';
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
 
   return (
     <>
-      {/* Portada oficial Facebook — banner completo */}
-      <section ref={ref} className="relative w-full aspect-[960/365] overflow-hidden bg-brand-dark">
+      <section ref={ref} className="relative h-[42vh] min-h-[280px] overflow-hidden bg-brand-dark md:h-[52vh]">
         <motion.div className="absolute inset-0" style={{ y }}>
           <Image
             src={ABOUT_HERO}
@@ -30,57 +30,68 @@ export default function AboutHero() {
             sizes="100vw"
           />
         </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/35 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-4 pb-10 md:pb-14">
+          <div className="mx-auto max-w-7xl">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-brand-gold">{t.about.badge}</p>
+            <h1 className="font-heading text-3xl font-black text-white md:text-5xl">
+              {t.about.title1} {t.about.title2}
+            </h1>
+            <p className="mt-3 max-w-2xl text-white/85 md:text-lg">{t.about.subtitle}</p>
+          </div>
+        </div>
       </section>
 
-      <section className="bg-brand-teal py-14 md:py-16">
-        <Reveal>
-          <h2 className="text-center font-heading text-3xl md:text-5xl font-black text-white px-4">
-            {t.about.sectionTitle}
-          </h2>
-        </Reveal>
-      </section>
-
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="grid items-start gap-14 lg:grid-cols-2">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal direction="left">
-              <h3 className="font-heading text-3xl font-bold text-brand-dark mb-6">{t.about.heading}</h3>
-              <p className="text-gray-500 leading-relaxed mb-4 text-lg">
+              <h2 className="font-heading text-3xl font-bold text-brand-dark md:text-4xl">{t.about.heading}</h2>
+              <p className="mt-5 text-lg leading-relaxed text-gray-600">
                 <strong className="text-brand-dark">{CONTACT.company}</strong> {t.about.p1}
               </p>
-              <p className="text-gray-500 leading-relaxed mb-4">{t.about.p2}</p>
-              <p className="text-gray-500 leading-relaxed">{t.about.p3}</p>
+              <p className="mt-4 leading-relaxed text-gray-600">{t.about.p2}</p>
+              <p className="mt-4 leading-relaxed text-gray-600">{t.about.p3}</p>
 
-              <div className="mt-8 space-y-5">
+              <div className="mt-8 space-y-4">
                 {t.about.sections.map((block) => (
-                  <div key={block.title} className="rounded-2xl border border-brand-accent/15 bg-brand-teal/5 p-5">
-                    <h4 className="font-heading font-bold text-brand-dark mb-2">{block.title}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">{block.text}</p>
+                  <div key={block.title} className="rounded-2xl border border-black/5 bg-white p-5 shadow-sm">
+                    <h3 className="font-heading text-lg font-bold text-brand-dark">{block.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-600">{block.text}</p>
                   </div>
                 ))}
               </div>
             </Reveal>
 
-            <Reveal direction="right" delay={0.15}>
+            <Reveal direction="right" delay={0.1}>
               <div className="grid grid-cols-2 gap-3">
                 {ABOUT_GALLERY.map((img, i) => (
                   <div
                     key={img.src}
-                    className={`relative overflow-hidden rounded-2xl shadow-lg ${
-                      i === 0 ? 'col-span-2 aspect-[16/10]' : 'aspect-square'
+                    className={`relative overflow-hidden rounded-2xl bg-gray-100 shadow-md ring-1 ring-black/5 ${
+                      i === 0 ? 'col-span-2 aspect-[16/10]' : 'aspect-[4/5]'
                     }`}
                   >
-                    <Image src={img.src} alt={img.alt} fill className="object-cover hover:scale-105 transition duration-500" sizes="400px" />
+                    <Image
+                      src={img.src}
+                      alt={img.alt[lang]}
+                      fill
+                      className="object-cover transition duration-500 hover:scale-105"
+                      sizes={i === 0 ? '720px' : '360px'}
+                    />
+                    <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-3 pb-3 pt-8 text-sm font-semibold text-white">
+                      {img.label[lang]}
+                    </span>
                   </div>
                 ))}
               </div>
               <p className="mt-4 text-center text-xs text-gray-400">
                 {t.about.galleryNote}{' '}
                 <a
-                  href={CONTACT.facebook}
+                  href={CONTACT.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-accent hover:underline"
+                  className="font-semibold text-brand-accent hover:underline"
                 >
                   {t.about.followFb}
                 </a>
@@ -96,15 +107,15 @@ export default function AboutHero() {
 export function AboutCTA() {
   const { t } = useLanguage();
   return (
-    <section className="py-20 bg-brand-dark relative overflow-hidden">
+    <section className="relative overflow-hidden bg-brand-dark py-20">
       <div className="absolute inset-0 gradient-mesh opacity-30" />
-      <Reveal className="relative text-center px-4">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-6">{t.about.ctaTitle}</h2>
+      <Reveal className="relative px-4 text-center">
+        <h2 className="mb-6 font-heading text-3xl font-bold text-white md:text-4xl">{t.about.ctaTitle}</h2>
         <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-gold">
           {t.about.ctaBtn}
         </MagneticButton>
         <p className="mt-6">
-          <Link href="/" className="text-brand-gold hover:underline text-sm">
+          <Link href="/" className="text-sm text-brand-gold hover:underline">
             {t.about.backHome}
           </Link>
         </p>

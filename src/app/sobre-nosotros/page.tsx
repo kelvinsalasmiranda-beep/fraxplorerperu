@@ -2,7 +2,8 @@ import AboutHero, { AboutCTA } from '@/components/AboutHero';
 
 export const metadata = {
   title: 'Sobre Nosotros | Fraxplorer Peru',
-  description: 'Conoce la historia de FraXplorer Perú. Agencia de turismo formal con licencia MINCETUR.',
+  description:
+    'Agencia de turismo en Cusco. Operamos Machu Picchu, Humantay, Montaña de Colores y Valle Sagrado. Empresa formal MINCETUR, reserva por WhatsApp.',
 };
 
 export default function AboutPage() {
