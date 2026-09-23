@@ -105,17 +105,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mx-auto mt-8 w-full max-w-5xl rounded-[28px] bg-white p-4 shadow-2xl sm:p-5"
+          className="mx-auto mt-8 w-full max-w-5xl rounded-[28px] border border-white/70 bg-white/45 p-4 shadow-[0_18px_50px_rgba(0,45,51,0.18)] backdrop-blur-xl sm:p-5"
         >
           <div className="grid gap-3 md:grid-cols-[1.2fr_1fr_1fr_auto]">
             <label className="block text-left">
-              <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+              <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-brand-dark/55">
                 {search.destinationLabel}
               </span>
               <select
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-brand-dark outline-none focus:border-brand-accent"
+                className="w-full rounded-2xl border border-white/80 bg-white/70 px-3 py-3 text-sm text-brand-dark outline-none backdrop-blur-md focus:border-white"
               >
                 {search.destinations.map((item) => (
                   <option key={item.value} value={item.value}>
@@ -126,13 +126,13 @@ export default function Hero() {
             </label>
 
             <label className="block text-left">
-              <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+              <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-brand-dark/55">
                 {search.typeLabel}
               </span>
               <select
                 value={tourType}
                 onChange={(e) => setTourType(e.target.value)}
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-brand-dark outline-none focus:border-brand-accent"
+                className="w-full rounded-2xl border border-white/80 bg-white/70 px-3 py-3 text-sm text-brand-dark outline-none backdrop-blur-md focus:border-white"
               >
                 {search.types.map((item) => (
                   <option key={item.value} value={item.value}>
@@ -143,13 +143,13 @@ export default function Hero() {
             </label>
 
             <label className="block text-left">
-              <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+              <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-brand-dark/55">
                 {search.durationLabel}
               </span>
               <select
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-brand-dark outline-none focus:border-brand-accent"
+                className="w-full rounded-2xl border border-white/80 bg-white/70 px-3 py-3 text-sm text-brand-dark outline-none backdrop-blur-md focus:border-white"
               >
                 {search.durations.map((item) => (
                   <option key={item.value} value={item.value}>
@@ -168,7 +168,7 @@ export default function Hero() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-brand-dark/50">
               {search.suggestedLabel}
             </span>
             {search.suggested.map((route) => (
@@ -179,7 +179,7 @@ export default function Hero() {
                   setDestination(route);
                   sendToWhatsApp(route);
                 }}
-                className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-brand-accent hover:text-white"
+                className="rounded-full border border-white/70 bg-white/50 px-3 py-1.5 text-xs font-medium text-brand-dark/80 backdrop-blur-md transition hover:bg-white hover:text-brand-dark"
               >
                 {route}
               </button>
