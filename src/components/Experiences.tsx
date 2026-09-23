@@ -1,116 +1,174 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
-import { CONTACT } from '@/data/site';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
-import MagneticButton from '@/components/ui/MagneticButton';
 import { useLanguage } from '@/context/LanguageContext';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
+import { bookingWhatsAppText, buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function Experiences() {
   const { t } = useLanguage();
-  const [active, setActive] = useState(0);
   const experiences = t.experiences;
+  const [active, setActive] = useState(0);
+  const [photo, setPhoto] = useState(0);
+  const [touchX, setTouchX] = useState<number | null>(null);
+
+  const current = experiences[active];
+  const images = current.images.filter(Boolean);
+  const safePhoto = images.length ? photo % images.length : 0;
+
+  useEffect(() => {
+    setPhoto(0);
+  }, [active]);
+
+  useEffect(() => {
+    if (images.length < 2) return;
+    const timer = setInterval(() => {
+      setPhoto((i) => (i + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [active, images.length]);
+
+  function nextPhoto() {
+    if (!images.length) return;
+    setPhoto((i) => (i + 1) % images.length);
+  }
+
+  function prevPhoto() {
+    if (!images.length) return;
+    setPhoto((i) => (i - 1 + images.length) % images.length);
+  }
+
+  const reserveHref = buildWhatsAppUrl(
+    bookingWhatsAppText(t.hero.search.whatsappIntro, t.hero.search.whatsappAsk, [
+      { label: t.hero.search.typeLabel, value: current.title },
+    ])
+  );
 
   return (
-    <section className="py-16 sm:py-24 md:py-32">
+    <section className="overflow-x-hidden py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4">
-        <Reveal className="text-center mb-16">
+        <Reveal className="mb-8 text-center sm:mb-12">
           <SectionBadge>{t.experiencesUi.badge}</SectionBadge>
           <h2 className="section-title mt-4">{t.sections.experiences}</h2>
           <p className="section-subtitle">{t.sections.experiencesSub}</p>
         </Reveal>
 
-        <div className="mb-12 flex flex-wrap justify-center gap-2">
+        <div className="-mx-4 mb-8 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0">
           {experiences.map((exp, i) => (
-            <motion.button
+            <button
               key={exp.title}
+              type="button"
               onClick={() => setActive(i)}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className={`relative rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold transition ${
                 active === i
-                  ? 'text-white shadow-lg shadow-brand-accent/30'
-                  : 'text-gray-600 hover:text-brand-accent bg-white border border-gray-200'
+                  ? 'bg-gradient-to-r from-brand-accent to-brand-teal text-white shadow-lg shadow-brand-accent/30'
+                  : 'border border-gray-200 bg-white text-gray-600'
               }`}
             >
-              {active === i && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-accent to-brand-teal"
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{exp.title}</span>
-            </motion.button>
+              {exp.title}
+            </button>
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="grid items-center gap-10 lg:grid-cols-2"
-          >
-            <div>
-              <h3 className="font-heading text-3xl font-bold text-brand-dark mb-4">
-                {experiences[active].title}
-              </h3>
-              <p className="text-gray-500 mb-6 text-lg leading-relaxed">{experiences[active].description}</p>
-              <ul className="mb-8 space-y-3">
-                {experiences[active].bullets.map((b) => (
-                  <motion.li
-                    key={b}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="flex items-start gap-3 text-gray-600"
-                  >
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent text-xs">✓</span>
-                    {b}
-                  </motion.li>
-                ))}
-              </ul>
-              <MagneticButton href={`https://wa.me/${CONTACT.whatsapp1}`} className="btn-primary">
-                {t.experiencesUi.discoverNow}
-              </MagneticButton>
-            </div>
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="order-2 min-w-0 lg:order-1">
+            <h3 className="mb-3 font-heading text-2xl font-bold text-brand-dark sm:text-3xl">
+              {current.title}
+            </h3>
+            <p className="mb-5 text-base leading-relaxed text-gray-500 sm:text-lg">{current.description}</p>
+            <ul className="mb-7 space-y-3">
+              {current.bullets.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-600 sm:text-base">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-accent/10 text-xs text-brand-accent">
+                    ✓
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href={reserveHref} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              {t.experiencesUi.discoverNow}
+            </a>
+          </div>
 
-            <div className="relative">
-              <Swiper
-                modules={[Autoplay, EffectFade]}
-                effect="fade"
-                autoplay={{ delay: 3500 }}
-                loop
-                className="rounded-3xl overflow-hidden shadow-2xl"
-              >
-                {experiences[active].images.map((img, i) => (
-                  <SwiperSlide key={i}>
-                    <div className="relative h-80 md:h-96">
-                      <Image src={img} alt="" fill className="object-cover" sizes="50vw" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 to-transparent" />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-                {experiences[active].images.slice(0, 4).map((img, i) => (
-                  <div key={i} className="relative h-16 w-16 shrink-0 rounded-xl overflow-hidden opacity-70 hover:opacity-100 transition">
-                    <Image src={img} alt="" fill className="object-cover" sizes="64px" />
-                  </div>
-                ))}
+          <div className="order-1 min-w-0 w-full lg:order-2">
+            <div
+              className="relative overflow-hidden rounded-3xl shadow-2xl"
+              onTouchStart={(e) => setTouchX(e.changedTouches[0].clientX)}
+              onTouchEnd={(e) => {
+                if (touchX == null) return;
+                const dx = e.changedTouches[0].clientX - touchX;
+                if (dx < -40) nextPhoto();
+                if (dx > 40) prevPhoto();
+                setTouchX(null);
+              }}
+            >
+              <div className="relative h-64 w-full sm:h-80 md:h-96">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${active}-${images[safePhoto]}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="absolute inset-0"
+                  >
+                    {images[safePhoto] && (
+                      <Image
+                        src={images[safePhoto]}
+                        alt={current.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        priority={active === 0 && safePhoto === 0}
+                      />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/35 to-transparent" />
+                {images.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={prevPhoto}
+                      className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-lg text-brand-dark shadow"
+                      aria-label={t.videosUi.prev}
+                    >
+                      ‹
+                    </button>
+                    <button
+                      type="button"
+                      onClick={nextPhoto}
+                      className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-lg text-brand-dark shadow"
+                      aria-label={t.videosUi.next}
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
               </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              {images.map((img, i) => (
+                <button
+                  key={`${img}-${i}`}
+                  type="button"
+                  onClick={() => setPhoto(i)}
+                  className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-xl sm:h-16 sm:w-16 ${
+                    i === safePhoto ? 'ring-2 ring-brand-accent' : 'opacity-70'
+                  }`}
+                  aria-label={`${current.title} ${i + 1}`}
+                >
+                  <Image src={img} alt="" fill className="object-cover" sizes="64px" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
