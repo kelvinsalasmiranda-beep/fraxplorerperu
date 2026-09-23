@@ -98,6 +98,22 @@ export type Dictionary = {
     cta: string;
     viewTours: string;
     scroll: string;
+    search: {
+      destinationLabel: string;
+      typeLabel: string;
+      durationLabel: string;
+      submit: string;
+      suggestedLabel: string;
+      travelers: string;
+      rucLabel: string;
+      safeTravels: string;
+      whatsappIntro: string;
+      whatsappAsk: string;
+      destinations: { value: string; label: string }[];
+      types: { value: string; label: string }[];
+      durations: { value: string; label: string }[];
+      suggested: string[];
+    };
   };
   sections: {
     whyUs: string;
