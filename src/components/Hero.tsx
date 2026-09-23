@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { CONTACT } from '@/data/site';
+import { CONTACT, HERO_VIDEO } from '@/data/site';
 import { useLanguage } from '@/context/LanguageContext';
 import { bookingWhatsAppText, openWhatsApp } from '@/lib/whatsapp';
 
@@ -35,7 +35,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-brand-teal">
+    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-[#007a86]">
       <Image
         src="/images/web/machupicchu-hq-6.jpg"
         alt="Machu Picchu"
@@ -44,8 +44,18 @@ export default function Hero() {
         className="object-cover object-center"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-[#00444d]/80" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#00363c]/70 via-[#004b52]/55 to-[#00363c]/80" />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/web/machupicchu-hq-6.jpg"
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src={HERO_VIDEO} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-[#14b8c9]/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#006372]/35 via-transparent to-[#006372]/45" />
 
       <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col justify-center px-4 pb-16 pt-28 sm:pt-32">
         <motion.div
@@ -61,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-center font-heading text-[clamp(2rem,8vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white"
+          className="text-center font-heading text-[clamp(2rem,8vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,45,51,0.45)]"
         >
           {t.hero.line1}
           <span className="mt-1 block text-[#f3e6c8]">{t.hero.line2}</span>
