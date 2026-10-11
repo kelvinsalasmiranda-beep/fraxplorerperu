@@ -1,5 +1,14 @@
 {
   "routes": [
+    { "route": "/inicio", "redirect": "/", "statusCode": 301 },
+    { "route": "/inicio/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/home", "redirect": "/", "statusCode": 301 },
+    { "route": "/home/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/index.php", "redirect": "/", "statusCode": 301 },
+    { "route": "/es", "redirect": "/", "statusCode": 301 },
+    { "route": "/es/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/en", "redirect": "/", "statusCode": 301 },
+    { "route": "/en/*", "redirect": "/", "statusCode": 301 },
     { "route": "/paquetes", "redirect": "/", "statusCode": 301 },
     { "route": "/paquetes/*", "redirect": "/", "statusCode": 301 },
     { "route": "/machupicchu", "redirect": "/tours/tour-machu-picchu-full-day/", "statusCode": 301 },
